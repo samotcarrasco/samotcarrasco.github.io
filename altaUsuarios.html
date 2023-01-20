@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>Autoescuela</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Página creada para la asignatira HTML/CSS del curso DIM">
+  <meta name="author" content="Teniente Tomás Carrasco del Rey">
+  <link rel="icon" href="assets/favicon.ico">
+  <!--  cargamos antes el css de bootstrap que el propio -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/estiloPropio.css">
+  <!-- añadimos las fuentes "Roboto" y "Sofia" de google fonts. -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia&display=swap">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+  <!--     FontAwesome para los iconos del footer -->
+  <script src="https://kit.fontawesome.com/f7ce9dd855.js" crossorigin="anonymous" defer></script>
+  <!-- Pequeño javascrip para controlar ha habilitación/desablilitación del boton "enviar" de los formularios-->
+  <script src="js/controlFormularios.js" defer></script>
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-sm bg-dark fixed-top navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+          <img class="logo" src="assets/icon.png" alt="Logo Autoescuela">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Sobre nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="examen.html">Hacer examen</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Gestión
+                preguntas</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="altaPregunta.html">Alta</a></li>
+                <li><a class="dropdown-item" href="underConstruction.html">Baja</a></li>
+                <li><a class="dropdown-item" href="underConstruction.html">Modificación</a></li>
+                <li><a class="dropdown-item" href="underConstruction.html">Borrado</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Gestión
+                usuarios</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="altaUsuarios.html">Alta</a></li>
+                <li><a class="dropdown-item" href="underConstruction.html">Baja</a></li>
+                <li><a class="dropdown-item" href="underConstruction.html">Modificación</a></li>
+                <li><a class="dropdown-item" href="underConstruction.html">Consulta</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="navbar-nav">
+
+            <li class="nav-item dropdown">
+              <!-- en lugar de "login", ponemos un icono de awesome font para el LOGIN-->
+              <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"> <!--Login-->
+                <i class="fa-regular fa-circle-user"></i>
+              </a>
+              <ul id="login-bar" class="dropdown-menu p-2 mb-0">
+                <li>
+                  <div class="row">
+                    <div class="containerL mb-0">
+                      <form>
+                        <div class="form-group">
+                          <!--<label class="sr-only" -->
+                          <label id="usuario">Usuario</label>
+                          <input type="email" class="form-control obligatorioL" required>
+                        </div>
+                        <div class="form-group">
+                          <label id="passwd">Contraseña</label>
+                          <input type="password" class="form-control obligatorioL" required>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                          <button id="enviarLogin" class="btn btn-outline-success px-4 py-6 fw-bold"
+                            disabled>Acceder</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item registro">
+              <a class="nav-link" href="altaUsuarios.html">Registro nuevo usuario</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <div class="container-fluid col-md-10 container-alta-usuario">
+      <h4 class="mb-3"><b>Formulario de alta de usuario</b> </h4>
+      <form class="needs-validation">
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="firstName">Nombre *</label>
+            <input type="text" class="form-control obligatorio" placeholder="Nombre" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="lastName">Apellidos *</label>
+            <input type="text" class="form-control obligatorio" placeholder="Apellidos" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="lastName">Fecha de nacimiento </label>
+            <input type="date" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="username">NickName *</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">@</span>
+              </div>
+              <input type="text" class="form-control obligatorio" placeholder="Nickname" required>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="email">Email *</label>
+            <input type="email" class="form-control obligatorio" id="email" placeholder="uusario@ejemplo.com" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="password">Contraseña *</label>
+            <input type="password" class="form-control obligatorio" minlength="8" placeholder="Mínimo 8 caracteres"
+              required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="password">Repita contraseña *</label>
+            <input type="password" class="form-control obligatorio" minlength="8" placeholder="Mínimo 8 caracteres"
+              required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="address">Dirección <span class="text-muted">(Optional)</span></label>
+            <input type="text" class="form-control" placeholder="C/ mi Calle 1">
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="address2">Escalera/Piso/Letra <span class="text-muted">(Optional)</span></label>
+            <input type="text" class="form-control" placeholder="B/2º/G">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="pais">País</label>
+            <select class="form-control custom-select d-block w-100" id="pais">
+              <option value="">Opcional</option>
+              <option>España</option>
+              <option>Portugal</option>
+              <option>Francia</option>
+              <option>Tunez</option>
+            </select>
+
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="provincia">Provincia</label>
+            <select class="form-control custom-select d-block w-100" id="provincia">
+              <option value="">Opcional</option>
+              <option value="Álava/Araba">Álava/Araba</option>
+              <option value="Albacete">Albacete</option>
+              <option value="Alicante">Alicante</option>
+              <option value="Almería">Almería</option>
+              <option value="Asturias">Asturias</option>
+              <option value="Ávila">Ávila</option>
+              <option value="Badajoz">Badajoz</option>
+              <option value="Baleares">Baleares</option>
+              <option value="Barcelona">Barcelona</option>
+              <option value="Burgos">Burgos</option>
+              <option value="Cáceres">Cáceres</option>
+              <option value="Cádiz">Cádiz</option>
+              <option value="Cantabria">Cantabria</option>
+              <option value="Castellón">Castellón</option>
+              <option value="Ceuta">Ceuta</option>
+              <option value="Ciudad Real">Ciudad Real</option>
+              <option value="Córdoba">Córdoba</option>
+              <option value="Cuenca">Cuenca</option>
+              <option value="Gerona/Girona">Gerona/Girona</option>
+              <option value="Granada">Granada</option>
+              <option value="Guadalajara">Guadalajara</option>
+              <option value="Guipúzcoa/Gipuzkoa">Guipúzcoa/Gipuzkoa</option>
+              <option value="Huelva">Huelva</option>
+              <option value="Huesca">Huesca</option>
+              <option value="Jaén">Jaén</option>
+              <option value="La Coruña/A Coruña">La Coruña/A Coruña</option>
+              <option value="La Rioja">La Rioja</option>
+              <option value="Las Palmas">Las Palmas</option>
+              <option value="León">León</option>
+              <option value="Lérida/Lleida">Lérida/Lleida</option>
+              <option value="Lugo">Lugo</option>
+              <option value="Madrid">Madrid</option>
+              <option value="Málaga">Málaga</option>
+              <option value="Melilla">Melilla</option>
+              <option value="Murcia">Murcia</option>
+              <option value="Navarra">Navarra</option>
+              <option value="Orense/Ourense">Orense/Ourense</option>
+              <option value="Palencia">Palencia</option>
+              <option value="Pontevedra">Pontevedra</option>
+              <option value="Salamanca">Salamanca</option>
+              <option value="Segovia">Segovia</option>
+              <option value="Sevilla">Sevilla</option>
+              <option value="Soria">Soria</option>
+              <option value="Tarragona">Tarragona</option>
+              <option value="Tenerife">Tenerife</option>
+              <option value="Teruel">Teruel</option>
+              <option value="Toledo">Toledo</option>
+              <option value="Valencia">Valencia</option>
+              <option value="Valladolid">Valladolid</option>
+              <option value="Vizcaya/Bizkaia">Vizcaya/Bizkaia</option>
+              <option value="Zamora">Zamora</option>
+              <option value="Zaragoza">Zaragoza</option>
+            </select>
+
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="zip">Codigo Postal</label>
+            <input type="number" class="form-control" id="zip" placeholder="Opcional" minlength="5" maxlength="5">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-0">
+            <label for="fcheckbox" class="mb-3"><b>¿Cómo supiste acerca de nosotros?</b></label>
+            <div class="col-md-6 mb-2">
+              <div class="form-check form-switch multipleCh">
+                <input class="form-check-input" type="checkbox">
+                <label class="form-check-label" for="flexSwitchCheckDefault">&nbsp;&nbsp;A través de un
+                  amigo</label>
+              </div>
+            </div>
+            <div class="col-md-6 mb-2">
+              <div class="form-check form-switch multipleCh">
+                <input class="form-check-input" type="checkbox">
+                <label class="form-check-label" for="flexSwitchCheckDefault">&nbsp;&nbsp;Redes
+                  sociales</label>
+              </div>
+            </div>
+            <div class="col-md-6 mb-2">
+              <div class="form-check form-switch multipleCh">
+                <input class="form-check-input" type="checkbox">
+                <label class="form-check-label" for="flexSwitchCheckDefault">&nbsp;&nbsp;Internet</label>
+              </div>
+            </div>
+            <div class="col-md-6 mb-2">
+              <div class="form-check form-switch multipleCh">
+                <input class="form-check-input" type="checkbox">
+                <label class="form-check-label" for="flexSwitchCheckDefault">&nbsp;&nbsp;Otros
+                  (indique)</label>
+                <input type="text" class="form-control mt-2">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 final-formulario">
+            <label for="customRange"><b>Grado de motivación ante el estudio</b></label>
+            <input type="range" class="form-range slide-horizontal">
+            <label for="customRange"><b>Espectativas</b></label>
+            <input type="range" class="form-range slide-horizontal">
+            <label for="customRange"><b>Range incluido para prueba</b></label>
+            <input type="range" class="form-range slide-horizontal">
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="d-flex justify-content-center">
+            <button id="enviar" class="btn btn-outline-success px-4 py-2 fw-bold" disabled> Enviar</button>
+            <button id="borrar" class="btn btn-outline-success px-4 py-2 fw-bold" type="reset">Limpiar
+              datos</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <hr>
+
+  <!-- tex-muted hace que el texto/iconos aparezca en un tono gris agradable-->
+  <footer class="text-muted">
+    <div class="col justify-content-center">
+      <a class="mx-5 btn btn-link" href="https://es-es.facebook.com/" aria-hidden="true" target="_blank">
+        <i class="fa-brands fa-square-facebook fa-2x" title="facebook"></i>
+      </a>
+      <a class="mx-5 btn btn-link" href="https://github.com/" aria-hidden="true" target="_blank">
+        <i class="fab fa-github-square fa-2x" title="github"></i>
+      </a>
+      <a class="mx-5 btn btn-linkC" href="https://www.google.com/" aria-hidden="true" target="_blank">
+        <i class="fa-solid fa-share-nodes" title="compartir"></i>
+      </a>
+
+      <a class="mx-5 btn btn-link"
+        href="mailto:autoescuelaonline@autoescuela.com?subject=Tema&cc=otroemail@pruebas.org&body=Cuerpo del mensaje"
+        aria-hidden="true" target="_blank">
+        <i class="far fa-envelope fa-2x" title="mail"></i>
+      </a>
+    </div>
+    <nav class="col justify-content-center my-2">
+      <a href="https://www.dgt.es/inicio/" title="Dirección General de Tráfico" target="_blank">DGT</a>
+      |
+      <a href="https://www.apamad.es/" title="Asociacón de Autoescuelas de Madrid" target="_blank">APAMAD</a>
+    </nav>
+  </footer>
+
+</body>
+
+</html>

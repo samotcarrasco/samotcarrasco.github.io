@@ -1,0 +1,455 @@
+
+/*
+    Autor: Tomás Carrasco del Rey
+    Fichero: estiloPropio.css
+    Descripción:
+    Se ha optado por hacer un único css para toda la web, ya que muchos de los elementos (navegación, footer, formularios ...)
+    son comunes a todos los ficheros .html
+
+    Es decir, puede haber algun elemento del main diferente en los distintos archivos html, pero se ha optado
+    por agrupar todas las reglas css únicamente en este archivo.
+
+    NOTA: al ser un trabajo docente, NO se ha mantenido el criterio de minificación, y se han añadido 
+    comentarios para explicar el motivo de cada regla css. 
+
+*/
+
+
+
+/*
+                    ########## TIPOS DE LETRA Y VARIABLES GLOBALES ##########
+*/
+
+@charset "UTF-8";
+
+/* Por defecto, ponenos la fuente Roboto en toda la página. Si no se puede usar, se usará sans-serif
+importada de Google fonts (head de los ficheros html)*/
+* {
+    font-family: 'Roboto', sans-serif
+}
+
+/* paleta de colores https://www.w3schools.com/colors/colors_picker.asp */
+:root {
+    --verde-muy-claro: #ecf9f2;
+    --verde-claro: #b3e6cc;
+    --verde-normal: #40bf80;
+    --verde-background-preguntas: #39ac73;
+    --verde-oscuro: #2d8659;
+    --verde-formularios: #198754;
+    --verde-muy-oscuro: #0a4614;
+    --gris-claro: #ababab;
+}
+
+
+
+/*
+                    ########## BARRA DE NAVEGACIÓN (común a todos los html) ##########
+*/
+
+
+/*
+  Menú "login" de la barra de navegación
+  tras varias pruebas responsive, hemos visto que un minimo de 25px
+  queda bien en todoas las pantallas
+  */
+  #login-bar {
+    min-width: 250px;
+    padding: 5vw;
+    overflow: hidden;
+}
+
+
+/*
+Icono de LOGIN de la barra de navegación
+*/
+
+.nav-link {
+    font-weight: bold;
+    color: var(--verde-muy-claro)
+}
+
+.nav-link .fa-circle-user:hover {
+    /*verde muy claro, como el resto del menú*/
+    color: var(--verde-muy-claro);
+}
+
+.nav-link .fa-circle-user {
+    font-size: 2rem;
+}
+
+/*alieamos la opcion Registro de la barra de navegación" */
+
+.registro {
+    align-self: center;
+}
+
+
+
+/* Usuario y contraseña del login*/
+#passwd,
+#usuario {
+    font-size: larger;
+}
+
+
+/* containerL es el contenedor del menú Login  */
+.containerL {
+    padding: 1vw;
+}
+
+/* Ponemos el tamaño del logo en vw
+pero el maximo y minmo lo dejamos en px, ya que queda mejor(probado responsive)
+*/
+.logo {
+    width: 8vw;
+    display: block;
+    max-width: 50px;
+    min-width: 30px;
+}
+
+
+
+
+
+/*
+                    ########## MAIN COMÚN A TODOS LOS .html  ##########
+*/
+
+/*
+En este punto particularmente unidades absolutas (pixeles px)
+Tras múltiples pruebas responsive, esta es la mejor solción para no pisar la 
+barra de navegación, ya que es fija a la parte superior y su altura no varía 
+*/
+main {
+    margin-top: 100px;
+}
+
+/*
+                    ########## index.html  ##########
+*/
+
+.container-index {
+    margin: 3vw;
+    align-items: center;
+}
+
+/*
+Texto de la página principal
+Lo hemos hecho responsive a traves de unidades vw
+Reduciendo la ventana se reduce la letra
+(personalmente no me gusta, lo dejo por probar este tipo de responsive)
+*/
+
+.titulo1 {
+    /* letra Sofia (google fonts), importada en el head de los html*/
+    font-family: "Sofia", sans-serif;
+    font-size: 3vw;
+    text-shadow: 0.5vw 0.5vw 0.5vw var(--gris-claro);
+}
+
+.texto1 {
+    font-family: "Sofia", sans-serif;
+    font-size: 2vw;
+    text-shadow: 0.2vw 0.2vw 0.2vw var(--gris-claro);
+}
+
+.imagen1 {
+    max-width: 100%;
+}
+
+/*imagen del artículo de la pagina principal*/
+#imagen1 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+#twitter-widget-0 {
+    display: flex;
+    width: 50vw;
+    max-width: 100%;
+    margin-top: 1vw;
+}
+
+.twitter-aside {
+    position: static;
+    visibility: visible;
+    width: 50vw;
+    height: 50vh;
+    display: block;
+    flex-grow: 1;
+    max-height: 60vh;
+}
+
+/* ocultamos el aside de twiter para pantallas menores de 300, ya que no se visualiza bien */
+@media (max-width: 300px) {
+    .min_twitter {
+      display: none;
+    }
+  }
+
+
+
+
+
+
+/*
+                    ########## examen.html  ##########
+*/
+
+
+/* container examen. El margen superior es mayor para salvar el menú de navegación*/
+.container-examen {
+    margin: 5vw;
+}
+
+
+/*ajustamos la imagen para que quede bien con respecto a la pregunta (pretunta 4 en este caso)*/
+.imagen-pregunta {
+    padding-left: 3vw;
+}
+
+
+/* preguntas examen*/
+label.box {
+    display: flex;
+    margin-top: 0.3vw;
+    padding: 0vw;
+    border-radius: 1vw;
+    cursor: pointer;
+    /*ponemos unidad absoluta, ya que es el borde de la pretunga, indiferente del tamaño de la pantalla*/
+    border: 1px solid var(--verde-claro)
+}
+
+/* pregunta 1 (tres opciones) */
+#p1r1:checked~label.p1r1 .circle,
+#p1r2:checked~label.p1r2 .circle,
+#p1r3:checked~label.p1r3 .circle,
+/* pregunta 2 (cuatro opciones)*/
+#p2r1:checked~label.p2r1 .circle,
+#p2r2:checked~label.p2r2 .circle,
+#p2r3:checked~label.p2r3 .circle,
+#p2r4:checked~label.p2r4 .circle,
+/* pregunta 3*/
+#p3r1:checked~label.p3r1 .circle,
+#p3r2:checked~label.p3r2 .circle,
+#p3r3:checked~label.p3r3 .circle,
+#p3r4:checked~label.p3r4 .circle,
+/* pregunta 4*/
+#p4r1:checked~label.p4r1 .circle,
+#p4r2:checked~label.p4r2 .circle,
+#p4r3:checked~label.p4r3 .circle,
+/* pregunta 5*/
+#p5r1:checked~label.p5r1 .circle,
+#p5r2:checked~label.p5r2 .circle,
+#p5r3:checked~label.p5r3 .circle {
+    /*ponemos unidades absolutas (px) ya que el borde 
+    de la caja de texto es irrelevante en función de la pantalla
+    resposive comprobado con esta configuración*/
+    border: 6px solid var(--verde-oscuro);
+    background-color: var(--verde-muy-claro);
+
+}
+
+
+/* color al posicionar el raton encima de cada respuesta */
+label.box:hover {
+    background: var(--verde-muy-claro)
+}
+
+/* alineacion del texto dentro de cada respuesta */
+label.box .course {
+    display: flex;
+    align-items: center;
+    width: 100%
+}
+
+label.box .circle {
+    height: 1vw;
+    width: 1vw;
+    border-radius: 50%;
+    margin: 0.8vw;
+    /*Tras varias pruebas responsive, queda mejor con unidades absolutas (px)*/
+    border: 2px solid var(--verde-claro);
+    display: inline-block
+}
+
+input[type="radio"] {
+    display: none
+}
+
+/*forma redondeada de los botones (border-radius)*/
+.btn.btn-outline-success {
+    border-radius: 2vw;
+    margin: 2vw
+}
+
+
+
+
+
+
+
+/*
+                    ########## altaPregunta.html  ##########
+*/
+
+
+
+
+
+.container-alta-pregunta {
+    margin: 5vw;
+}
+
+
+/*
+                    ########## altaUsuarios.html  ##########
+*/
+
+.container-alta-usuario {
+    margin: 5vw;
+}
+
+
+
+
+/*
+                    ########## COMUN EN TODOS LOS FORMULARIOS  ##########
+*/
+
+/*
+Override de la propiedad de bootstrap.
+Los bordes de todos los formularios los ponemos en tonos verdes (por defecto son azules)
+*/
+.form-control:focus {
+    color: rgb(0, 0, 0);
+    background-color: #fff;
+    border-color: var(--verde-normal);
+    outline: 0;
+    box-shadow: 0 0 0 .25rem var(--verde-claro)
+}
+
+
+/* Es una opción para marcar los campos requeridos en los formularios
+Finalmente, decidimos mostrarlo con * en cada etiqueta, ya que favorece la IPO
+
+input:required {
+    border-style:dashed;
+    border-color:var(--verde-oscuro);
+    }
+*/
+
+
+/* Personalizacion del slider (grado de motivación del estudio, )
+el tamaño del slider queda bien en pixels, probado responsive
+con vw queda mal
+*/
+
+.slide-horizontal {
+    width: 100%;
+    height: 25px;
+    background: transparent;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slide-horizontal::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 50px;
+    height: 18px;
+    background: var(--verde-formularios);
+    cursor: pointer;
+}
+
+
+/* Multiple choice formulario (obenido de w3school, utlizado por bootstrap)
+Fuente: https://www.w3schools.com/bootstrap5/tryit.asp?filename=trybs_form_toggle_switch
+Vamos a hacer override de algunas propiedades de bootstap, para que sea verde en lugar de azul (por defecto)
+igual que en el slide, en este caso queda mejor poner px que vw, ya que el tamaño no debe cambiar segun la pantalla*/
+.multipleCh .form-check-input {
+    height: 24px;
+    width: 48px;
+    margin-top: 0vw;
+}
+
+.multipleCh .form-check-input:focus {
+    border-color: rgba(0, 0, 0, 0.25);
+    outline: 0;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(0,0,0,0.25)'/></svg>");
+}
+
+.multipleCh .form-check-input:checked {
+    background-color: var(--verde-formularios);
+    border: none;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(255,255,255,1.0)'/></svg>");
+}
+
+
+
+
+
+/*
+                    ########## FOOTER. COMUN EN TODOS LOS FICHEROS .html  ##########
+*/
+
+footer {
+    background-color: white;
+}
+
+/*  Color de los iconos del footer, inicalmente gris */
+footer i {
+    color: lightgrey;
+}
+
+/* Tamaño por defecto de los iconos del footer */
+footer a.btn-link {
+    font-size: 1.6rem;
+}
+
+
+.btn-link .fa-square-facebook:hover {
+    color: #3b5998;
+}
+
+.btn-link .fa-github-square:hover {
+    color: #000000;
+}
+
+
+.btn-linkC .fa-share-nodes:hover {
+    color: #198754;
+}
+
+.btn-linkC .fa-share-nodes {
+    font-size: 3.2rem;
+}
+
+
+.btn-link .fa-envelope:hover {
+    color: #087fe3;
+}
+
+
+/* enlaces del footer de tipo "legal" en nuetro caso DGT APAMAD*/
+footer .legal {
+    margin: 0;
+}
+
+
+header .btn-link .fa-circle-user {
+    font-size: 3.2rem;
+}
+
+/*elemenos del footer centrados*/
+footer {
+    color: white;
+    padding: 1vw;
+    text-align: center;
+}

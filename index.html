@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Autoescuela</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Página creada para la asignatira HTML/CSS del curso DIM">
+    <meta name="author" content="Teniente Tomás Carrasco del Rey">
+    <link rel="icon" href="assets/favicon.ico">
+    <!--  cargamos antes el css de bootstrap que el propio -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estiloPropio.css">
+    <!-- añadimos las fuentes "Roboto" y "Sofia" de google fonts. -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia&display=swap">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+    <!--     FontAwesome para los iconos del footer -->
+    <script src="https://kit.fontawesome.com/f7ce9dd855.js" crossorigin="anonymous" defer></script>
+    <!-- Pequeño javascrip para controlar ha habilitación/desablilitación del boton "enviar" de los formularios-->
+    <script src="js/controlFormularios.js" defer></script>
+</head> 
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-sm bg-dark fixed-top navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img class="logo" src="assets/icon.png" alt="Logo Autoescuela">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Sobre nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="examen.html">Hacer examen</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Gestión
+                                preguntas</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="altaPregunta.html">Alta</a></li>
+                                <li><a class="dropdown-item" href="underConstruction.html">Baja</a></li>
+                                <li><a class="dropdown-item" href="underConstruction.html">Modificación</a></li>
+                                <li><a class="dropdown-item" href="underConstruction.html">Borrado</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Gestión
+                                usuarios</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="altaUsuarios.html">Alta</a></li>
+                                <li><a class="dropdown-item" href="underConstruction.html">Baja</a></li>
+                                <li><a class="dropdown-item" href="underConstruction.html">Modificación</a></li>
+                                <li><a class="dropdown-item" href="underConstruction.html">Consulta</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav me-5">
+                        <li class="nav-item dropdown">
+                            <!-- en lugar de "login", ponemos un icono de awesome font para el LOGIN-->
+                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"> <!--Login-->
+                                <i class="fa-regular fa-circle-user"></i>
+                            </a>
+                            <ul id="login-bar" class="dropdown-menu p-2 mb-0">
+                                <li>
+                                    <div class="row">
+                                        <div class="containerL mb-0">
+                                            <form>
+                                                <div class="form-group">
+                                                    <!--<label class="sr-only" -->
+                                                    <label id="usuario">Usuario</label>
+                                                    <input type="email" class="form-control obligatorioL" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label id="passwd">Contraseña</label>
+                                                    <input type="password" class="form-control obligatorioL" required>
+                                                </div>
+                                                <div class="d-flex justify-content-center">
+                                                    <button id="enviarLogin"
+                                                        class="btn btn-outline-success  fw-bold"
+                                                        disabled>Acceder</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item registro">
+                            <a class="nav-link" href="altaUsuarios.html">Registro nuevo usuario</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <main>
+        <article class="container-fluid text-center col-10">
+            <h1 class="titulo1">Bienvenido a la mejor autoescuela online</h1>
+            <p class="texto1">Aquí podrá hacer exámenes de forma gratuita, que le ayudarán para obtener el permiso de
+                conducir B</p>
+            <p class="texto1">&clubs; &clubs; ¡¡ MUCHA SUERTE !! &clubs; &clubs;</p>
+        </article>
+        <article class="container-fluid text-center container-index"> 
+            <section class="row">
+                <section class="col-sm-12 col-md-6 col-lg-7 col-xl-7">
+                    <!--Añadimos imagen con texto alternativo (para personas con deficiencia visual)
+                    La class=rounded (bootstrap) es para redondear las esquinas de la imagen-->
+                    <picture alt="Mujer condiciendo vehículo. De copiloto está un profesor" >
+                        <source class="imagen1 rounded"  media="(min-width:990px)" srcset="assets/autoescuela_grande.jpg" alt="mujer conduciendo, de copiloto el profesor">
+                        <source class="imagen1 rounded" media="(min-width:750px)" srcset="assets/autoescuela_mediana.jpg" alt="mujer conduciendo, de copiloto el profesor">
+                        <img class="imagen1 rounded" src="assets/autoescuela_pequenia.jpg" alt="mujer conduciendo, de copiloto el profesor">
+                    </picture>
+                </section>
+                <!--Ajustamos twitter al tamaño de cada pantalla (pequeña mediana grande) -->
+               <aside class="col-sm-12 col-md-6 col-lg-5 col-xl-4 twitter-timeline twitter-timeline-rendered min_twitter">
+                <!--El iframe de twitter lo hemos obtenido de https://help.twitter.com/es/using-twitter/how-to-embed-a-tweet
+                -->
+               <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true"
+                        allowfullscreen="true" class="twitter-aside container-fluid text-center "
+                        src="https://syndication.twitter.com/srv/timeline-profile/screen-name/DGTes?dnt=false&amp;embedId=twitter-widget-0&amp;lang=es&amp;maxHeight=450px&amp;showHeader=true">
+                    </iframe> 
+                </aside> 
+            </section>
+        </article>
+
+    </main>
+    <hr class="w-100 bg-secondary">
+
+    <!-- tex-muted hace que el texto/iconos aparezca en un tono gris agradable-->
+    <footer class="text-muted">
+        <div class="col justify-content-center">
+            <a class="mx-5 btn btn-link" href="https://es-es.facebook.com/" aria-hidden="true" target="_blank">
+                <i class="fa-brands fa-square-facebook fa-2x" title="facebook"></i>
+            </a>
+            <a class="mx-5 btn btn-link" href="https://github.com/" aria-hidden="true" target="_blank">
+                <i class="fab fa-github-square fa-2x" title="github"></i>
+            </a>
+            <a class="mx-5 btn btn-linkC" href="https://www.google.com/" aria-hidden="true" target="_blank">
+                 <i class="fa-solid fa-share-nodes" title="compartir"></i>
+            </a>
+
+            <a class="mx-5 btn btn-link"
+                href="mailto:autoescuelaonline@autoescuela.com?subject=Tema&cc=otroemail@pruebas.org&body=Cuerpo del mensaje"
+                aria-hidden="true" target="_blank">
+                <i class="far fa-envelope fa-2x" title="mail"></i>
+            </a>
+        </div>
+        <nav class="col justify-content-center my-2">
+            <a href="https://www.dgt.es/inicio/" title="Dirección General de Tráfico" target="_blank">DGT</a> 
+            | 
+            <a href="https://www.apamad.es/" title="Asociacón de Autoescuelas de Madrid" target="_blank">APAMAD</a>
+        </nav>
+    </footer>
+
+</body>
+
+</html>
