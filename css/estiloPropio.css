@@ -242,16 +242,24 @@ label.box {
 #p4r1:checked~label.p4r1 .circle,
 #p4r2:checked~label.p4r2 .circle,
 #p4r3:checked~label.p4r3 .circle,
+#p4r4:checked~label.p4r3 .circle,
 /* pregunta 5*/
 #p5r1:checked~label.p5r1 .circle,
 #p5r2:checked~label.p5r2 .circle,
-#p5r3:checked~label.p5r3 .circle {
+#p5r3:checked~label.p5r3 .circle,
+#p5r4:checked~label.p5r4 .circle,
+#p5r11:checked~label.p5r11 .circle,
+/* pregunta 6*/
+#p5r1:checked~label.p6r1 .circle,
+#p5r2:checked~label.p6r2 .circle,
+#p5r3:checked~label.p6r3 .circle,
+#p5r4:checked~label.p6r3 .circle
+{
     /*ponemos unidades absolutas (px) ya que el borde 
     de la caja de texto es irrelevante en función de la pantalla
     resposive comprobado con esta configuración*/
     border: 6px solid var(--verde-oscuro);
     background-color: var(--verde-muy-claro);
-
 }
 
 

@@ -8,20 +8,18 @@
     <meta name="description" content="Página creada para la asignatira HTML/CSS del curso DIM">
     <meta name="author" content="Teniente Tomás Carrasco del Rey">
     <link rel="icon" href="assets/favicon.ico">
-    <!-- añadimos las fuentes "Roboto" y "Sofia" de google fonts. -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia&display=swap">
     <!--  cargamos antes el css de bootstrap que el propio -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/estiloPropio.css">
-    
+    <!-- añadimos las fuentes "Roboto" y "Sofia" de google fonts. -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia&display=swap">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
     <!--     FontAwesome para los iconos del footer -->
     <script src="https://kit.fontawesome.com/f7ce9dd855.js" crossorigin="anonymous" defer></script>
     <!-- Pequeño javascrip para controlar ha habilitación/desablilitación del boton "enviar" de los formularios-->
     <script type="module" src="js/examen.js" defer></script>
-    
-    
+
 </head>
 
 <body>
@@ -106,12 +104,17 @@
     </header>
 
     <main>
-        <div class="row container-fluid container-examen col-md-8" id="padrePreguntas">
-            <!--  <form class="row g-2">
+        <div class="row container-fluid container-examen col-md-8">
+            <form class="row g-2">
+                <!-- <div class="mb-4">
+                        <label for="archivo" class="form-label">Cargar preguntas</label>
+                        <input type="file" class="form-control-file" id="my_file_input">
+                      </div> -->
                 <article class="col-12">
                     <p class="larga fw-bold mt-3" id="p1">1.
                     </p>
                     <div class="row">
+                        <!-- Para el id de cada pregunta usamos el acrónimo p1r1 (pregunta 1 respuesta 1)  -->
                         <input type="radio" name="box" id="p1r1">
                         <input type="radio" name="box" id="p1r2">
                         <input type="radio" name="box" id="p1r3">
@@ -132,35 +135,12 @@
                     </div>
                 </article>
             </form>
-        
             <form class="row g-2">
-                <article class="col-12">
-                    <p class="larga fw-bold mt-3" id="p1"> 1.-1A los conductores novatos se les aplica una tasa de
-                        alcoholemia menor, ¿sabes qué tasa y por cuánto tiempo?</p>
-                    <div class="row"> <input type="radio" name="box" id="p1r1"> <input type="radio" name="box"
-                            id="p1r2"> <input type="radio" name="box" id="p1r3"> <input type="radio" name="box"
-                            id="p1r4"> <label for="p1r1" class="box p1r1">
-                            <div class="course"> <span class="circle"></span> <span id="p1opc1">0,25 miligramos de
-                                    alcohol por litro de aire espirado durante dos años.</span> </div>
-                        </label><label for="p1r1" class="box p1r2">
-                            <div class="course"> <span class="circle"></span> <span id="p1opc2">0,30 gramos de alcohol
-                                    por litro de sangre durante dos años.</span> </div>
-                        </label><label for="p1r1" class="box p1r3">
-                            <div class="course"> <span class="circle"></span> <span id="p1opc3">0,15 miligramos de
-                                    alcohol por litro de sangre durante un año.</span> </div>
-                        </label><label for="p1r1" class="box p1r4">
-                            <div class="course"> <span class="circle"></span> <span id="p1opc4">Ninguna de las
-                                    anteriores</span> </div>
-                        </label></div>
-                </article>
-            </form>
-        -->
-        <!--            <form class="row g-2">
                 <article class="col-12">
                     <p class="corta fw-bold mt-3" id="p2">2.
                     </p>
                     <div class="row">
-                        <!-- Para el id de cada pregunta usamos el acrónimo p2r1 (pregunta 2 respuesta 1)  
+                        <!-- Para el id de cada pregunta usamos el acrónimo p2r1 (pregunta 2 respuesta 1)  -->
 
                         <div class="col-md-6"> <input type="radio" name="box" id="p2r1"> <label for="p2r1"
                                 class="box p2r1 w-100">
@@ -191,7 +171,7 @@
                 <article class="col-12">
                     <p class="corta fw-bold mt-3" id="p3">3.</p>
                     <div class="row">
-                        <!-- Para el id de cada pregunta usamos el acrónimo p3r1 (pregunta 3 respuesta 1)  
+                        <!-- Para el id de cada pregunta usamos el acrónimo p3r1 (pregunta 3 respuesta 1)  -->
 
                         <section class="col-md-6"> <input type="radio" name="box" id="p3r1"> <label for="p3r1"
                                 class="box p3r1 w-100">
@@ -224,7 +204,7 @@
             <form class="row g-2">
                 <article class="col-sm-6">
                     <p class="imagen fw-bold mt-3" id="p4">4.</p>
-                    <!-- Para el id de cada pregunta usamos el acrónimo p4r1 (pregunta4 respuesta 1)  
+                    <!-- Para el id de cada pregunta usamos el acrónimo p4r1 (pregunta4 respuesta 1)  -->
                     <section>
                         <input type="radio" name="box" id="p4r1">
                         <label for="p4r1" class="box p4r1 w-100">
@@ -261,10 +241,58 @@
                     <img class="img mt-3" id="imagenp4" src="assets/img_examen/senalPeligro.jpg">
                 </aside>
             </form>
-        -->
+            <form class="row g-2">
+                <article class="col-12">
+                    <p class="fw-bold mt-3">5. A los conductores novatos se les aplica una tasa de alcoholemia
+                        menor,
+                        ¿sabes
+                        qué tasa y por cuánto tiempo?</p>
+                    <!-- Para el id de cada pregunta usamos el acrónimo p5r1 (pregunta 5 respuesta 1)  -->
+                    <section>
+                        <input type="radio" name="box" id="p5r1">
+                        <label for="p5r1" class="box p5r1 w-100">
+                            <div class="course">
+                                <span class="circle"></span> <span>0,25 miligramos de alcohol por
+                                    litro
+                                    de aire espirado durante dos años.</span>
+                            </div>
+                        </label>
+                    </section>
 
+                    <section>
+                        <input type="radio" name="box" id="p5r2">
+                        <label for="p5r2" class="box p5r2 w-100">
+                            <div class="course">
+                                <span class="circle"></span> <span>0,30 gramos de alcohol por litro de sangre durante
+                                    dos años.</span>
+                            </div>
+                        </label>
+                    </section>
+
+                    <section>
+                        <input type="radio" name="box" id="p5r3">
+                        <label for="p5r3" class="box p5r3 w-100">
+                            <div class="course">
+                                <span class="circle"></span> <span>0,15 miligramos de alcohol por litro de sangre
+                                    durante un año.</span>
+                            </div>
+                        </label>
+                    </section>
+
+                </article>
+            </form>
+            <form class="row g-2">
+                <article class="col-12">
+                    <p class="larga fw-bold mt-3" id="p5"> 1A los conductores novatos se les aplica una tasa de alcoholemia
+                        menor, ¿sabes qué tasa y por cuánto tiempo?</p>
+                    <div class="row"> <input type="radio" name="box" id="p5r11"> <label for="p5r11" class="box p1r1">
+                            <div class="course"> <span class="circle"></span> <span id="p5opc1">0,25 miligramos de alcohol
+                                    por litro de aire espirado durante dos años.</span> </div>
+                        </label></div>
+                </article>
+            </form>
         </div>
-
+      
 
         <div class="col-12">
             <div class="d-flex justify-content-center">
