@@ -11,33 +11,33 @@
             },
             "tipo": "larga",
             "imagen": "",
-            "correcta": "2"
+            "correcta": "B"
         },
         {
             "id": "2",
-            "enunciado": "¿2cual es la correcta?22222",
+            "enunciado": "¿2Qué código de etiqueta ambiental es incorrecto?",
             "opciones": {
-                "opc1": "asdf2222",
-                "opc2": "sdfsdf2222",
-                "opc3": "sdfsdf2222",
-                "opc4": "ASDFASFSDF"
+                "opc1": "ECO",
+                "opc2": "B",
+                "opc3": "ELECTRICOS",
+                "opc4": "C"
             },
             "tipo": "corta",
             "imagen": "",
-            "correcta": "2"
+            "correcta": "C"
         },
         {
             "id": "3",
             "enunciado": "¿3Cuál es la velocidad máxima permitida para circular en Autovías?",
             "opciones": {
-                "opc1": "120 km/h como norma general",
+                "opc1": "120 km/h en general",
                 "opc2": "90 km/h",
                 "opc3": "100 km/h",
                 "opc4": "ninguna de las anteriores"
             },
             "tipo": "corta",
             "imagen": "",
-            "correcta": "2"
+            "correcta": "A"
         },
         {
             "id": "4",
@@ -50,33 +50,33 @@
             },
             "tipo": "larga",
             "imagen": "",
-            "correcta": "1"
+            "correcta": "A"
         },
         {
             "id": "5",
-            "enunciado": "¿5Cuál es la velocidad máxima permitida para circular en Autovías?",
+            "enunciado": "¿5Cuál es la velocidad máxima permitida para circular en caminos?",
             "opciones": {
-                "opc1": "120 km/h como norma general",
-                "opc2": "90 km/h",
-                "opc3": "100 km/h",
+                "opc1": "50 km/h en general",
+                "opc2": "40 km/h",
+                "opc3": "30 km/h",
                 "opc4": "ninguna de las anteriores"
             },
             "tipo": "corta",
             "imagen": "",
-            "correcta": "2"
+            "correcta": "B"
         },
         {
             "id": "6",
-            "enunciado": "6A los conductores novatos se les aplica una tasa de alcoholemia menor, ¿sabes qué tasa y por cuánto tiempo?",
+            "enunciado": "¿6A Cuantos retrovisores como mínimo debe tener un coche?",
             "opciones": {
-                "opc1": "0,25 miligramos de alcohol por litro de aire espirado durante dos años.",
-                "opc2": "0,30 gramos de alcohol por litro de sangre durante dos años.",
-                "opc3": "0,15 miligramos de alcohol por litro de sangre durante un año.",
+                "opc1": "Uno, el interior. Con este es suficiente",
+                "opc2": "Dos exteriores, uno a cada lado del vehículo, y uno interior",
+                "opc3": "El exterior izquierdo y el interior",
                 "opc4": "Ninguna de las anteriores"
             },
             "tipo": "larga",
             "imagen": "",
-            "correcta": "2"
+            "correcta": "B"
         },
         {
             "id": "7",
@@ -89,7 +89,20 @@
             },
             "tipo": "imagen",
             "imagen": "assets/img_examen/senalPeligro.jpg",
-            "correcta": "2"
+            "correcta": "B"
+        },
+        {
+            "id": "8",
+            "enunciado": "8 ¿Qué significa esta señal?",
+            "opciones": {
+                "opc1": "Parar",
+                "opc2": "Ceda el paso",
+                "opc3": "Continuar",
+                "opc4": "Ninguna es correcta"
+            },
+            "tipo": "imagen",
+            "imagen": "assets/img_examen/stop.png",
+            "correcta": "A"
         }
     ]
 }

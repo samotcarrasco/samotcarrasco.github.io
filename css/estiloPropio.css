@@ -242,18 +242,37 @@ label.box {
 #p4r1:checked~label.p4r1 .circle,
 #p4r2:checked~label.p4r2 .circle,
 #p4r3:checked~label.p4r3 .circle,
-#p4r4:checked~label.p4r3 .circle,
+#p4r4:checked~label.p4r4 .circle,
 /* pregunta 5*/
 #p5r1:checked~label.p5r1 .circle,
 #p5r2:checked~label.p5r2 .circle,
 #p5r3:checked~label.p5r3 .circle,
 #p5r4:checked~label.p5r4 .circle,
-#p5r11:checked~label.p5r11 .circle,
 /* pregunta 6*/
-#p5r1:checked~label.p6r1 .circle,
-#p5r2:checked~label.p6r2 .circle,
-#p5r3:checked~label.p6r3 .circle,
-#p5r4:checked~label.p6r3 .circle
+#p6r1:checked~label.p6r1 .circle,
+#p6r2:checked~label.p6r2 .circle,
+#p6r3:checked~label.p6r3 .circle,
+#p6r4:checked~label.p6r4 .circle,
+/* pregunta 7*/
+#p7r1:checked~label.p7r1 .circle,
+#p7r2:checked~label.p7r2 .circle,
+#p7r3:checked~label.p7r3 .circle,
+#p7r4:checked~label.p7r4 .circle,
+/* pregunta 8*/
+#p8r1:checked~label.p8r1 .circle,
+#p8r2:checked~label.p8r2 .circle,
+#p8r3:checked~label.p8r3 .circle,
+#p8r4:checked~label.p8r4 .circle,
+/* pregunta 9*/
+#p9r9:checked~label.p9r1 .circle,
+#p9r2:checked~label.p9r2 .circle,
+#p9r3:checked~label.p9r3 .circle,
+#p9r4:checked~label.p9r4 .circle,
+/* pregunta 10*/
+#p10r1:checked~label.p10r1 .circle,
+#p10r2:checked~label.p10r2 .circle,
+#p10r3:checked~label.p10r3 .circle,
+#p10r4:checked~label.p10r4 .circle
 {
     /*ponemos unidades absolutas (px) ya que el borde 
     de la caja de texto es irrelevante en función de la pantalla
