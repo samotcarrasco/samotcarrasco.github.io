@@ -1,0 +1,31 @@
+{
+    "preguntas": [
+        {   
+            "id":"1",
+            "enunciado": "A los conductores novatos se les aplica una tasa de alcoholemia menor, ¿sabes qué tasa y por cuánto tiempo?",            "opc1": "as111df",
+            "opc1": "0,25 miligramos de alcohol por litro de aire espirado durante dos años.",
+            "opc2": "0,30 gramos de alcohol por litro de sangre durante dos años.",
+            "opc3": "0,15 miligramos de alcohol por litro de sangre durante un año.",
+            "opc4": "Ninguna de las anteriores",
+            "correcta": "2"
+        },
+        {   
+            "id":"2",
+            "enunciado": "¿cual es la correcta?22222",
+            "opc1": "asdf2222",
+            "opc2": "sdfsdf2222",
+            "opc3": "sdfsdf2222",
+            "opc4": "ASDFASFSDF",
+            "correcta": "2"
+        },
+        {
+            "id":"3",
+            "enunciado": "¿cual es la correcta3333?",
+            "opc1": "as3df",
+            "opc2": "sdf333sdf",
+            "opc3": "sdf3sdf",
+            "opc4": "ASDFASFSDF",
+            "correcta": "2"
+        }
+    ]
+}

@@ -223,10 +223,11 @@ label.box {
     border: 1px solid var(--verde-claro)
 }
 
-/* pregunta 1 (tres opciones) */
+/* pregunta 1 (cuatro opciones) */
 #p1r1:checked~label.p1r1 .circle,
 #p1r2:checked~label.p1r2 .circle,
 #p1r3:checked~label.p1r3 .circle,
+#p1r4:checked~label.p1r4 .circle,
 /* pregunta 2 (cuatro opciones)*/
 #p2r1:checked~label.p2r1 .circle,
 #p2r2:checked~label.p2r2 .circle,
