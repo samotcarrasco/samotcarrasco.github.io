@@ -111,7 +111,7 @@
                         <input type="file" class="form-control-file" id="my_file_input">
                       </div> -->
                 <article class="col-12">
-                    <p class="fw-bold mt-3 larga" id="p1">1. 
+                    <p class="larga fw-bold mt-3" id="p1">1. 
                       </p>
                     <div class="row">
                         <!-- Para el id de cada pregunta usamos el acrónimo p1r1 (pregunta 1 respuesta 1)  -->
@@ -136,7 +136,7 @@
             </form>
             <form class="row g-2">
                 <article class="col-12">
-                    <p class="fw-bold mt-3 corta" id="p2">2. 
+                    <p class="corta fw-bold mt-3" id="p2">2. 
                     </p>
                     <div class="row">
                         <!-- Para el id de cada pregunta usamos el acrónimo p2r1 (pregunta 2 respuesta 1)  -->
@@ -166,7 +166,7 @@
             </form>
             <form class="row g-2">
                 <article class="col-12">
-                    <p class="fw-bold mt-3 corta" id ="p3">3.</p>
+                    <p class="corta fw-bold mt-3" id ="p3">3.</p>
                     <div class="row">
                         <!-- Para el id de cada pregunta usamos el acrónimo p3r1 (pregunta 3 respuesta 1)  -->
 
@@ -198,14 +198,14 @@
             </form>
             <form class="row g-2">
                 <article class="col-sm-6">
-                    <p class="fw-bold mt-3">4. Las señales triangulares con borde rojo como las de la imágen
+                    <p class="imagen fw-bold mt-3">4. Las señales triangulares con borde rojo como las de la imágen
                         indican ...</p>
                     <!-- Para el id de cada pregunta usamos el acrónimo p4r1 (pregunta4 respuesta 1)  -->
                     <section>
                         <input type="radio" name="box" id="p4r1">
                         <label for="p4r1" class="box p4r1 w-100">
                             <div class="course">
-                                <span class="circle"></span> <span>Peligro</span>
+                                <span class="circle"></span> <span id="p4opc1">Peligro</span>
                             </div>
                         </label>
                     </section>
@@ -213,7 +213,7 @@
                         <input type="radio" name="box" id="p4r2">
                         <label for="p4r2" class="box p4r2 w-100">
                             <div class="course">
-                                <span class="circle"></span> <span>Oblicación</span>
+                                <span class="circle"></span> <span id="p4opc2">Oblicación</span>
                             </div>
                         </label>
                     </section>
@@ -221,14 +221,21 @@
                         <input type="radio" name="box" id="p4r3">
                         <label for="p4r3" class="box p4r3 w-100">
                             <div class="course">
-                                <span class="course circle"></span> <span>Dependiendo del caso que sea, peligro u
+                                <span class="course circle"></span> <span id="p4opc3">Dependiendo del caso que sea, peligro u
                                     obligación</span>
+                            </div>
+                        </label>
+                        <input type="radio" name="box" id="p4r4">
+                        <label for="p4r3" class="box p4r3 w-100">
+                            <div class="course">
+                                <span class="course circle"></span> <span id="p4opc4">Todas las anteriores
+                                </span>
                             </div>
                         </label>
                     </section>
                 </article>
                 <aside class="col-sm-6 imagen-pregunta">
-                    <img class="img mt-3" src="assets/senalPeligro.jpg">
+                    <img class="img mt-3" id="imagenp4" src="assets/img_examen/senalPeligro.jpg">
                 </aside>
             </form>
             <form class="row g-2">

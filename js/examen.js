@@ -18,57 +18,86 @@ xhttp.onreadystatechange = function () {
 
     //guardamos en un array numeros aletorios sin repetir
     let randoms = [];
-    while (randoms.length < 3) {
-      let random = Math.floor(Math.random() * 3) + 1;
+    while (randoms.length < 4) {
+      let random = Math.floor(Math.random() * 4) + 1;
       if (randoms.indexOf(random) == -1) {
         randoms.push(random);
       }
     }
 
-    console.log(randoms);
+
+    console.log("order aleotiro de lectura de preguntas: " + randoms);
     let contador = 1;
     let preguntasGeneradas = 0;
+    let asignadas = [];
     do {
 
       let aleatorio = randoms[contador - 1];
-      
+
       console.log("---------------" + aleatorio);
       let pregunta = "p" + contador;
-      console.log(pregunta);
+      console.log("Generando pregunta " + pregunta + " leida pregunta de tipo: " + datos.preguntas[aleatorio - 1].tipo);
       //los id de las preguntas son: p1, p2, p3 .......
-      console.log(contador + ".... " + datos.preguntas[aleatorio - 1].enunciado);
+      console.log("ID PREGUNTA LEIDA: " + datos.preguntas[aleatorio - 1].id);
+      console.log("CONTADOR: " + contador)
 
       let mismoTipo = false;
-
+      let tipoPregunta="";
       const classNames = document.getElementById(pregunta).classList;
 
-      console.log(classNames + "VVVSSS");
-      console.log(datos.preguntas[aleatorio - 1].tipo);
-
-      classNames.forEach(name => {
-        if (name == datos.preguntas[aleatorio - 1].tipo) {
-          mismoTipo = true;
-          console.log("MIsMO TIPOO");
+      
+      let aleatorio2=aleatorio;
+      do {
+      //   console.log("----------" + classNames);
+       //  console.log("-----------" + datos.preguntas[aleatorio2 - 1].tipo);
+        // console.log("ale2" + aleatorio2);
+        // console.log(datos.preguntas[aleatorio2 - 1].tipo);
+        let id = datos.preguntas[aleatorio2 - 1].id;
+         classNames.forEach(name => {
+          //console.log(name + "VVVSSS");
+          //console.log("ale2 " + aleatorio2);
+          //console.log(datos.preguntas[aleatorio2 - 1].tipo);
+          
+          tipoPregunta = datos.preguntas[aleatorio2 - 1].tipo;
+          //console.log(name +"**"+tipoPregunta);
+          if (name === tipoPregunta) {
+            console.log("Clase coincide " + pregunta + " id=" + id);
+            mismoTipo = true;
+          }
+          //si no son del mismo tipo, probamos con la siguiente pregunta.
+        })
+        if (!mismoTipo) {
+          aleatorio2++;
+          console.log("clase no coincide, vamos a probar con la siguiente pregunta");
         }
-      })
+      } while (!mismoTipo);
+    
 
       if (mismoTipo) {
-        document.getElementById(pregunta).innerHTML = contador + ".- " + datos.preguntas[aleatorio - 1].enunciado;
+        console.log("modificando DOM "+pregunta);
+        if (tipoPregunta==="imagen") {
+          let idImagen = "imagen" + pregunta;
+          let elemento = document.getElementById(idImagen);
+          console.log(datos.preguntas[aleatorio2-1].imagen);
+          elemento.src= datos.preguntas[aleatorio2-1].imagen;
+        }
+        document.getElementById(pregunta).innerHTML = contador + ".- " + datos.preguntas[aleatorio2 - 1].enunciado;
         contador++;
         for (let i = 1; i <= 4; i++) {
           let opcion = "opc" + i;
           let opcion2 = pregunta + opcion;
-          document.getElementById(opcion2).innerHTML = datos.preguntas[aleatorio - 1][opcion]; //ojoo --> hay que quitar el punto y poner la variable entre corchetes
+          document.getElementById(opcion2).innerHTML = datos.preguntas[aleatorio2 - 1][opcion]; //ojoo --> hay que quitar el punto y poner la variable entre corchetes
         }
         preguntasGeneradas++;
       }
-      else {
-        console.log("NO MISOOMO TIPOO");
-        contador++;
-      }
-
+     
     } while (preguntasGeneradas < 3);
+    let imagenp = document.getElementById("imagenp4");
+    console.log(datos.preguntas[6].imagen);
+    imagenp.src= datos.preguntas[6].imagen;
+
   }
+
 }
 
 
