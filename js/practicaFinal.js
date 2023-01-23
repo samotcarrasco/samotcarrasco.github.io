@@ -230,34 +230,26 @@ console.log("idUser: " + Usuario.getId(userPrueba._url));
 //Ejercicio 10. Implemente una función que pasándole como parámetro un objeto del
 //json mapee y cree un objeto del tipo Usuario.
 
-console.log("Ejercicio 10 ==> " + " Convirtiendo un elemento del json en un objeto");
+console.log("Ejercicio 10 ==> " + " Creando funcion que crea un objecto a partir de un elemento del json");
 
 //primero, vamos a guardar en una variable uno de los objetos del JSON
+// da error al tenter tantas comillas..... lo probamos directamente en el ejercicio 11 
 
-const elementoJSON = '{ ' +
-    '"name": "Nicholas Runolfsdottir V",' +
-    '"username": "Maxime_Nienow",' +
-    '"email": "Sherwood@rosamond.me",' +
-    '"age": "24",' +
-    '"address": {"street": "Ellsworth Summit","suite": "Suite 729", "city": "Wisokyburgh","zipcode": "45169","geo":{"lat": "-14.3990","lng": "-120.7677"}},' +
-    '"phone": "586.493.6943 x140",' +
-    '"website": "jacynthe.com",' +
-    ' "company": {' +
-    '  "name": "Abernathy Group",' +
-    '  "catchPhrase": "Implemented secondary concept",' +
-    '  "bs": "e-enable extensible e-tailers"' +
-    ' },' +
-    '  "url": "https://prueba.dev/api/users/8/"' +
-    '}';
+// let elementoJSON = '{ ' +
+//     '"name": "Nicholas Runolfsdottir V",' +
+//     '"username": "Maxime_Nienow",' +
+//     '"email": "Sherwood@rosamond.me",' +
+//     '"age": "24",' +
+//     '"address": {"street": "Ellsworth Summit","suite": "Suite 729", "city": "Wisokyburgh","zipcode": "45169","geo":{"lat": "-14.3990","lng": "-120.7677"}},' +
+//     '"phone": "586.493.6943 x140",' +
+//     '"website": "jacynthe.com",' +
+//     ' "company": { "name": "Abernathy Group",  "catchPhrase": "Implemented secondary concept", "bs": "e-enable extensible e-tailers" },' +
+//     '  "url": "https://prueba.dev/api/users/8/"' +
+//     '}';
 
 let objetoJSON = JSON.parse(elementoJSON);
 
-var nombreEmpresa = objetoJSON.company.name;
-var nombreEmpresa = objetoJSON.company.name;
-var nombreEmpresa = objetoJSON.company.name;
-// console.log(direccion2.calle);
-
-crearPersona = function (objetoJSON) {
+crearUsuario = function (objetoJSON) {
     let nombre = objetoJSON.name;
     let nombreUser = objetoJSON.username;
     let email = objetoJSON.email;
@@ -268,13 +260,55 @@ crearPersona = function (objetoJSON) {
     return usuario;
 }
 
-let usuario = crearPersona(elementoJSON);
+//let usuario = crearUsuario(elementoJSON);
+//console.log("Mostramos, por ejemplo, el email del usuario");
+//console.log(usuario.email);
 
-console.log("Mostramos, por ejemplo, el email del usuario");
-console.log(usuario.email);
+//probamos la función directamente en el ejercicio 11:
 
 
 
 
 //ejercicio 11 Implemente una función que recorra el JSON y devuelva un array de
 //objetos del tipo Usuario. (Apóyese en la función del ejercicio anterior).
+
+console.log("Ejercicio 11 ==> " + " Creada funncion que devuelve array de usuarios");
+
+function obterArray() {
+
+    let arrayUsuarios = [];
+
+    /* Leemos archivo con AJAX */
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "assets/personas.json", true);
+    xhttp.send();
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            let persona = JSON.parse(this.responseText);
+            persona.forEach(function (persona) {
+                arrayUsuarios.push(crearUsuario(persona));
+            });
+        }
+    }
+
+    return arrayUsuarios;
+}
+
+
+//ejercicio 12 Cree una variable global que contenga el resultado de la función del
+//punto anterior. Muestre por consola SÓLO el nombre del usuario.
+
+
+console.log("Ejercicio 11 ==> " + " Mostrando nombre del array de usuarios ");
+let usuarios = obterArray();
+
+usuarios.forEach(function (usuarios) {
+    console.log(usuarios.name);
+});
+
+
+
+
+
+
