@@ -165,13 +165,20 @@ xhttp.onreadystatechange = function () {
 }
 
 
-leerArchivo();
-
 console.log("Este es otro console.log");
 
 
 
 //ejercicio 8
+// Cree una clase "Usuario" que contenga, lo siguiente:
+// - Propiedades privadas: "idUser", “nombre", "nombreUser", "email", "empresa","direccion" y “url”.
+// - la propiedad empresa, sólo devolverá el nombre de dicha empresa.
+// - direccion será un objeto literal y deberá contener las siguientes
+// propiedades: "calle", "ciudad", "codigoPostal".
+// - Método estático getId(url), que pasándole como parámetro el identificador
+// único (URI) del usuario, devuelva su id.
+
+let direccion = { calle: "", ciudad: "", codigoPostal: "" };
 
 
 class Usuario {
@@ -182,10 +189,6 @@ class Usuario {
         this._empresa = empresa;
         this._direccion = direccion;
         this._url = url;
-    }
-
-    get empresa() {
-        return this._empresa.nombre;
     }
 
     static getId(url) {
@@ -199,20 +202,20 @@ console.log("Ejercicio 8 ==> " + " Creada la clase Usuario ");
 
 
 //ejercicio 9
+// Instancie un objeto de la clase Usuario con el identificador
+//"userPrueba". Este objeto debe tener los siguientes valores ...
 
 console.log("Ejercicio 9 ==> " + " Mostrando datos del objeto userPrueba");
 
 //en la empresa, a parte del nombre, también hemos incluido el sector, para comprobar el funcionamiento de que solo se devuelve el nombre
-let direccion = { calle: "Gravina 7", ciudad: "Roma", codigoPostal: "41449" };
-let empresa = { nombre: "Leroy Merlin", sector: "Bricolaje" };
-let userPrueba = new Usuario("Prueba Practica Final", "PruebaPF7", "jpruebapf7@hotmail.com", empresa, direccion, "https://prueba.dev/api/users/102/");
+let direccion2 = { calle: "Gravina 7", ciudad: "Roma", codigoPostal: "41449" };
+let userPrueba = new Usuario("Prueba Practica Final", "PruebaPF7", "jpruebapf7@hotmail.com", "Leroy Merlin", direccion2, "https://prueba.dev/api/users/102/");
 
 
 console.log("nombre: " + userPrueba._nombre);
 console.log("nombreUser: " + userPrueba._nombreUser);
 console.log("email: " + userPrueba._email);
-//ojo, empresa es realmente un metodo, no un atributo
-console.log("empresa: " + userPrueba.empresa);
+console.log("empresa: " + userPrueba._empresa);
 console.log("calle: " + userPrueba._direccion.calle);
 console.log("ciudad: " + userPrueba._direccion.ciudad);
 console.log("CP: " + userPrueba._direccion.codigoPostal);
@@ -223,9 +226,11 @@ console.log("idUser: " + Usuario.getId(userPrueba._url));
 
 
 
-//ejercicio 10
 
-console.log("Ejercicio 10 ==> " + " Mostrando.................");
+//Ejercicio 10. Implemente una función que pasándole como parámetro un objeto del
+//json mapee y cree un objeto del tipo Usuario.
+
+console.log("Ejercicio 10 ==> " + " Convirtiendo un elemento del json en un objeto");
 
 //primero, vamos a guardar en una variable uno de los objetos del JSON
 
@@ -234,16 +239,7 @@ const elementoJSON = '{ ' +
     '"username": "Maxime_Nienow",' +
     '"email": "Sherwood@rosamond.me",' +
     '"age": "24",' +
-    '"address": {' +
-    '  "street": "Ellsworth Summit",' +
-    '  "suite": "Suite 729",' +
-    '  "city": "Wisokyburgh",' +
-    '  "zipcode": "45169",' +
-    '  "geo": {' +
-    '    "lat": "-14.3990",' +
-    '    "lng": "-120.7677"' +
-    '  }' +
-    '},' +
+    '"address": {"street": "Ellsworth Summit","suite": "Suite 729", "city": "Wisokyburgh","zipcode": "45169","geo":{"lat": "-14.3990","lng": "-120.7677"}},' +
     '"phone": "586.493.6943 x140",' +
     '"website": "jacynthe.com",' +
     ' "company": {' +
@@ -254,13 +250,31 @@ const elementoJSON = '{ ' +
     '  "url": "https://prueba.dev/api/users/8/"' +
     '}';
 
-const objetoJSON = JSON.parse(elementoJSON);
+let objetoJSON = JSON.parse(elementoJSON);
 
+var nombreEmpresa = objetoJSON.company.name;
+var nombreEmpresa = objetoJSON.company.name;
+var nombreEmpresa = objetoJSON.company.name;
+// console.log(direccion2.calle);
 
 crearPersona = function (objetoJSON) {
-    let empresa = { nombre: objetoJSON.company.name, sector: objetoJSON.company.catchPhrase };
-    let direccion = { nombre: objetoJSON.company.name, sector: objetoJSON.company.catchPhrase };
-    let usuario = new Usuario(objetoJSON.nombre, objetoJSON.username, objetoJSON.email, empresa, direccion, "https://prueba.dev/api/users/102/");
-
-
+    let nombre = objetoJSON.name;
+    let nombreUser = objetoJSON.username;
+    let email = objetoJSON.email;
+    let empresa = objetoJSON.company.name;
+    let direccion = { calle: objetoJSON.address.street, ciudad: objetoJSON.address.city, codigoPostal: objetoJSON.address.zipcode };
+    let url = objetoJSON.url;
+    let usuario = new Usuario(nombre, nombreUser, email, empresa, direccion, url);
+    return usuario;
 }
+
+let usuario = crearPersona(elementoJSON);
+
+console.log("Mostramos, por ejemplo, el email del usuario");
+console.log(usuario.email);
+
+
+
+
+//ejercicio 11 Implemente una función que recorra el JSON y devuelva un array de
+//objetos del tipo Usuario. (Apóyese en la función del ejercicio anterior).
