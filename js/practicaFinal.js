@@ -148,12 +148,12 @@ for (var i = 0; i < imagenes.length; i++) {
 
 //ejercicio 7
 
+console.log("Ejercicio 7 ==> " + " Mostrando nombre de las personas ");
+
 /* Leemos archivo con AJAX */
 const xhttp = new XMLHttpRequest();
 xhttp.open("GET", "assets/personas.json", true);
 xhttp.send();
-
-console.log("Ejercicio 7 ==> " + " Mostrando nombre de las personas ");
 
 xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
@@ -161,16 +161,21 @@ xhttp.onreadystatechange = function () {
         personas.forEach(function (personas) {
             console.log(personas.name);
         });
-
     }
 }
 
 
-    //ejercicio 8
+leerArchivo();
+
+console.log("Este es otro console.log");
+
+
+
+//ejercicio 8
 
 
 class Usuario {
-    constructor( nombre, nombreUser, email, empresa, direccion, url) {
+    constructor(nombre, nombreUser, email, empresa, direccion, url) {
         this._nombre = nombre;
         this._nombreUser = nombreUser;
         this._email = email;
@@ -198,8 +203,8 @@ console.log("Ejercicio 8 ==> " + " Creada la clase Usuario ");
 console.log("Ejercicio 9 ==> " + " Mostrando datos del objeto userPrueba");
 
 //en la empresa, a parte del nombre, también hemos incluido el sector, para comprobar el funcionamiento de que solo se devuelve el nombre
-let direccion = {calle: "Gravina 7", ciudad: "Roma", codigoPostal: "41449"};
-let empresa = { nombre: "Leroy Merlin", sector: "Bricolaje"};
+let direccion = { calle: "Gravina 7", ciudad: "Roma", codigoPostal: "41449" };
+let empresa = { nombre: "Leroy Merlin", sector: "Bricolaje" };
 let userPrueba = new Usuario("Prueba Practica Final", "PruebaPF7", "jpruebapf7@hotmail.com", empresa, direccion, "https://prueba.dev/api/users/102/");
 
 
@@ -225,37 +230,37 @@ console.log("Ejercicio 10 ==> " + " Mostrando.................");
 //primero, vamos a guardar en una variable uno de los objetos del JSON
 
 const elementoJSON = '{ ' +
-    '"name": "Nicholas Runolfsdottir V",'+
-    '"username": "Maxime_Nienow",'+
-    '"email": "Sherwood@rosamond.me",'+
-    '"age": "24",'+
-    '"address": {'+
-    '  "street": "Ellsworth Summit",'+
-    '  "suite": "Suite 729",'+
-    '  "city": "Wisokyburgh",'+
-    '  "zipcode": "45169",'+
-    '  "geo": {'+
-    '    "lat": "-14.3990",'+
-    '    "lng": "-120.7677"'+
-    '  }'+
-    '},'+
-    '"phone": "586.493.6943 x140",'+
-    '"website": "jacynthe.com",'+
-    ' "company": {'+
-    '  "name": "Abernathy Group",'+
-    '  "catchPhrase": "Implemented secondary concept",'+
-    '  "bs": "e-enable extensible e-tailers"'+
-   ' },'+
-   '  "url": "https://prueba.dev/api/users/8/"'+
-  '}';
+    '"name": "Nicholas Runolfsdottir V",' +
+    '"username": "Maxime_Nienow",' +
+    '"email": "Sherwood@rosamond.me",' +
+    '"age": "24",' +
+    '"address": {' +
+    '  "street": "Ellsworth Summit",' +
+    '  "suite": "Suite 729",' +
+    '  "city": "Wisokyburgh",' +
+    '  "zipcode": "45169",' +
+    '  "geo": {' +
+    '    "lat": "-14.3990",' +
+    '    "lng": "-120.7677"' +
+    '  }' +
+    '},' +
+    '"phone": "586.493.6943 x140",' +
+    '"website": "jacynthe.com",' +
+    ' "company": {' +
+    '  "name": "Abernathy Group",' +
+    '  "catchPhrase": "Implemented secondary concept",' +
+    '  "bs": "e-enable extensible e-tailers"' +
+    ' },' +
+    '  "url": "https://prueba.dev/api/users/8/"' +
+    '}';
 
-  const objetoJSON = JSON.parse(elementoJSON);
-  
+const objetoJSON = JSON.parse(elementoJSON);
 
-crearPersona = function(objetoJSON){
-    let empresa = {nombre:objetoJSON.company.name, sector:objetoJSON.company.catchPhrase};
-    let direccion = {nombre:objetoJSON.company.name, sector:objetoJSON.company.catchPhrase};
+
+crearPersona = function (objetoJSON) {
+    let empresa = { nombre: objetoJSON.company.name, sector: objetoJSON.company.catchPhrase };
+    let direccion = { nombre: objetoJSON.company.name, sector: objetoJSON.company.catchPhrase };
     let usuario = new Usuario(objetoJSON.nombre, objetoJSON.username, objetoJSON.email, empresa, direccion, "https://prueba.dev/api/users/102/");
 
-    
+
 }
