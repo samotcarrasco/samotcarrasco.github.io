@@ -17,8 +17,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
     <!--     FontAwesome para los iconos del footer -->
     <script src="https://kit.fontawesome.com/f7ce9dd855.js" crossorigin="anonymous" defer></script>
-    <!-- Pequeño javascrip para controlar ha habilitación/desablilitación del boton "enviar" de los formularios-->
-    <script src="js/controlFormularios.js" defer></script>
+    <!--practicaFinal.js se utilizará en el index.html-->
+    <script src="js/practicaFinal.js" defer></script>
 </head> 
 
 <body>
@@ -104,21 +104,23 @@
     </header>
 
     <main>
-        <article class="container-fluid text-center col-10">
+        <article class="container-fluid text-center col-10" id="encabezado">
             <h1 class="titulo1">Bienvenido a la mejor autoescuela online</h1>
             <p class="texto1">Aquí podrá hacer exámenes de forma gratuita, que le ayudarán para obtener el permiso de
                 conducir B</p>
             <p class="texto1">&clubs; &clubs; ¡¡ MUCHA SUERTE !! &clubs; &clubs;</p>
         </article>
+        <h1 class="container text-center col-3" id="reloj"></h1>
+        <img class="rounded" id="imagenX" src="assets/autoescuela_pequenia.jpg" alt="mujer conduciendo, de copiloto el profesor">
         <article class="container-fluid text-center container-index"> 
             <section class="row">
                 <section class="col-sm-12 col-md-6 col-lg-7 col-xl-7">
                     <!--Añadimos imagen con texto alternativo (para personas con deficiencia visual)
                     La class=rounded (bootstrap) es para redondear las esquinas de la imagen-->
                     <picture alt="Mujer condiciendo vehículo. De copiloto está un profesor" >
-                        <source class="imagen1 rounded"  media="(min-width:990px)" srcset="assets/autoescuela_grande.jpg" alt="mujer conduciendo, de copiloto el profesor">
-                        <source class="imagen1 rounded" media="(min-width:750px)" srcset="assets/autoescuela_mediana.jpg" alt="mujer conduciendo, de copiloto el profesor">
-                        <img class="imagen1 rounded" src="assets/autoescuela_pequenia.jpg" alt="mujer conduciendo, de copiloto el profesor">
+                        <source class="imagenSource rounded"  media="(min-width:990px)" srcset="assets/autoescuela_grande.jpg" alt="mujer conduciendo, de copiloto el profesor">
+                        <source class="imagenSource rounded" media="(min-width:750px)" srcset="assets/autoescuela_mediana.jpg" alt="mujer conduciendo, de copiloto el profesor">
+                        <img class="imagen1 rounded" id="imagenP" src="assets/autoescuela_pequenia.jpg" alt="mujer conduciendo, de copiloto el profesor">
                     </picture>
                 </section>
                 <!--Ajustamos twitter al tamaño de cada pantalla (pequeña mediana grande) -->

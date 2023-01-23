@@ -128,10 +128,15 @@ main {
                     ########## index.html  ##########
 */
 
-.container-index {
-    margin: 3vw;
-    align-items: center;
+#reloj{
+    font-family: "Roboto", sans-serif;
+    font-size: 3vw;
+    border: var(--verde-oscuro);
+    border-style: dotted;
+    margin-bottom: 3vw;
+    margin-top: 3vw;
 }
+
 
 /*
 Texto de la página principal
@@ -153,6 +158,7 @@ Reduciendo la ventana se reduce la letra
     text-shadow: 0.2vw 0.2vw 0.2vw var(--gris-claro);
 }
 
+
 .imagen1 {
     max-width: 100%;
 }
@@ -163,6 +169,19 @@ Reduciendo la ventana se reduce la letra
     margin-left: auto;
     margin-right: auto;
 }
+
+
+.imagenSource {
+    max-width: 100%;
+}
+
+/*imagen del artículo de la pagina principal*/
+#imagenSource {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 
 
 

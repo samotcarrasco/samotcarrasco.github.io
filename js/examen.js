@@ -54,7 +54,6 @@ xhttp.onreadystatechange = function () {
             let tipo = datos.preguntas[aleatorio2 - 1].tipo;
             let imagen = datos.preguntas[aleatorio2 - 1].imagen;
             let correcta = datos.preguntas[aleatorio2 - 1].correcta;
-            console.log("asdfsdfsdfdsdfsdfsdfsdfsdfsdfdsfsdfdfssdfsdffsd" + imagen);
             const preguntaObj = new Pregunta(id, enunciado, opciones, tipo, imagen, correcta);
 
             console.log(" Generada pregunta" + preguntaObj.id);
@@ -174,6 +173,8 @@ function anadirPreguntaHTML(preguntaObj, contador) {
 
 
 
+
+//TO-DO
 let finalizar = document.getElementById('finalizarB');
 finalizar.addEventListener("click", comprobarResultado);
 
