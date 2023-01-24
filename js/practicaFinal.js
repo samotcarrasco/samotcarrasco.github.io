@@ -1,17 +1,42 @@
+/********************************************************************************
+PRÁCTICA ASIGNATURA JAVASCRIPT, CURSO DIM45
+   ALUMNO: Tomás Carrasco del Rey
+
+   Nota 1: Para dar más semántica, se ha renombrado el fichero json.js, 
+   por el siguiente nombre: personas.json, y se ha ubicado en assets/json/personas.json
+   
+   Nota 2: A parte de lo requerrido, se ha implementado en javascript (fichero examen.js)
+   La carga automática y aleatoria de preguntas para hacer un examen.
+
+   
+ ********************************************************************************/
+
+
+  // Funcion utilizada para que el inicio de cada ejercicio se muestre en rojo y negrita por consola
+
+   function mostrarInicioEjercicio(ejercicio,cadena){
+    console.log("%cEjercicio "+ejercicio+" ==> " + cadena,"color:red; font-weight: bold;");
+}
+
+
+
 //ejercicio 2
 // Guarde en el almacenamiento local del navegador una propiedad que
 // se llame "practica" y que tenga por valor "Práctica Final ECMACScript". Esta variable
 // debe borrarse del almacenamiento local cuando se cierre el navegador.
 
 localStorage.setItem("practica", "Práctica Final ECMAScript");
-let practica = localStorage.getItem("practica");
+let tituloPractica = localStorage.getItem("practica");
 
-console.log("%cEjercicio 2 ==> " + practica,"color:red; font-weight: bold;");
+mostrarInicioEjercicio(2,tituloPractica);
+
 
 
 //ejercicio 3
 // Implemente una expresión de función anónima que devuelva la hora
 // del sistema en formato HH:MM:SS
+
+
 let horaFormateada = function () {
     let hoy = new Date();
     let hh = hoy.getHours();
@@ -25,7 +50,8 @@ let horaFormateada = function () {
     return `${hh}:${mm}:${ss}`;
 }
 
-console.log("Ejercicio 3 ==> " + " Hora actual: " + horaFormateada());
+mostrarInicioEjercicio(3,"Hora actual. Son las: " + horaFormateada());
+
 
 //ejercicio 4
 // En el encabezado de la página principal (en el lugar que considere),
@@ -33,13 +59,15 @@ console.log("Ejercicio 3 ==> " + " Hora actual: " + horaFormateada());
 // expresión de función anónima del ejercicio 3, para ello inserte en el
 // documento html el elemento que estime oportuno).
 
+
+mostrarInicioEjercicio(4,"Mostrando reloj digital en index.html");
+
+
 let mostrarReloj = function () {
     reloj.innerHTML = horaFormateada();
 }
 let reloj = document.getElementById("reloj");
 setInterval(mostrarReloj, 1000);
-console.log("Ejercicio 4 ==> " + " Mostrando reloj digital en index.html ");
-
 
 //ejercicio 5
 // Modifique el texto del “enunciado principal / título” que aparezca en el
@@ -48,6 +76,8 @@ console.log("Ejercicio 4 ==> " + " Mostrando reloj digital en index.html ");
 // "#ffff00".
 // Y cuando el puntero salga del elemento, el color del texto debe cambiar al
 // original que tenía.
+
+mostrarInicioEjercicio(5,"Texto amarillo en el header al pasar el ratón");
 
 let header = document.getElementById("encabezado");
 let colorInicial = header.style.color;
@@ -59,9 +89,6 @@ header.addEventListener("mouseover", function () {
 header.addEventListener("mouseout", function () {
     header.style.color = colorInicial;
 });
-
-console.log("Ejercicio 5 ==> " + "Texto amarillo en el header al pasar el ratón");
-
 
 
 //ejercicio 6
@@ -81,6 +108,7 @@ console.log("Ejercicio 5 ==> " + "Texto amarillo en el header al pasar el ratón
 //   controlImagen = !controlImagen;
 // }
 
+mostrarInicioEjercicio(6,"Modificando imagen al pulsar sobre ella");
 
 
 
@@ -169,8 +197,8 @@ for (var i = 0; i < imagenes.length; i++) {
 
 //ejercicio 7
 
-console.log("Ejercicio 7 ==> " + " Mostrando nombre de las personas ");
-console.log("Ejercicio 7 ==> AJAX es asíncrono, se mostrarán los resultados al final");
+mostrarInicioEjercicio(7,"Mostrando nombre de las personas");
+mostrarInicioEjercicio(7,"AJAX es asíncrono, se mostrarán los resultados al final");
 
 /* Leemos archivo con AJAX */
 const xhttp = new XMLHttpRequest();
@@ -179,16 +207,12 @@ xhttp.send();
 
 xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-        let personas = JSON.parse(this.responseText);
-        personas.forEach(function (personas) {
-            console.log("(ejercicio 7) "+ personas.name);
+        let usuarios = JSON.parse(this.responseText);
+        usuarios.forEach(function (usuarios) {
+            console.log("\t(ejercicio 7) "+ usuarios.name);
         });
     }
 }
-
-
-
-
 
 
 //ejercicio 8
@@ -200,9 +224,7 @@ xhttp.onreadystatechange = function () {
 // - Método estático getId(url), que pasándole como parámetro el identificador
 // único (URI) del usuario, devuelva su id.
 
-
-console.log("Ejercicio 8 ==> " + " Creando la clase Usuario ");
-
+mostrarInicioEjercicio(8,"Creando la clase Usuario");
 
 //esta linea se puede obviar, ya que en este ejercicio no se va a crear el objeto
 let direccion = { calle: "", ciudad: "", codigoPostal: "" };
@@ -219,8 +241,8 @@ class Usuario {
     }
 
     static getId(url) {
-        var partes = url.split("/");
-        var tamanio = partes.length;
+        let partes = url.split("/");
+        let tamanio = partes.length;
         return partes[tamanio - 2];
     }
 }
@@ -231,28 +253,29 @@ class Usuario {
 // Instancie un objeto de la clase Usuario con el identificador
 //"userPrueba". Este objeto debe tener los siguientes valores ...
 
-console.log("Ejercicio 9 ==> " + " Mostrando datos del objeto userPrueba");
+mostrarInicioEjercicio(9,"Mostrando datos del objeto userPrueba");
+
 
 //en la empresa, a parte del nombre, también hemos incluido el sector, para comprobar el funcionamiento de que solo se devuelve el nombre
 let direccion2 = { calle: "Gravina 7", ciudad: "Roma", codigoPostal: "41449" };
 let userPrueba = new Usuario("Prueba Practica Final", "PruebaPF7", "jpruebapf7@hotmail.com", "Leroy Merlin", direccion2, "https://prueba.dev/api/users/102/");
 
 
-console.log("nombre: " + userPrueba._nombre);
-console.log("nombreUser: " + userPrueba._nombreUser);
-console.log("email: " + userPrueba._email);
-console.log("empresa: " + userPrueba._empresa);
-console.log("calle: " + userPrueba._direccion.calle);
-console.log("ciudad: " + userPrueba._direccion.ciudad);
-console.log("CP: " + userPrueba._direccion.codigoPostal);
-console.log("url: " + userPrueba._url);
-console.log("idUser: " + Usuario.getId(userPrueba._url));
+console.log("\tnombre: " + userPrueba._nombre);
+console.log("\tnombreUser: " + userPrueba._nombreUser);
+console.log("\temail: " + userPrueba._email);
+console.log("\tempresa: " + userPrueba._empresa);
+console.log("\tcalle: " + userPrueba._direccion.calle);
+console.log("\tciudad: " + userPrueba._direccion.ciudad);
+console.log("\tCP: " + userPrueba._direccion.codigoPostal);
+console.log("\turl: " + userPrueba._url);
+console.log("\tidUser: " + Usuario.getId(userPrueba._url));
 
 
 //Ejercicio 10. Implemente una función que pasándole como parámetro un objeto del
 //json mapee y cree un objeto del tipo Usuario.
 
-console.log("Ejercicio 10 ==> " + " Creando funcion que crea un objecto a partir de un elemento del json");
+mostrarInicioEjercicio(10,"Creando funcion que crea un objecto a partir de un elemento del json");
 
 
 crearUsuario = function (objetoJSON) {
@@ -292,7 +315,7 @@ console.log(usuario._email);
 //ejercicio 11 Implemente una función que recorra el JSON y devuelva un array de
 //objetos del tipo Usuario. (Apóyese en la función del ejercicio anterior).
 
-console.log("Ejercicio 11 ==> " + " Creando función que devuelve array de usuarios");
+mostrarInicioEjercicio(11,"Creando función que devuelve array de usuarios");
 
 function obtenerArray() {
 
@@ -320,7 +343,8 @@ function obtenerArray() {
 //punto anterior. Muestre por consola SÓLO el nombre del usuario.
 
 
-console.log("Ejercicio 12 ==> " + " Mostrando nombre del array de usuarios ");
+mostrarInicioEjercicio(12,"Mostrando nombre del array de usuarios");
+
 let arrayUsuarios = [];
 arrayUsuarios = obtenerArray();
 
@@ -332,6 +356,7 @@ for (let i = 0; i < arrayUsuarios.length; i++) {
 
 
 
+//ejercicio 13
 
-
+mostrarInicioEjercicio(1,"Ejercicio13");
 
