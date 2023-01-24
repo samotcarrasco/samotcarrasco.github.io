@@ -306,6 +306,8 @@ label.box:hover {
     background: var(--verde-muy-claro)
 }
 
+
+
 /* alineacion del texto dentro de cada respuesta */
 label.box .course {
     display: flex;
