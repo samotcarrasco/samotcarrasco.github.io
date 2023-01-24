@@ -6,7 +6,7 @@
 localStorage.setItem("practica", "Práctica Final ECMAScript");
 let practica = localStorage.getItem("practica");
 
-console.log("Ejercicio 2 ==> " + practica);
+console.log("%cEjercicio 2 ==> " + practica,"color:red; font-weight: bold;");
 
 
 //ejercicio 3
@@ -284,7 +284,7 @@ let elementoJSON = '{ ' +
 let usuarioJSON = JSON.parse(elementoJSON);
 
 let usuario = crearUsuario(usuarioJSON);
-console.log("Mostramos, por ejemplo, el email del usuario");
+console.log("Mostramos, por ejemplo, el email del usuario: ");
 console.log(usuario._email);
 
 
@@ -294,7 +294,7 @@ console.log(usuario._email);
 
 console.log("Ejercicio 11 ==> " + " Creando función que devuelve array de usuarios");
 
-function obterArray() {
+function obtenerArray() {
 
     let arrayUsuarios = [];
 
@@ -321,7 +321,8 @@ function obterArray() {
 
 
 console.log("Ejercicio 12 ==> " + " Mostrando nombre del array de usuarios ");
-let arrayUsuarios = obterArray();
+let arrayUsuarios = [];
+arrayUsuarios = obtenerArray();
 
 console.log(arrayUsuarios.length);
 
