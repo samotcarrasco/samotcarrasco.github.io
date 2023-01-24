@@ -200,6 +200,7 @@ for (var i = 0; i < imagenes.length; i++) {
 mostrarInicioEjercicio(7,"Mostrando nombre de las personas");
 mostrarInicioEjercicio(7,"AJAX es asíncrono, se mostrarán los resultados al final");
 
+
 /* Leemos archivo con AJAX */
 const xhttp = new XMLHttpRequest();
 xhttp.open("GET", "assets/json/personas.json", true);
@@ -213,6 +214,8 @@ xhttp.onreadystatechange = function () {
         });
     }
 }
+
+
 
 
 //ejercicio 8
@@ -342,13 +345,11 @@ function obtenerArray() {
 //ejercicio 12 Cree una variable global que contenga el resultado de la función del
 //punto anterior. Muestre por consola SÓLO el nombre del usuario.
 
+mostrarInicioEjercicio(12,"Mostrando array de usuarios desde la variable global");
 
-mostrarInicioEjercicio(12,"Mostrando nombre del array de usuarios");
 
-let arrayUsuarios = [];
-arrayUsuarios = obtenerArray();
-
-console.log(arrayUsuarios.length);
+let arrayUsuarios = obtenerArray();
+console.log(arrayUsuarios.length)
 
 for (let i = 0; i < arrayUsuarios.length; i++) {
     console.log("sfasfdasfdds" + arrayUsuarios[i]._name);
@@ -356,7 +357,25 @@ for (let i = 0; i < arrayUsuarios.length; i++) {
 
 
 
+// function obtenerArraySleep() {
+//     arrayUsuarios = obtenerArray()
+// }
+
+// do {
+// if (arrayUsuarios.length > 0)
+// {
+//     for (let i = 0; i < arrayUsuarios.length; i++) {
+//         console.log("sfasfdasfdds" + arrayUsuarios[i]._name);
+//     }
+//   } else {
+//     setTimeout(obtenerArray, 300); // try again in 300 milliseconds
+//   }
+// } while (arrayUsuarios.length == 0);
+
+
+
+
 //ejercicio 13
 
-mostrarInicioEjercicio(1,"Ejercicio13");
+mostrarInicioEjercicio(13,"Ejercicio13");
 
