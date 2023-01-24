@@ -6,7 +6,7 @@
 
 /* Leemos archivo con AJAX */
 const xhttp = new XMLHttpRequest();
-xhttp.open("GET", "js/preguntas.json", true);
+xhttp.open("GET", "assets/json/preguntas.json", true);
 xhttp.send();
 
 //en este array guardaremos todas las preguntas que se han generado, para posteriormente hacer el calculo del resultado
@@ -105,7 +105,7 @@ function anadirPreguntaHTML(preguntaObj, contador) {
             break;
         case "corta":
 
-            codigoHtml = "<form class=\"row g-2\"> id=\"f"+preguntaObj.id+"\"> <article class=\"col-12\">" +
+            codigoHtml = "<form class=\"row g-2\" id=\"f"+preguntaObj.id+"\"> <article class=\"col-12\">" +
                 "<p class=\"corta fw-bold mt-3\" id=\"p" + contador + "\"> " + contador + ".-" + preguntaObj.enunciado + "</p>" +
                 "<div class=\"row\">" +
                 "<div class=\"col-md-6\"> <input type=\"radio\" name=\"box\" id=\"p" + contador + "r1\"> " +

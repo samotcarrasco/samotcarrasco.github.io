@@ -1,4 +1,8 @@
 //ejercicio 2
+// Guarde en el almacenamiento local del navegador una propiedad que
+// se llame "practica" y que tenga por valor "Práctica Final ECMACScript". Esta variable
+// debe borrarse del almacenamiento local cuando se cierre el navegador.
+
 localStorage.setItem("practica", "Práctica Final ECMAScript");
 let practica = localStorage.getItem("practica");
 
@@ -6,6 +10,8 @@ console.log("Ejercicio 2 ==> " + practica);
 
 
 //ejercicio 3
+// Implemente una expresión de función anónima que devuelva la hora
+// del sistema en formato HH:MM:SS
 let horaFormateada = function () {
     let hoy = new Date();
     let hh = hoy.getHours();
@@ -22,6 +28,11 @@ let horaFormateada = function () {
 console.log("Ejercicio 3 ==> " + " Hora actual: " + horaFormateada());
 
 //ejercicio 4
+// En el encabezado de la página principal (en el lugar que considere),
+// debe aparecer la hora del sistema, pero debe simular un reloj digital. (Apóyese en la
+// expresión de función anónima del ejercicio 3, para ello inserte en el
+// documento html el elemento que estime oportuno).
+
 let mostrarReloj = function () {
     reloj.innerHTML = horaFormateada();
 }
@@ -31,6 +42,12 @@ console.log("Ejercicio 4 ==> " + " Mostrando reloj digital en index.html ");
 
 
 //ejercicio 5
+// Modifique el texto del “enunciado principal / título” que aparezca en el
+// encabezado de la página principal de su proyecto, de tal manera que cuando el
+// puntero del ratón se sitúe encima, dicho texto debe aparecer con un color amarillo
+// "#ffff00".
+// Y cuando el puntero salga del elemento, el color del texto debe cambiar al
+// original que tenía.
 
 let header = document.getElementById("encabezado");
 let colorInicial = header.style.color;
@@ -48,7 +65,11 @@ console.log("Ejercicio 5 ==> " + "Texto amarillo en el header al pasar el ratón
 
 
 //ejercicio 6
-
+// Modifique una imagen que aparezca en cualquier documento html de
+// su proyecto, de tal manera que cada vez que haga click sobre ella, la sustituya por
+// otra imagen de su elección, es decir, la primera vez, cuando haga click, debe
+// cambiar a "imagen2", la siguiente vez que haga click, a la anterior "imagen1" y así
+// sucesivamente...
 
 // let controlImagen = true;
 // let cambiarImagen = function() {
@@ -149,23 +170,24 @@ for (var i = 0; i < imagenes.length; i++) {
 //ejercicio 7
 
 console.log("Ejercicio 7 ==> " + " Mostrando nombre de las personas ");
+console.log("Ejercicio 7 ==> AJAX es asíncrono, se mostrarán los resultados al final");
 
 /* Leemos archivo con AJAX */
 const xhttp = new XMLHttpRequest();
-xhttp.open("GET", "assets/personas.json", true);
+xhttp.open("GET", "assets/json/personas.json", true);
 xhttp.send();
 
 xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
         let personas = JSON.parse(this.responseText);
         personas.forEach(function (personas) {
-            console.log(personas.name);
+            console.log("(ejercicio 7) "+ personas.name);
         });
     }
 }
 
 
-console.log("Este es otro console.log");
+
 
 
 
@@ -178,6 +200,11 @@ console.log("Este es otro console.log");
 // - Método estático getId(url), que pasándole como parámetro el identificador
 // único (URI) del usuario, devuelva su id.
 
+
+console.log("Ejercicio 8 ==> " + " Creando la clase Usuario ");
+
+
+//esta linea se puede obviar, ya que en este ejercicio no se va a crear el objeto
 let direccion = { calle: "", ciudad: "", codigoPostal: "" };
 
 
@@ -198,7 +225,6 @@ class Usuario {
     }
 }
 
-console.log("Ejercicio 8 ==> " + " Creada la clase Usuario ");
 
 
 //ejercicio 9
@@ -223,31 +249,11 @@ console.log("url: " + userPrueba._url);
 console.log("idUser: " + Usuario.getId(userPrueba._url));
 
 
-
-
-
-
 //Ejercicio 10. Implemente una función que pasándole como parámetro un objeto del
 //json mapee y cree un objeto del tipo Usuario.
 
 console.log("Ejercicio 10 ==> " + " Creando funcion que crea un objecto a partir de un elemento del json");
 
-//primero, vamos a guardar en una variable uno de los objetos del JSON
-// da error al tenter tantas comillas..... lo probamos directamente en el ejercicio 11 
-
-// let elementoJSON = '{ ' +
-//     '"name": "Nicholas Runolfsdottir V",' +
-//     '"username": "Maxime_Nienow",' +
-//     '"email": "Sherwood@rosamond.me",' +
-//     '"age": "24",' +
-//     '"address": {"street": "Ellsworth Summit","suite": "Suite 729", "city": "Wisokyburgh","zipcode": "45169","geo":{"lat": "-14.3990","lng": "-120.7677"}},' +
-//     '"phone": "586.493.6943 x140",' +
-//     '"website": "jacynthe.com",' +
-//     ' "company": { "name": "Abernathy Group",  "catchPhrase": "Implemented secondary concept", "bs": "e-enable extensible e-tailers" },' +
-//     '  "url": "https://prueba.dev/api/users/8/"' +
-//     '}';
-
-let objetoJSON = JSON.parse(elementoJSON);
 
 crearUsuario = function (objetoJSON) {
     let nombre = objetoJSON.name;
@@ -260,19 +266,33 @@ crearUsuario = function (objetoJSON) {
     return usuario;
 }
 
-//let usuario = crearUsuario(elementoJSON);
-//console.log("Mostramos, por ejemplo, el email del usuario");
-//console.log(usuario.email);
+//Pra probar el funcionamiento, vamos a guardar en una variable uno de los objetos del JSON
 
-//probamos la función directamente en el ejercicio 11:
 
+let elementoJSON = '{ ' +
+'"name": "Nicholas Runolfsdottir V",' +
+'"username": "Maxime_Nienow",' +
+'"email": "Sherwood@rosamond.me",' +
+'"age": "24",' +
+'"address": {"street": "Ellsworth Summit","suite": "Suite 729", "city": "Wisokyburgh","zipcode": "45169","geo":{"lat": "-14.3990","lng": "-120.7677"}},' +
+'"phone": "586.493.6943 x140",' +
+'"website": "jacynthe.com",' +
+' "company": { "name": "Abernathy Group",  "catchPhrase": "Implemented secondary concept", "bs": "e-enable extensible e-tailers" },' +
+'  "url": "https://prueba.dev/api/users/8/"' +
+'}';
+
+let usuarioJSON = JSON.parse(elementoJSON);
+
+let usuario = crearUsuario(usuarioJSON);
+console.log("Mostramos, por ejemplo, el email del usuario");
+console.log(usuario._email);
 
 
 
 //ejercicio 11 Implemente una función que recorra el JSON y devuelva un array de
 //objetos del tipo Usuario. (Apóyese en la función del ejercicio anterior).
 
-console.log("Ejercicio 11 ==> " + " Creada funncion que devuelve array de usuarios");
+console.log("Ejercicio 11 ==> " + " Creando función que devuelve array de usuarios");
 
 function obterArray() {
 
@@ -280,18 +300,18 @@ function obterArray() {
 
     /* Leemos archivo con AJAX */
     const xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "assets/personas.json", true);
+    xhttp.open("GET", "assets/json/personas.json", true);
     xhttp.send();
 
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             let persona = JSON.parse(this.responseText);
             persona.forEach(function (persona) {
-                arrayUsuarios.push(crearUsuario(persona));
+                let usuario = crearUsuario(persona);
+                arrayUsuarios.push(usuario);
             });
         }
     }
-
     return arrayUsuarios;
 }
 
@@ -300,12 +320,14 @@ function obterArray() {
 //punto anterior. Muestre por consola SÓLO el nombre del usuario.
 
 
-console.log("Ejercicio 11 ==> " + " Mostrando nombre del array de usuarios ");
-let usuarios = obterArray();
+console.log("Ejercicio 12 ==> " + " Mostrando nombre del array de usuarios ");
+let arrayUsuarios = obterArray();
 
-usuarios.forEach(function (usuarios) {
-    console.log(usuarios.name);
-});
+console.log(arrayUsuarios.length);
+
+for (let i = 0; i < arrayUsuarios.length; i++) {
+    console.log("sfasfdasfdds" + arrayUsuarios[i]._name);
+}
 
 
 
