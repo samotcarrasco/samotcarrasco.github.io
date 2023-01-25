@@ -200,7 +200,7 @@ for (var i = 0; i < imagenes.length; i++) {
 mostrarInicioEjercicio(7,"Mostrando nombre de las personas");
 mostrarInicioEjercicio(7,"AJAX es asíncrono, se mostrarán los resultados al final");
 
-
+let AJAXFinalizado = false;
 /* Leemos archivo con AJAX */
 const xhttp = new XMLHttpRequest();
 xhttp.open("GET", "assets/json/personas.json", true);
@@ -212,9 +212,16 @@ xhttp.onreadystatechange = function () {
         usuarios.forEach(function (usuarios) {
             console.log("\t(ejercicio 7) "+ usuarios.name);
         });
+        AJAXFinalizado = true;
     }
 }
 
+
+
+// let controlAJAX = false;
+//  while (!controlAJAX){
+//      controlAJAX = AJAXFinalizado;
+//  }
 
 
 
@@ -322,6 +329,7 @@ mostrarInicioEjercicio(11,"Creando función que devuelve array de usuarios");
 
 function obtenerArray() {
 
+    //variable local
     let arrayUsuarios = [];
 
     /* Leemos archivo con AJAX */
@@ -347,7 +355,7 @@ function obtenerArray() {
 
 mostrarInicioEjercicio(12,"Mostrando array de usuarios desde la variable global");
 
-
+// variable global
 let arrayUsuarios = obtenerArray();
 console.log(arrayUsuarios.length)
 
