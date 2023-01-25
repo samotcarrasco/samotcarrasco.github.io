@@ -28,7 +28,7 @@ xhttp.onreadystatechange = function () {
         }
 
 
-        console.log("order aleotiro de lectura de preguntas: " + randoms);
+        console.log("order aleaotiro de lectura de preguntas: " + randoms);
         //en contador guardamos el numero de preguntas que se han generado
         let contador = 1;
 

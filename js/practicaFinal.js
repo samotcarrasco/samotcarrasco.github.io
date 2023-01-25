@@ -200,7 +200,7 @@ for (var i = 0; i < imagenes.length; i++) {
 mostrarInicioEjercicio(7,"Mostrando nombre de las personas");
 mostrarInicioEjercicio(7,"AJAX es asíncrono, se mostrarán los resultados al final");
 
-let AJAXFinalizado = false;
+//let AJAXFinalizado = false;
 /* Leemos archivo con AJAX */
 const xhttp = new XMLHttpRequest();
 xhttp.open("GET", "assets/json/personas.json", true);
@@ -213,15 +213,10 @@ xhttp.onreadystatechange = function () {
             console.log("\t(ejercicio 7) "+ usuarios.name);
         });
         AJAXFinalizado = true;
-    }
-}
+// lo correcto es cerrar aqué la función. Para que sea la ejecución secuencial se cierran al final del script
+// }
+// }
 
-
-
-// let controlAJAX = false;
-//  while (!controlAJAX){
-//      controlAJAX = AJAXFinalizado;
-//  }
 
 
 
@@ -256,7 +251,6 @@ class Usuario {
         return partes[tamanio - 2];
     }
 }
-
 
 
 //ejercicio 9
@@ -321,7 +315,6 @@ console.log("Mostramos, por ejemplo, el email del usuario: ");
 console.log(usuario._email);
 
 
-
 //ejercicio 11 Implemente una función que recorra el JSON y devuelva un array de
 //objetos del tipo Usuario. (Apóyese en la función del ejercicio anterior).
 
@@ -345,9 +338,10 @@ function obtenerArray() {
                 arrayUsuarios.push(usuario);
             });
         }
-    }
-    return arrayUsuarios;
-}
+        console.log(arrayUsuarios.length)
+        return arrayUsuarios;
+   }
+  }
 
 
 //ejercicio 12 Cree una variable global que contenga el resultado de la función del
@@ -360,9 +354,8 @@ let arrayUsuarios = obtenerArray();
 console.log(arrayUsuarios.length)
 
 for (let i = 0; i < arrayUsuarios.length; i++) {
-    console.log("sfasfdasfdds" + arrayUsuarios[i]._name);
+    console.log("ejercicio12" + arrayUsuarios[i]._name);
 }
-
 
 
 // function obtenerArraySleep() {
@@ -387,3 +380,7 @@ for (let i = 0; i < arrayUsuarios.length; i++) {
 
 mostrarInicioEjercicio(13,"Ejercicio13");
 
+
+//cerramos aquí AJAX?????
+}
+}
