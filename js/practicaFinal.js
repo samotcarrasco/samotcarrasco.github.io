@@ -112,22 +112,22 @@ mostrarInicioEjercicio(6, "Modificando imagen al pulsar sobre ella");
 
 
 let imagen = document.getElementById("imagenRotar");
- let controlImagen = true;
- let urlImagenOriginal = imagen.src;
- let altImagenOriginal = imagen.src;
+let controlImagen = true;
+let urlImagenOriginal = imagen.src;
+let altImagenOriginal = imagen.src;
 
- imagen.addEventListener("click", function() {
-   if (controlImagen) {
-    //es importante tambien cambiar la propiedad "alt"
-    //para que personas con discpacidad visual lo puedan leer
-    imagen.src = "assets/perro.png";
-    imagen.alt = "perro conduciendo un coche";
-   } else {
-    imagen.src = urlImagenOriginal;
-    imagen.alt = altImagenOriginal
-   }
-   controlImagen = !controlImagen;
- });
+imagen.addEventListener("click", function () {
+    if (controlImagen) {
+        //es importante tambien cambiar la propiedad "alt"
+        //para que personas con discpacidad visual lo puedan leer
+        imagen.src = "assets/perro.png";
+        imagen.alt = "perro conduciendo un coche";
+    } else {
+        imagen.src = urlImagenOriginal;
+        imagen.alt = altImagenOriginal
+    }
+    controlImagen = !controlImagen;
+});
 
 
 // seleccionar las imágenes
@@ -183,7 +183,14 @@ let imagen = document.getElementById("imagenRotar");
 //ejercicio 7
 
 mostrarInicioEjercicio(7, "Mostrando nombre de las personas");
-mostrarInicioEjercicio(7, "AJAX es asíncrono, se mostrarán los resultados al final");
+
+
+let usuarios = JSON.parse(UsuariosJSON);
+usuarios.forEach(function (usuario) {
+    console.log("\t" + usuario.name);
+});
+
+
 
 //let AJAXFinalizado = false;
 /* Leemos archivo con AJAX */
@@ -204,17 +211,17 @@ xhttp.onreadystatechange = function () {
 */
 
 // otra forma de hacerlo
-fetch('assets/json/personas.json')
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        data.forEach(usuario => {
-            console.log("\t(ejercicio 7)" + usuario.name);
-          });
-    })
-    .catch(error => {
-        console.error('(ejercicio 7) Error al leer el archivo:', error);
-    });
+// fetch('assets/json/personas.json')
+//     .then(response => response.json())
+//     .then(data => {
+//         console.log(data);
+//         data.forEach(usuario => {
+//             console.log("\t(ejercicio 7)" + usuario.name);
+//           });
+//     })
+//     .catch(error => {
+//         console.error('(ejercicio 7) Error al leer el archivo:', error);
+//     });
 
 
 //ejercicio 8
@@ -317,27 +324,39 @@ console.log(usuario._email);
 
 mostrarInicioEjercicio(11, "Creando función que devuelve array de usuarios");
 
-function obtenerArray() {
+// function obtenerArray() {
 
+//     //variable local
+//     let arrayUsuarios = [];
+
+//     /* Leemos archivo con AJAX */
+//     const xhttp = new XMLHttpRequest();
+//     xhttp.open("GET", "assets/json/personas.json", true);
+//     xhttp.send();
+
+//     xhttp.onreadystatechange = function () {
+//         if (this.readyState == 4 && this.status == 200) {
+//             let persona = JSON.parse(this.responseText);
+//             persona.forEach(function (persona) {
+//                 let usuario = crearUsuario(persona);
+//                 arrayUsuarios.push(usuario);
+//             });
+//         }
+//         console.log(arrayUsuarios.length)
+//         return arrayUsuarios;
+//     }
+// }
+
+function obtenerArray() {
     //variable local
     let arrayUsuarios = [];
-
-    /* Leemos archivo con AJAX */
-    const xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "assets/json/personas.json", true);
-    xhttp.send();
-
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            let persona = JSON.parse(this.responseText);
-            persona.forEach(function (persona) {
-                let usuario = crearUsuario(persona);
-                arrayUsuarios.push(usuario);
-            });
-        }
-        console.log(arrayUsuarios.length)
-        return arrayUsuarios;
-    }
+    let usuarios = JSON.parse(UsuariosJSON);
+    usuarios.forEach(function (usuario) {
+        let user = crearUsuario(usuario);
+        arrayUsuarios.push(user);
+        //console.log("\tAñadiendo al array al user: " + user._nombre);
+    });
+    return arrayUsuarios;
 }
 
 
@@ -346,38 +365,26 @@ function obtenerArray() {
 
 mostrarInicioEjercicio(12, "Mostrando array de usuarios desde la variable global");
 
-// variable global
-const arrayUsuarios = obtenerArray();
-console.log(arrayUsuarios.length)
+    // variable global
+    const arrayUsuarios = obtenerArray();
+    console.log("\tLa longitud del array es: " + arrayUsuarios.length);
+    
+    //otra forma de recorrer el array
+    for (let i = 0; i < arrayUsuarios.length; i++) {
+        console.log("\t" + arrayUsuarios[i]._nombre);
+    }
 
-for (let i = 0; i < arrayUsuarios.length; i++) {
-    console.log("ejercicio12" + arrayUsuarios[i]._name);
-}
-
-
-// function obtenerArraySleep() {
-//     arrayUsuarios = obtenerArray()
-// }
-
-// do {
-// if (arrayUsuarios.length > 0)
-// {
-//     for (let i = 0; i < arrayUsuarios.length; i++) {
-//         console.log("sfasfdasfdds" + arrayUsuarios[i]._name);
-//     }
-//   } else {
-//     setTimeout(obtenerArray, 300); // try again in 300 milliseconds
-//   }
-// } while (arrayUsuarios.length == 0);
-
-
-
-
-//ejercicio 13
+    //ejercicio 13
+//     Cree las variables que considere necesarias, de tal manera que cada
+// variable contenga los usuarios de la misma ciudad.
+// Hágalo a partir del array de objetos de usuarios del punto anterior. Muestre el
+// resultado por consola.
 
 mostrarInicioEjercicio(13, "Ejercicio13");
 
+for (let i = 0; i < arrayUsuarios.length; i++) {
+    console.log("\t" + arrayUsuarios[i]._direccion.ciudad);
+}
 
-//cerramos aquí AJAX?????
-//}
-//}
+
+
