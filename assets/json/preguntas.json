@@ -103,6 +103,45 @@
             "tipo": "imagen",
             "imagen": "assets/img_examen/stop.png",
             "correcta": "A"
+        },
+        {
+            "id": "9",
+            "enunciado": "9 Al salir marcha atrás de un estacionamiento con su vehículo, el cual dispone del sistema de alerta de tráfico cruzado, debe saber que este sistema…",
+            "opciones": {
+                "opc1": "Ayudará al conductor esquivando el obstáculo en el mismo momento en que lo detecte",
+                "opc2": "Tomará el control del vehículo deteniéndolo inmediatamente cuando detecte un vehículo aproximándose",
+                "opc3": "Emitirá un aviso sonoro y/o visual cuando detecte un vehículo aproximándose",
+                "opc4": "Mostrará en la pantalla integrada en el salpicadero las imagenes"
+            },
+            "tipo": "larga",
+            "imagen": "",
+            "correcta": "C"
+        },
+        {
+            "id": "10",
+            "enunciado": "11 ¿Cuál es la velocidad máxima permitida para un turismo en una vía urbana con plataforma única de calzada y acera?",
+            "opciones": {
+                "opc1": "45 km/h",
+                "opc2": "50 km/h",
+                "opc3": "20 km/h",
+                "opc4": "30 km/h"
+            },
+            "tipo": "corta",
+            "imagen": "",
+            "correcta": "C"
+        },
+        {
+            "id": "11",
+            "enunciado": "11 ¿Cuál es la velocidad máxima permitida en vias rápidas",
+            "opciones": {
+                "opc1": "100 km/h",
+                "opc2": "80 km/h",
+                "opc3": "90 km/h",
+                "opc4": "120 km/h"
+            },
+            "tipo": "corta",
+            "imagen": "",
+            "correcta": "C"
         }
     ]
 }

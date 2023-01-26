@@ -12,10 +12,10 @@ PRÁCTICA ASIGNATURA JAVASCRIPT, CURSO DIM45
  ********************************************************************************/
 
 
-  // Funcion utilizada para que el inicio de cada ejercicio se muestre en rojo y negrita por consola
+// Funcion utilizada para que el inicio de cada ejercicio se muestre en rojo y negrita por consola
 
-   function mostrarInicioEjercicio(ejercicio,cadena){
-    console.log("%cEjercicio "+ejercicio+" ==> " + cadena,"color:red; font-weight: bold;");
+function mostrarInicioEjercicio(ejercicio, cadena) {
+    console.log("%cEjercicio " + ejercicio + " ==> " + cadena, "color:red; font-weight: bold;");
 }
 
 
@@ -28,7 +28,7 @@ PRÁCTICA ASIGNATURA JAVASCRIPT, CURSO DIM45
 localStorage.setItem("practica", "Práctica Final ECMAScript");
 let tituloPractica = localStorage.getItem("practica");
 
-mostrarInicioEjercicio(2,tituloPractica);
+mostrarInicioEjercicio(2, tituloPractica);
 
 
 
@@ -50,7 +50,7 @@ let horaFormateada = function () {
     return `${hh}:${mm}:${ss}`;
 }
 
-mostrarInicioEjercicio(3,"Hora actual. Son las: " + horaFormateada());
+mostrarInicioEjercicio(3, "Hora actual. Son las: " + horaFormateada());
 
 
 //ejercicio 4
@@ -60,7 +60,7 @@ mostrarInicioEjercicio(3,"Hora actual. Son las: " + horaFormateada());
 // documento html el elemento que estime oportuno).
 
 
-mostrarInicioEjercicio(4,"Mostrando reloj digital en index.html");
+mostrarInicioEjercicio(4, "Mostrando reloj digital en index.html");
 
 
 let mostrarReloj = function () {
@@ -77,7 +77,7 @@ setInterval(mostrarReloj, 1000);
 // Y cuando el puntero salga del elemento, el color del texto debe cambiar al
 // original que tenía.
 
-mostrarInicioEjercicio(5,"Texto amarillo en el header al pasar el ratón");
+mostrarInicioEjercicio(5, "Texto amarillo en el header al pasar el ratón");
 
 let header = document.getElementById("encabezado");
 let colorInicial = header.style.color;
@@ -108,51 +108,36 @@ header.addEventListener("mouseout", function () {
 //   controlImagen = !controlImagen;
 // }
 
-mostrarInicioEjercicio(6,"Modificando imagen al pulsar sobre ella");
+mostrarInicioEjercicio(6, "Modificando imagen al pulsar sobre ella");
 
 
+let imagen = document.getElementById("imagenRotar");
+ let controlImagen = true;
+ let urlImagenOriginal = imagen.src;
+ let altImagenOriginal = imagen.src;
 
-// let imagenes = document.getElementsByClassName("imagenSource");
-
-// for(let el of imagenes) {
-//     let urlImagenOriginal = el.srcset;
-//     console.log(urlImagenOriginal);
-
-//     let isImage1 = true;
-
-//     el.addEventListener("click", function() {
-//     if (isImage1) {
-//         el.srcset = "assets/perro.png";
-//     } else {
-//         el.srcset = urlImagenOriginal;
-//     }
-//     isImage1 = !isImage1;
-// });
-// }
-
-
-// let myImage = document.getElementById("imagenP");
-// let isImage1 = true;
-// let urlImagenOriginal = myImage.src;
-
-// myImage.addEventListener("click", function() {
-//   if (isImage1) {
-//     myImage.src = "assets/perro.png";
-//   } else {
-//     myImage.src = urlImagenOriginal;
-//   }
-//   isImage1 = !isImage1;
-// });
+ imagen.addEventListener("click", function() {
+   if (controlImagen) {
+    //es importante tambien cambiar la propiedad "alt"
+    //para que personas con discpacidad visual lo puedan leer
+    imagen.src = "assets/perro.png";
+    imagen.alt = "perro conduciendo un coche";
+   } else {
+    imagen.src = urlImagenOriginal;
+    imagen.alt = altImagenOriginal
+   }
+   controlImagen = !controlImagen;
+ });
 
 
 // seleccionar las imágenes
-// var imagenes = document.querySelectorAll('.imagen1');
+// let imagenes = document.querySelectorAll('.imagen1');
 
 // // agregar evento click a cada imagen
-// for (var i = 0; i < imagenes.length; i++) {
+// for (let i = 0; i < imagenes.length; i++) {
 //     imagenes[i].addEventListener('click', function () {
 //         // obtener la ruta de la imagen actual
-//         var rutaActual = this.getAttribute('src');
+//         let rutaActual = this.getAttribute('src');
 //         // si la ruta es la original
 //         if (rutaActual === 'assets/autoescuela_pequenia.jpg') {
 //             // cambiar la ruta a la nueva imagen
@@ -165,44 +150,44 @@ mostrarInicioEjercicio(6,"Modificando imagen al pulsar sobre ella");
 // }
 
 
-// seleccionar las imágenes
-var imagenes = document.getElementsByClassName('imagenSource');
+// // seleccionar las imágenes
+// let imagenes = document.getElementsByClassName('imagenSource');
 
-// agregar evento click a cada imagen
-for (var i = 0; i < imagenes.length; i++) {
-    console.log("ññññññññññññ");
-    console.log(imagenes[i].srcset);
-    imagenes[i].addEventListener('click', function () {
-        alert("asf");
-        console.log("ññññññññññññyyyyyyyyyyyyy");
+// // agregar evento click a cada imagen
+// for (let i = 0; i < imagenes.length; i++) {
+//     console.log("ññññññññññññ");
+//     console.log(imagenes[i].srcset);
+//     imagenes[i].addEventListener('click', function () {
+//         alert("asf");
+//         console.log("ññññññññññññyyyyyyyyyyyyy");
 
-        // obtener la ruta de la imagen actual
-        var rutaActual = this.getAttribute('srcset');
-        console.log("ññññññññññññ" + rutaActual);
-        // si la ruta es la original
-        if (rutaActual === 'assets/autoescuela_grande.jpg') {
-            // cambiar la ruta a la nueva imagen
-            this.setAttribute('srcset', 'assets/perro.png');
-        } else if (rutaActual === 'assets/autoescuela_mediana.jpg') {
-            // cambiar la ruta a la nueva imagen
-            this.setAttribute('srcset', 'assets/perro.png');
-        } else {
-            // si no, cambiar la ruta a la imagen original
-            this.setAttribute('srcset', 'assets/autoescuela_grande.jpg');
-            this.setAttribute('srcset', 'assets/autoescuela_mediana.jpg');
-        }
-    });
-}
+//         // obtener la ruta de la imagen actual
+//         let rutaActual = this.getAttribute('srcset');
+//         console.log("ññññññññññññ" + rutaActual);
+//         // si la ruta es la original
+//         if (rutaActual === 'assets/autoescuela_grande.jpg') {
+//             // cambiar la ruta a la nueva imagen
+//             this.setAttribute('srcset', 'assets/perro.png');
+//         } else if (rutaActual === 'assets/autoescuela_mediana.jpg') {
+//             // cambiar la ruta a la nueva imagen
+//             this.setAttribute('srcset', 'assets/perro.png');
+//         } else {
+//             // si no, cambiar la ruta a la imagen original
+//             this.setAttribute('srcset', 'assets/autoescuela_grande.jpg');
+//             this.setAttribute('srcset', 'assets/autoescuela_mediana.jpg');
+//         }
+//     });
+// }
 
 
 //ejercicio 7
 
-mostrarInicioEjercicio(7,"Mostrando nombre de las personas");
-mostrarInicioEjercicio(7,"AJAX es asíncrono, se mostrarán los resultados al final");
+mostrarInicioEjercicio(7, "Mostrando nombre de las personas");
+mostrarInicioEjercicio(7, "AJAX es asíncrono, se mostrarán los resultados al final");
 
 //let AJAXFinalizado = false;
 /* Leemos archivo con AJAX */
-const xhttp = new XMLHttpRequest();
+/*const xhttp = new XMLHttpRequest();
 xhttp.open("GET", "assets/json/personas.json", true);
 xhttp.send();
 
@@ -210,14 +195,26 @@ xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
         let usuarios = JSON.parse(this.responseText);
         usuarios.forEach(function (usuarios) {
-            console.log("\t(ejercicio 7) "+ usuarios.name);
+            console.log("\t(ejercicio 7) " + usuarios.name);
         });
         AJAXFinalizado = true;
-// lo correcto es cerrar aqué la función. Para que sea la ejecución secuencial se cierran al final del script
-// }
-// }
+        // lo correcto es cerrar aqué la función. Para que sea la ejecución secuencial se cierran al final del script
+    }
+}
+*/
 
-
+// otra forma de hacerlo
+fetch('assets/json/personas.json')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        data.forEach(usuario => {
+            console.log("\t(ejercicio 7)" + usuario.name);
+          });
+    })
+    .catch(error => {
+        console.error('(ejercicio 7) Error al leer el archivo:', error);
+    });
 
 
 //ejercicio 8
@@ -229,7 +226,7 @@ xhttp.onreadystatechange = function () {
 // - Método estático getId(url), que pasándole como parámetro el identificador
 // único (URI) del usuario, devuelva su id.
 
-mostrarInicioEjercicio(8,"Creando la clase Usuario");
+mostrarInicioEjercicio(8, "Creando la clase Usuario");
 
 //esta linea se puede obviar, ya que en este ejercicio no se va a crear el objeto
 let direccion = { calle: "", ciudad: "", codigoPostal: "" };
@@ -257,7 +254,7 @@ class Usuario {
 // Instancie un objeto de la clase Usuario con el identificador
 //"userPrueba". Este objeto debe tener los siguientes valores ...
 
-mostrarInicioEjercicio(9,"Mostrando datos del objeto userPrueba");
+mostrarInicioEjercicio(9, "Mostrando datos del objeto userPrueba");
 
 
 //en la empresa, a parte del nombre, también hemos incluido el sector, para comprobar el funcionamiento de que solo se devuelve el nombre
@@ -279,7 +276,7 @@ console.log("\tidUser: " + Usuario.getId(userPrueba._url));
 //Ejercicio 10. Implemente una función que pasándole como parámetro un objeto del
 //json mapee y cree un objeto del tipo Usuario.
 
-mostrarInicioEjercicio(10,"Creando funcion que crea un objecto a partir de un elemento del json");
+mostrarInicioEjercicio(10, "Creando funcion que crea un objecto a partir de un elemento del json");
 
 
 crearUsuario = function (objetoJSON) {
@@ -297,16 +294,16 @@ crearUsuario = function (objetoJSON) {
 
 
 let elementoJSON = '{ ' +
-'"name": "Nicholas Runolfsdottir V",' +
-'"username": "Maxime_Nienow",' +
-'"email": "Sherwood@rosamond.me",' +
-'"age": "24",' +
-'"address": {"street": "Ellsworth Summit","suite": "Suite 729", "city": "Wisokyburgh","zipcode": "45169","geo":{"lat": "-14.3990","lng": "-120.7677"}},' +
-'"phone": "586.493.6943 x140",' +
-'"website": "jacynthe.com",' +
-' "company": { "name": "Abernathy Group",  "catchPhrase": "Implemented secondary concept", "bs": "e-enable extensible e-tailers" },' +
-'  "url": "https://prueba.dev/api/users/8/"' +
-'}';
+    '"name": "Nicholas Runolfsdottir V",' +
+    '"username": "Maxime_Nienow",' +
+    '"email": "Sherwood@rosamond.me",' +
+    '"age": "24",' +
+    '"address": {"street": "Ellsworth Summit","suite": "Suite 729", "city": "Wisokyburgh","zipcode": "45169","geo":{"lat": "-14.3990","lng": "-120.7677"}},' +
+    '"phone": "586.493.6943 x140",' +
+    '"website": "jacynthe.com",' +
+    ' "company": { "name": "Abernathy Group",  "catchPhrase": "Implemented secondary concept", "bs": "e-enable extensible e-tailers" },' +
+    '  "url": "https://prueba.dev/api/users/8/"' +
+    '}';
 
 let usuarioJSON = JSON.parse(elementoJSON);
 
@@ -318,7 +315,7 @@ console.log(usuario._email);
 //ejercicio 11 Implemente una función que recorra el JSON y devuelva un array de
 //objetos del tipo Usuario. (Apóyese en la función del ejercicio anterior).
 
-mostrarInicioEjercicio(11,"Creando función que devuelve array de usuarios");
+mostrarInicioEjercicio(11, "Creando función que devuelve array de usuarios");
 
 function obtenerArray() {
 
@@ -340,17 +337,17 @@ function obtenerArray() {
         }
         console.log(arrayUsuarios.length)
         return arrayUsuarios;
-   }
-  }
+    }
+}
 
 
 //ejercicio 12 Cree una variable global que contenga el resultado de la función del
 //punto anterior. Muestre por consola SÓLO el nombre del usuario.
 
-mostrarInicioEjercicio(12,"Mostrando array de usuarios desde la variable global");
+mostrarInicioEjercicio(12, "Mostrando array de usuarios desde la variable global");
 
 // variable global
-let arrayUsuarios = obtenerArray();
+const arrayUsuarios = obtenerArray();
 console.log(arrayUsuarios.length)
 
 for (let i = 0; i < arrayUsuarios.length; i++) {
@@ -378,9 +375,9 @@ for (let i = 0; i < arrayUsuarios.length; i++) {
 
 //ejercicio 13
 
-mostrarInicioEjercicio(13,"Ejercicio13");
+mostrarInicioEjercicio(13, "Ejercicio13");
 
 
 //cerramos aquí AJAX?????
-}
-}
+//}
+//}

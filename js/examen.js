@@ -11,17 +11,21 @@ xhttp.send();
 
 //en este array guardaremos todas las preguntas que se han generado, para posteriormente hacer el calculo del resultado
 let preguntas = [];
+//variable global con el número de preguntas que tendrá el examen
+let numPreguntas=10;
 
 xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
         let datos = JSON.parse(this.responseText);
         console.log(datos);
+        let preguntasTotalesJson=datos.preguntas.length;
+        console.log("preguntas JSON -> ", preguntasTotalesJson);
         //resto de código
 
         //guardamos en un array numeros aletorios sin repetir
         let randoms = [];
-        while (randoms.length < 8) {
-            let random = Math.floor(Math.random() * 8) + 1;
+        while (randoms.length < preguntasTotalesJson) {
+            let random = Math.floor(Math.random() * preguntasTotalesJson) + 1;
             if (randoms.indexOf(random) == -1) {
                 randoms.push(random);
             }
@@ -63,7 +67,7 @@ xhttp.onreadystatechange = function () {
 
             contador++;
 
-        } while (contador < 8);
+        } while (contador <= numPreguntas);
 
     }
 

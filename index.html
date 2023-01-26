@@ -19,7 +19,7 @@
     <script src="https://kit.fontawesome.com/f7ce9dd855.js" crossorigin="anonymous" defer></script>
     <!--practicaFinal.js se utilizará en el index.html-->
     <script src="js/practicaFinal.js" defer></script>
-</head> 
+</head>
 
 <body>
 
@@ -83,8 +83,7 @@
                                                     <input type="password" class="form-control obligatorioL" required>
                                                 </div>
                                                 <div class="d-flex justify-content-center">
-                                                    <button id="enviarLogin"
-                                                        class="btn btn-outline-success  fw-bold"
+                                                    <button id="enviarLogin" class="btn btn-outline-success  fw-bold"
                                                         disabled>Acceder</button>
                                                 </div>
                                             </form>
@@ -105,33 +104,52 @@
 
     <main>
         <article class="container-fluid text-center col-10" id="encabezado">
-            <h1 class="titulo1">Bienvenido a la mejor autoescuela online</h1>
+    <!--        <h1 class="titulo1">Bienvenido a la mejor autoescuela online</h1>
             <p class="texto1">Aquí podrá hacer exámenes de forma gratuita, que le ayudarán para obtener el permiso de
                 conducir B</p>
             <p class="texto1">&clubs; &clubs; ¡¡ MUCHA SUERTE !! &clubs; &clubs;</p>
+            -->
+            <section class="row">
+                <section class="col-sm-12 col-md-6 col-lg-7 col-xl-7">
+                    <h1 class="titulo1">Bienvenido a la mejor autoescuela online</h1>
+                    <p class="texto1">Aquí podrá hacer exámenes de forma gratuita, que le ayudarán para obtener el
+                        permiso de
+                        conducir B</p>
+                    <p class="texto1">&clubs; &clubs; ¡¡ MUCHA SUERTE !! &clubs; &clubs;</p>
+                </section>
+                <!--Ajustamos twitter al tamaño de cada pantalla (pequeña mediana grande) -->
+                <aside class="col-sm-12 col-md-6 col-lg-5 col-xl-4">
+                    <img class="imagen1 rounded" id="imagenRotar" src="assets/autoescuela_rotar.jpg"
+                        alt="mujer conduciendo, de copiloto el profesor">
+                </aside>
+            </section>
+
         </article>
         <h1 class="container text-center col-3" id="reloj"></h1>
-        <img class="rounded" id="imagenX" src="assets/autoescuela_pequenia.jpg" alt="mujer conduciendo, de copiloto el profesor">
-        <article class="container-fluid text-center container-index"> 
+        <article class="container-fluid text-center container-index">
             <section class="row">
                 <section class="col-sm-12 col-md-6 col-lg-7 col-xl-7">
                     <!--Añadimos imagen con texto alternativo (para personas con deficiencia visual)
                     La class=rounded (bootstrap) es para redondear las esquinas de la imagen-->
-                    <picture alt="Mujer condiciendo vehículo. De copiloto está un profesor" >
-                        <source class="imagenSource rounded"  media="(min-width:990px)" srcset="assets/autoescuela_grande.jpg" alt="mujer conduciendo, de copiloto el profesor">
-                        <source class="imagenSource rounded" media="(min-width:750px)" srcset="assets/autoescuela_mediana.jpg" alt="mujer conduciendo, de copiloto el profesor">
-                        <img class="imagen1 rounded" id="imagenP" src="assets/autoescuela_pequenia.jpg" alt="mujer conduciendo, de copiloto el profesor">
+                    <picture alt="Mujer condiciendo vehículo. De copiloto está un profesor">
+                        <source class="imagenSource rounded" media="(min-width:990px)"
+                            srcset="assets/autoescuela_grande.jpg" alt="mujer conduciendo, de copiloto el profesor">
+                        <source class="imagenSource rounded" media="(min-width:750px)"
+                            srcset="assets/autoescuela_mediana.jpg" alt="mujer conduciendo, de copiloto el profesor">
+                        <img class="imagen1 rounded" id="imagenP" src="assets/autoescuela_pequenia.jpg"
+                            alt="mujer conduciendo, de copiloto el profesor">
                     </picture>
                 </section>
                 <!--Ajustamos twitter al tamaño de cada pantalla (pequeña mediana grande) -->
-               <aside class="col-sm-12 col-md-6 col-lg-5 col-xl-4 twitter-timeline twitter-timeline-rendered min_twitter">
-                <!--El iframe de twitter lo hemos obtenido de https://help.twitter.com/es/using-twitter/how-to-embed-a-tweet
+                <aside
+                    class="col-sm-12 col-md-6 col-lg-5 col-xl-4 twitter-timeline twitter-timeline-rendered min_twitter">
+                    <!--El iframe de twitter lo hemos obtenido de https://help.twitter.com/es/using-twitter/how-to-embed-a-tweet
                 -->
-               <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true"
+                    <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true"
                         allowfullscreen="true" class="twitter-aside container-fluid text-center "
                         src="https://syndication.twitter.com/srv/timeline-profile/screen-name/DGTes?dnt=false&amp;embedId=twitter-widget-0&amp;lang=es&amp;maxHeight=450px&amp;showHeader=true">
-                    </iframe> 
-                </aside> 
+                    </iframe>
+                </aside>
             </section>
         </article>
 
@@ -148,7 +166,7 @@
                 <i class="fab fa-github-square fa-2x" title="github"></i>
             </a>
             <a class="mx-5 btn btn-linkC" href="https://www.google.com/" aria-hidden="true" target="_blank">
-                 <i class="fa-solid fa-share-nodes" title="compartir"></i>
+                <i class="fa-solid fa-share-nodes" title="compartir"></i>
             </a>
 
             <a class="mx-5 btn btn-link"
@@ -158,8 +176,8 @@
             </a>
         </div>
         <nav class="col justify-content-center my-2">
-            <a href="https://www.dgt.es/inicio/" title="Dirección General de Tráfico" target="_blank">DGT</a> 
-            | 
+            <a href="https://www.dgt.es/inicio/" title="Dirección General de Tráfico" target="_blank">DGT</a>
+            |
             <a href="https://www.apamad.es/" title="Asociacón de Autoescuelas de Madrid" target="_blank">APAMAD</a>
         </nav>
     </footer>
