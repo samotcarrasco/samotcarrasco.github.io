@@ -96,13 +96,13 @@ function anadirPreguntaHTML(preguntaObj, contador) {
             <input type="radio" name="box" id="p${contador}r2"> 
             <input type="radio" name="box" id="p${contador}r3"> 
             <input type="radio" name="box" id="p${contador}r4"> 
-            <label for="p${contador}r1" class="box p ${contador}r1"> 
+            <label for="p${contador}r1" class="box p${contador}r1"> 
                <div class="course"> <span class="circle"></span> <span id="p${contador}opc1">${preguntaObj.opciones[0]}</span> </div> </label>
-            <label for="p ${contador}r2" class="box p${contador}r2"> 
+            <label for="p${contador}r2" class="box p${contador}r2"> 
                <div class="course"> <span class="circle"></span> <span id="p${contador}opc2">${preguntaObj.opciones[1]}</span> </div> </label>
-            <label for="p ${contador}r3" class="box p${contador}r3"> 
+            <label for="p${contador}r3" class="box p${contador}r3"> 
                <div class="course"> <span class="circle"></span> <span id="p${contador}opc3">${preguntaObj.opciones[2]}</span> </div> </label>
-            <label for="p ${contador}r4" class="box p${contador}r4"> 
+            <label for="p${contador}r4" class="box p${contador}r4"> 
                <div class="course"> <span class="circle"></span> <span id="p${contador}opc4">${preguntaObj.opciones[3]}</span> </div> </label>
             </div>
             </article>
