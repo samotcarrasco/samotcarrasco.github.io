@@ -38,6 +38,9 @@ importada de Google fonts (head de los ficheros html)*/
     --verde-formularios: #198754;
     --verde-muy-oscuro: #0a4614;
     --gris-claro: #ababab;
+    --rojo-normal:rgb(192, 8, 8);
+    --rojo-oscuro:rgb(128, 3, 3);
+    --rojo-muy-claro:rgb(248, 237, 237);
 }
 
 
@@ -211,9 +214,6 @@ Reduciendo la ventana se reduce la letra
 
 
 
-
-
-
 /*
                     ########## examen.html  ##########
 */
@@ -242,56 +242,19 @@ label.box {
     border: 1px solid var(--verde-claro)
 }
 
-/* pregunta 1 (cuatro opciones) */
-#p1r1:checked~label.p1r1 .circle,
-#p1r2:checked~label.p1r2 .circle,
-#p1r3:checked~label.p1r3 .circle,
-#p1r4:checked~label.p1r4 .circle,
-/* pregunta 2 (cuatro opciones)*/
-#p2r1:checked~label.p2r1 .circle,
-#p2r2:checked~label.p2r2 .circle,
-#p2r3:checked~label.p2r3 .circle,
-#p2r4:checked~label.p2r4 .circle,
-/* pregunta 3*/
-#p3r1:checked~label.p3r1 .circle,
-#p3r2:checked~label.p3r2 .circle,
-#p3r3:checked~label.p3r3 .circle,
-#p3r4:checked~label.p3r4 .circle,
-/* pregunta 4*/
-#p4r1:checked~label.p4r1 .circle,
-#p4r2:checked~label.p4r2 .circle,
-#p4r3:checked~label.p4r3 .circle,
-#p4r4:checked~label.p4r4 .circle,
-/* pregunta 5*/
-#p5r1:checked~label.p5r1 .circle,
-#p5r2:checked~label.p5r2 .circle,
-#p5r3:checked~label.p5r3 .circle,
-#p5r4:checked~label.p5r4 .circle,
-/* pregunta 6*/
-#p6r1:checked~label.p6r1 .circle,
-#p6r2:checked~label.p6r2 .circle,
-#p6r3:checked~label.p6r3 .circle,
-#p6r4:checked~label.p6r4 .circle,
-/* pregunta 7*/
-#p7r1:checked~label.p7r1 .circle,
-#p7r2:checked~label.p7r2 .circle,
-#p7r3:checked~label.p7r3 .circle,
-#p7r4:checked~label.p7r4 .circle,
-/* pregunta 8*/
-#p8r1:checked~label.p8r1 .circle,
-#p8r2:checked~label.p8r2 .circle,
-#p8r3:checked~label.p8r3 .circle,
-#p8r4:checked~label.p8r4 .circle,
-/* pregunta 9*/
-#p9r9:checked~label.p9r1 .circle,
-#p9r2:checked~label.p9r2 .circle,
-#p9r3:checked~label.p9r3 .circle,
-#p9r4:checked~label.p9r4 .circle,
-/* pregunta 10*/
-#p10r1:checked~label.p10r1 .circle,
-#p10r2:checked~label.p10r2 .circle,
-#p10r3:checked~label.p10r3 .circle,
-#p10r4:checked~label.p10r4 .circle
+
+
+/* forpat del círculo (check de las preguntas cuando se seleccionan*/
+#p1r1:checked~label.p1r1 .circle, #p1r2:checked~label.p1r2 .circle, #p1r3:checked~label.p1r3 .circle, #p1r4:checked~label.p1r4 .circle,
+#p2r1:checked~label.p2r1 .circle, #p2r2:checked~label.p2r2 .circle, #p2r3:checked~label.p2r3 .circle, #p2r4:checked~label.p2r4 .circle,
+#p3r1:checked~label.p3r1 .circle, #p3r2:checked~label.p3r2 .circle, #p3r3:checked~label.p3r3 .circle, #p3r4:checked~label.p3r4 .circle,
+#p4r1:checked~label.p4r1 .circle, #p4r2:checked~label.p4r2 .circle, #p4r3:checked~label.p4r3 .circle, #p4r4:checked~label.p4r4 .circle,
+#p5r1:checked~label.p5r1 .circle, #p5r2:checked~label.p5r2 .circle, #p5r3:checked~label.p5r3 .circle, #p5r4:checked~label.p5r4 .circle,
+#p6r1:checked~label.p6r1 .circle, #p6r2:checked~label.p6r2 .circle, #p6r3:checked~label.p6r3 .circle, #p6r4:checked~label.p6r4 .circle,
+#p7r1:checked~label.p7r1 .circle, #p7r2:checked~label.p7r2 .circle, #p7r3:checked~label.p7r3 .circle, #p7r4:checked~label.p7r4 .circle,
+#p8r1:checked~label.p8r1 .circle, #p8r2:checked~label.p8r2 .circle, #p8r3:checked~label.p8r3 .circle, #p8r4:checked~label.p8r4 .circle,
+#p9r9:checked~label.p9r1 .circle, #p9r2:checked~label.p9r2 .circle, #p9r3:checked~label.p9r3 .circle, #p9r4:checked~label.p9r4 .circle,
+#p10r1:checked~label.p10r1 .circle, #p10r2:checked~label.p10r2 .circle, #p10r3:checked~label.p10r3 .circle, #p10r4:checked~label.p10r4 .circle
 {
     /*ponemos unidades absolutas (px) ya que el borde 
     de la caja de texto es irrelevante en función de la pantalla
@@ -301,9 +264,79 @@ label.box {
 }
 
 
-/* color al posicionar el raton encima de cada respuesta */
-label.box:hover {
-    background: var(--verde-muy-claro)
+/* fomato de la pretuna una vez seleccionada */
+#p1r1:checked~label.p1r1 .course, #p1r2:checked~label.p1r2 .course, #p1r3:checked~label.p1r3 .course, #p1r4:checked~label.p1r4 .course,
+#p2r1:checked~label.p2r1 .course, #p2r2:checked~label.p2r2 .course, #p2r3:checked~label.p2r3 .course, #p2r4:checked~label.p2r4 .course,
+#p3r1:checked~label.p3r1 .course, #p3r2:checked~label.p3r2 .course, #p3r3:checked~label.p3r3 .course, #p3r4:checked~label.p3r4 .course,
+#p4r1:checked~label.p4r1 .course, #p4r2:checked~label.p4r2 .course, #p4r3:checked~label.p4r3 .course, #p4r4:checked~label.p4r4 .course,
+#p5r1:checked~label.p5r1 .course, #p5r2:checked~label.p5r2 .course, #p5r3:checked~label.p5r3 .course, #p5r4:checked~label.p5r4 .course,
+#p6r1:checked~label.p6r1 .course, #p6r2:checked~label.p6r2 .course, #p6r3:checked~label.p6r3 .course, #p6r4:checked~label.p6r4 .course,
+#p7r1:checked~label.p7r1 .course, #p7r2:checked~label.p7r2 .course, #p7r3:checked~label.p7r3 .course, #p7r4:checked~label.p7r4 .course
+#p8r1:checked~label.p8r1 .course, #p8r2:checked~label.p8r2 .course, #p8r3:checked~label.p8r3 .course, #p8r4:checked~label.p8r4 .course,
+#p9r1:checked~label.p9r1 .course, #p9r2:checked~label.p9r2 .course, #p9r3:checked~label.p9r3 .course, #p9r4:checked~label.p9r4 .course,
+#p10r1:checked~label.p10r1 .course, #p10r2:checked~label.p10r2 .course, #p10r3:checked~label.p10r3 .course, #p10r4:checked~label.p10r4 .course
+{
+    display: flex;
+    padding: 0vw;
+    border-radius: 1vw;
+    background-color: var(--verde-muy-claro);
+     /*ponemos unidad absoluta, ya que es el borde de la pretunga, indiferente del tamaño de la pantalla*/
+    border: 1px solid var(--verde-oscuro)
+}
+
+
+
+/*formato de la preguna fallada, tras finalizar el examen*/
+label.box .fallo {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0vw;
+    border-radius: 1vw;
+    background-color: var(--rojo-muy-claro);
+    /*ponemos unidad absoluta, ya que es el borde de la pretunga, indiferente del tamaño de la pantalla*/
+    border: 1px solid var(--rojo-normal)
+}
+
+
+
+/*formato de la preguna acertada, tras finalizar el examen*/
+label.box .acierto {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0vw;
+    border-radius: 1vw;
+    cursor: pointer;
+    background-color: var(--verde-muy-claro);
+    /*ponemos unidad absoluta, ya que es el borde de la pretunga, indiferente del tamaño de la pantalla*/
+    border: 1px solid var(--verde-oscuro)
+}
+
+/*formato de la preguna ni acertada ni fallada, tras finalizar el examen*/
+
+label.box .normal {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0vw;
+    border-radius: 1vw;
+    cursor: pointer;
+    background-color: white;
+    /*ponemos unidad absoluta, ya que es el borde de la pretunga, indiferente del tamaño de la pantalla*/
+    border: 1px solid var(--verde-normal)
+}
+
+
+/*circle2 se utiliza despues de finalizar el examen, no se puede interactura sobre el (no tiene checked*/
+label.box .circle2 {
+    height: 1vw;
+    width: 1vw;
+    border-radius: 50%;
+    margin: 0.8vw;
+    /*Tras varias pruebas responsive, queda mejor con unidades absolutas (px)*/
+    border: 2px solid var(--verde-claro);
+    display: inline-block
 }
 
 

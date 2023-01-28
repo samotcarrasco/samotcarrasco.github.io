@@ -11,7 +11,7 @@
             },
             "tipo": "larga",
             "imagen": "",
-            "correcta": "B"
+            "correcta": "2"
         },
         {
             "id": "2",
@@ -24,7 +24,7 @@
             },
             "tipo": "corta",
             "imagen": "",
-            "correcta": "C"
+            "correcta": "3"
         },
         {
             "id": "3",
@@ -37,7 +37,7 @@
             },
             "tipo": "corta",
             "imagen": "",
-            "correcta": "A"
+            "correcta": "1"
         },
         {
             "id": "4",
@@ -50,7 +50,7 @@
             },
             "tipo": "larga",
             "imagen": "",
-            "correcta": "A"
+            "correcta": "1"
         },
         {
             "id": "5",
@@ -63,7 +63,7 @@
             },
             "tipo": "corta",
             "imagen": "",
-            "correcta": "B"
+            "correcta": "2"
         },
         {
             "id": "6",
@@ -76,7 +76,7 @@
             },
             "tipo": "larga",
             "imagen": "",
-            "correcta": "B"
+            "correcta": "2"
         },
         {
             "id": "7",
@@ -89,7 +89,7 @@
             },
             "tipo": "imagen",
             "imagen": "assets/img_examen/senalPeligro.jpg",
-            "correcta": "B"
+            "correcta": "1"
         },
         {
             "id": "8",
@@ -102,7 +102,7 @@
             },
             "tipo": "imagen",
             "imagen": "assets/img_examen/stop.png",
-            "correcta": "A"
+            "correcta": "1"
         },
         {
             "id": "9",
@@ -115,7 +115,7 @@
             },
             "tipo": "larga",
             "imagen": "",
-            "correcta": "C"
+            "correcta": "3"
         },
         {
             "id": "10",
@@ -128,7 +128,7 @@
             },
             "tipo": "corta",
             "imagen": "",
-            "correcta": "C"
+            "correcta": "4"
         },
         {
             "id": "11",
@@ -136,12 +136,12 @@
             "opciones": {
                 "opc1": "100 km/h",
                 "opc2": "80 km/h",
-                "opc3": "90 km/h",
-                "opc4": "120 km/h"
+                "opc3": "120 km/h",
+                "opc4": "90 km/h"
             },
             "tipo": "corta",
             "imagen": "",
-            "correcta": "C"
+            "correcta": "4"
         }
     ]
 }

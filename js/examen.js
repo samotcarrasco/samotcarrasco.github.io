@@ -11,14 +11,18 @@ xhttp.send();
 
 //en este array guardaremos todas las preguntas que se han generado, para posteriormente hacer el calculo del resultado
 let preguntas = [];
+
+//en este array guardaremos todas las respuestas que ha seleccionado el usuario en cada pregunta
+let respuestas = [];
+
 //variable global con el número de preguntas que tendrá el examen
-let numPreguntas=10;
+let numPreguntas = 10;
 
 xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
         let datos = JSON.parse(this.responseText);
         console.log(datos);
-        let preguntasTotalesJson=datos.preguntas.length;
+        let preguntasTotalesJson = datos.preguntas.length;
         console.log("preguntas JSON -> ", preguntasTotalesJson);
         //resto de código
 
@@ -87,7 +91,7 @@ function anadirPreguntaHTML(preguntaObj, contador) {
     let codigoHtml = "";
     switch (preguntaObj.tipo) {
         case "larga":
-            
+
             codigoHtml = `<form class="row g-2" id="f${preguntaObj.id}"> 
              <article class="col-12"> 
             <p class="larga fw-bold mt-3" id="p${contador}">  ${contador}.- ${preguntaObj.enunciado}</p>
@@ -110,61 +114,61 @@ function anadirPreguntaHTML(preguntaObj, contador) {
             break;
         case "corta":
 
-            codigoHtml = "<form class=\"row g-2\" id=\"f"+preguntaObj.id+"\"> <article class=\"col-12\">" +
-                "<p class=\"corta fw-bold mt-3\" id=\"p" + contador + "\"> " + contador + ".-" + preguntaObj.enunciado + "</p>" +
-                "<div class=\"row\">" +
-                "<div class=\"col-md-6\"> <input type=\"radio\" name=\"box\" id=\"p" + contador + "r1\"> " +
-                "<label for=\"p" + contador + "r1\" class=\"box p" + contador + "r1 w-100\"> " +
-                "<div class=\"course\"> <span class=\"circle\"></span> <span class=\"subject\" id=\"p" + contador + "opc1" + "\">" + preguntaObj.opciones[0] + "</span> </div> </label> </div>" +
-                "<div class=\"col-md-6\"> <input type=\"radio\" name=\"box\" id=\"p" + contador + "r2\"> " +
-                "<label for=\"p" + contador + "r2\" class=\"box p" + contador + "r2 w-100\"> " +
-                "<div class=\"course\"> <span class=\"circle\"></span> <span class=\"subject\" id=\"p" + contador + "opc2" + "\">" + preguntaObj.opciones[1] + "</span> </div> </label> </div>" +
-                "<div class=\"col-md-6\"> <input type=\"radio\" name=\"box\" id=\"p" + contador + "r3\"> " +
-                "<label for=\"p" + contador + "r3\" class=\"box p" + contador + "r3 w-100\"> " +
-                "<div class=\"course\"> <span class=\"circle\"></span> <span class=\"subject\" id=\"p" + contador + "opc3" + "\">" + preguntaObj.opciones[2] + "</span> </div> </label> </div>" +
-                "<div class=\"col-md-6\"> <input type=\"radio\" name=\"box\" id=\"p" + contador + "r4\"> " +
-                "<label for=\"p" + contador + "r4\" class=\"box p" + contador + "r4 w-100\"> " +
-                "<div class=\"course\"> <span class=\"circle\"></span> <span class=\"subject\" id=\"p" + contador + "opc4" + "\">" + preguntaObj.opciones[3] + "</span> </div> </label> </div>" +
-                "</article>" +
-                "</form>";
+            codigoHtml = `<form class="row g-2" id="f${preguntaObj.id}"> <article class="col-12"> 
+                <p class="corta fw-bold mt-3" id="p${contador}">${contador}.-${preguntaObj.enunciado}</p> 
+                <div class="row"> 
+                <div class="col-md-6"> <input type="radio" name="box" id="p${contador}r1">  
+                <label for="p${contador}r1" class="box p${contador}r1 w-100">  
+                <div class="course"> <span class="circle"></span> <span class="subject" id="p${contador}opc1">${preguntaObj.opciones[0]}</span> </div> </label> </div> 
+                <div class="col-md-6"> <input type="radio" name="box" id="p${contador}r2">  
+                <label for="p${contador}r2" class="box p${contador}r2 w-100">  
+                <div class="course"> <span class="circle"></span> <span class="subject" id="p${contador}opc2">${preguntaObj.opciones[1]}</span> </div> </label> </div> 
+                <div class="col-md-6"> <input type="radio" name="box" id="p${contador}r3">  
+                <label for="p${contador}r3" class="box p${contador}r3 w-100">  
+                <div class="course"> <span class="circle"></span> <span class="subject" id="p${contador}opc3">${preguntaObj.opciones[2]}</span> </div> </label> </div> 
+                <div class="col-md-6"> <input type="radio" name="box" id="p${contador}r4">  
+                <label for="p${contador}r4" class="box p${contador}r4 w-100">  
+                <div class="course"> <span class="circle"></span> <span class="subject" id="p${contador}opc4">${preguntaObj.opciones[3]}</span> </div> </label> </div> 
+                </article> 
+                </form>`;
             break;
         case "imagen":
-            codigoHtml = " <form class=\"row g-2\" id=\"f"+preguntaObj.id+"\"> <article class=\"col-sm-6\"> " +
-                "<p class=\"imagen fw-bold mt-3\" id=\"p" + contador + "\"> " + contador + ".-" + preguntaObj.enunciado + "</p>" +
-                "<section>" +
-                "<input type=\"radio\" name=\"box\" id=\"p" + contador + "r1\"> " +
-                "<label for=\"p" + contador + "r1\" class=\"box p" + contador + "r1 w-100\"> " +
-                "<div class=\"course\">" +
-                "<span class=\"circle\"></span> <span id=\"p" + contador + "opc1" + "\">" + preguntaObj.opciones[0] + "</span>" +
-                "</div></label></section>" +
-                "<section>" +
-                "<input type=\"radio\" name=\"box\" id=\"p" + contador + "r2\"> " +
-                "<label for=\"p" + contador + "r2\" class=\"box p" + contador + "r2 w-100\"> " +
-                "<div class=\"course\">" +
-                "<span class=\"circle\"></span> <span id=\"p" + contador + "opc2" + "\">" + preguntaObj.opciones[1] + "</span>" +
-                "</div></label></section>" +
-                "<section>" +
-                "<input type=\"radio\" name=\"box\" id=\"p" + contador + "r3\"> " +
-                "<label for=\"p" + contador + "r3\" class=\"box p" + contador + "r3 w-100\"> " +
-                "<div class=\"course\">" +
-                "<span class=\"circle\"></span> <span id=\"p" + contador + "opc3" + "\">" + preguntaObj.opciones[2] + "</span>" +
-                "</div></label></section>" +
-                "<section>" +
-                "<input type=\"radio\" name=\"box\" id=\"p" + contador + "r4\"> " +
-                "<label for=\"p" + contador + "r4\" class=\"box p" + contador + "r4 w-100\"> " +
-                "<div class=\"course\">" +
-                "<span class=\"circle\"></span> <span id=\"p" + contador + "opc4" + "\">" + preguntaObj.opciones[3] + "</span>" +
-                "</div></label></section>" +
-                "</article>" +
-                "<aside class=\"col-sm-6 imagen-pregunta\">" +
-                "<img class=\"img mt-3\" id=\"imagenp" + contador + "\" src=\"" + preguntaObj.imagen + "\">" +
-                "</aside>" +
-                "</form > ";
+            codigoHtml = `<form class="row g-2" id="f${preguntaObj.id}"> <article class="col-sm-6">  
+                <p class="imagen fw-bold mt-3" id="p${contador}">${contador}.-${preguntaObj.enunciado}</p> 
+                <section> 
+                <input type="radio" name="box" id="p${contador}r1">  
+                <label for="p${contador}r1" class="box p${contador}r1 w-100">  
+                <div class="course"> 
+                <span class="circle"></span> <span id="p${contador}opc1">${preguntaObj.opciones[0]}</span> 
+                </div></label></section> 
+                <section> 
+                <input type="radio" name="box" id="p${contador}r2">  
+                <label for="p${contador}r2" class="box p${contador}r2 w-100">  
+                <div class="course"> 
+                <span class="circle"></span> <span id="p${contador}opc2">${preguntaObj.opciones[1]}</span> 
+                </div></label></section> 
+                <section> 
+                <input type="radio" name="box" id="p${contador}r3">  
+                <label for="p${contador}r3" class="box p${contador}r3 w-100">  
+                <div class="course"> 
+                <span class="circle"></span> <span id="p${contador}opc3">${preguntaObj.opciones[2]}</span> 
+                </div></label></section> 
+                <section> 
+                <input type="radio" name="box" id="p${contador}r4">  
+                <label for="p${contador}r4" class="box p${contador}r4 w-100">  
+                <div class="course"> 
+                <span class="circle"></span> <span id="p${contador}opc4">${preguntaObj.opciones[3]}</span> 
+                </div></label></section> 
+                </article> 
+                <aside class="col-sm-6 imagen-pregunta"> 
+                <img class="img mt-3" id="imagen p${contador}" src="${preguntaObj.imagen}"> 
+                </aside> 
+                </form >`;
             break;
     }
 
 
-    console.log(codigoHtml);
+    // console.log(codigoHtml);
     var padre = document.getElementById("padrePreguntas");
     var nuevoHijo = document.createElement("form");
     nuevoHijo.classList.add("row", "g-2");
@@ -173,27 +177,84 @@ function anadirPreguntaHTML(preguntaObj, contador) {
     // Añade el nuevo nodo hijo al nodo padre
     padre.appendChild(nuevoHijo);
 
-    console.log(nuevoHijo);
+    //  console.log(nuevoHijo);
 }
 
 
 
 
-//TO-DO
 let finalizar = document.getElementById('finalizarB');
 finalizar.addEventListener("click", comprobarResultado);
 
-function comprobarResultado (){
-    console.log(preguntas.length);
-    for (let objeto of preguntas) {
-        console.log(objeto.id + "-"+objeto.correcta);
+
+function comprobarResultado() {
+
+    const radioButtons = document.querySelectorAll('input[type="radio"]');
+
+    let preguntasContestadas = [];
+    for (let i = 0; i < radioButtons.length; i++) {
+        if (radioButtons[i].checked) {
+            //dentro de la cadena p1r3 (pregunta 1 respuesta 3), obtenenos la pregunta. si el id es p10r2, cogemos 2 caracteres
+            let numPregunta = (radioButtons[i].id.length == 4) ? radioButtons[i].id.charAt(1) : radioButtons[i].id.charAt(1) + radioButtons[i].id.charAt(2);
+            preguntasContestadas[numPregunta - 1] = radioButtons[i].id;
+            //console.log("pregunta contestada: -", numPregunta-1 , " con la respusta", preguntasContestadas[numPregunta-1]);
+            //console.log(radioButtons[i].id + " esta seleccionado");
+        }
     }
-    
-    var checksActivos = document.querySelectorAll("#f1 input[type='checkbox']:checked");
-    if (checksActivos.length < 1){
-        alert("No se han contestado todas las preguntas, !!!! no restan los errores!!!");
+
+    //quitamos los "undefined para contar cuantas preguntas se han contestado
+    preguntasContestadas = preguntasContestadas.filter(function (elemento) {
+        return elemento !== undefined;
+    });
+
+    //    console.log("preguntas contestadas: ", preguntasContestadas.length);
+
+    if (preguntasContestadas.length < preguntas.length) {
+        alert("Para finalizar el examen es obligatorio contestar todas las preguntas");
+    }
+    else {
+        let aciertos = contarAciertos(preguntasContestadas, preguntas);
+        configurarExamenFinalizado(preguntasContestadas, preguntas);
+        alert("Examen finalizado, nota: " + aciertos + "/" + preguntas.length);
+        //deshabilitamos el botón finalizar
+        let btn = document.getElementById("finalizarB");
+        btn.disabled = true;
     }
 }
+
+
+function contarAciertos(preguntasContestadas, preguntas) {
+    console.log(preguntasContestadas.length);
+    let aciertos = 0;    
+    for (let i = 0; i < preguntas.length; i++) {
+        // console.log("pregunta generada: ", i, "id", preguntas[i].id, "correcta: ", preguntas[i].correcta);
+        // console.log("pregunta contestada: ", i, "id", i+1, "contestada: ", preguntasContestadas[i]);
+
+        let respuesta = (preguntasContestadas[i].length == 4) ? preguntasContestadas[i].charAt(3) : preguntasContestadas[i].charAt(4);
+        console.log(respuesta);
+        if (respuesta == preguntas[i].correcta) {
+            aciertos++;
+            console.log("ACIERTO EN PREGUNTA", i + 1);
+        }
+    }  
+    return aciertos;
+}
+
+function configurarExamenFinalizado(preguntasContestadas, preguntas) {
+    
+     for (let i = 0; i < preguntas.length; i++) {
+         let respuesta = (preguntasContestadas[i].length == 4) ? preguntasContestadas[i].charAt(3) : preguntasContestadas[i].charAt(4);
+         if (respuesta == preguntas[i].correcta) {
+             console.log("quitando course y añadiendo acierto en ", preguntasContestadas[i]);
+             var hijo = document.querySelector("#p10r2 > .course"); // Seleccionar hijo con la clase "course"
+             hijo.classList.remove("course");
+             hijo.classList.add("acierto"); 
+          
+         }
+     }
+ }
+
+
 
 
 

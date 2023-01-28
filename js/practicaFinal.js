@@ -465,7 +465,7 @@ function mostrarUsuarios() {
     const usuariosOrdenados = usuarios.sort((a, b) => a._nombre.localeCompare(b._nombre));
     let modalContent = "";
     usuariosOrdenados.forEach(usuario => {
-        modalContent += `
+        modalContent = `
             <div class="usuario">
                 <p>Nombre: ${usuario._nombre}</p>
                 <p>Usuario: ${usuario._nombreUser}</p>
