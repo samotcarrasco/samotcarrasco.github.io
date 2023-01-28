@@ -192,10 +192,13 @@ usuarios.forEach(function (usuario) {
 
 
 
-//let AJAXFinalizado = false;
+
+// Estan serían otras formas de leer el fichero, con AJAX (o con fetch)
+//de esta forma es asíncrono y no nos interesa, lo dejo comentado.
+
 /* Leemos archivo con AJAX */
 /*const xhttp = new XMLHttpRequest();
-xhttp.open("GET", "assets/json/personas.json", true);
+xhttp.open("GET", "js/json.js", true);
 xhttp.send();
 
 xhttp.onreadystatechange = function () {
@@ -222,6 +225,9 @@ xhttp.onreadystatechange = function () {
 //     .catch(error => {
 //         console.error('(ejercicio 7) Error al leer el archivo:', error);
 //     });
+
+
+
 
 
 //ejercicio 8
@@ -365,26 +371,165 @@ function obtenerArray() {
 
 mostrarInicioEjercicio(12, "Mostrando array de usuarios desde la variable global");
 
-    // variable global
-    const arrayUsuarios = obtenerArray();
-    console.log("\tLa longitud del array es: " + arrayUsuarios.length);
-    
-    //otra forma de recorrer el array
-    for (let i = 0; i < arrayUsuarios.length; i++) {
-        console.log("\t" + arrayUsuarios[i]._nombre);
-    }
+// variable global
+const arrayUsuarios = obtenerArray();
+console.log("\tLa longitud del array es: " + arrayUsuarios.length);
 
-    //ejercicio 13
-//     Cree las variables que considere necesarias, de tal manera que cada
+//otra forma de recorrer el array
+for (let i = 0; i < arrayUsuarios.length; i++) {
+    console.log("\t" + arrayUsuarios[i]._nombre);
+}
+
+//ejercicio 13
+// Cree las variables que considere necesarias, de tal manera que cada
 // variable contenga los usuarios de la misma ciudad.
 // Hágalo a partir del array de objetos de usuarios del punto anterior. Muestre el
 // resultado por consola.
 
-mostrarInicioEjercicio(13, "Ejercicio13");
+mostrarInicioEjercicio(13, "Creación variables con usuarios de la misma ciudad");
 
+let existeCiudad = false;
+let arrayCiudades = [];
+
+//en arrayCiudades guardaremos las ciudades diferentes
 for (let i = 0; i < arrayUsuarios.length; i++) {
-    console.log("\t" + arrayUsuarios[i]._direccion.ciudad);
+    arrayCiudades.forEach(function (ciudad) {
+        if (ciudad == arrayUsuarios[i]._direccion.ciudad) {
+            existeCiudad = true;
+        }
+    });
+    if (!existeCiudad) {
+        arrayCiudades.push(arrayUsuarios[i]._direccion.ciudad);
+    }
 }
+
+//Mostramos las ciudades diferentes que hay
+console.log("\tHay ", arrayCiudades.length, "ciudades:");
+arrayCiudades.forEach(function (ciudad) {
+    console.log("\t- ", ciudad);
+});
+
+//el siguiente paso es crear tantos arrays como ciudades hay. 
+//cada uno de estos array contendrá las personas que viven en ella
+
+let objeto = {};
+arrayCiudades.forEach(function (ciudad) {
+    objeto[ciudad] = [];
+    arrayUsuarios.forEach(function (usuario) {
+        if (usuario._direccion.ciudad == ciudad) {
+            objeto[ciudad].push(usuario);
+            console.log("\tAñadido el usuario ", usuario._nombre, " a la ciudad ", ciudad)
+        }
+    });
+    //console.log("\tciudad", objeto);
+});
+
+
+//console.log(objeto);
+
+// Ejercicio 14
+// Ordene de forma creciente los arrays anteriores por el valor de la
+// propiedad "nombre". Muestre el resultado por consola.
+
+mostrarInicioEjercicio(14, "Mostrando arrays ordenados por nombre");
+
+arrayCiudades.forEach(function (ciudad) {
+    objeto[ciudad].sort(function (a, b) {
+        if (a._nombre > b._nombre) {
+          return 1;
+        }
+        if (a._nombre < b._nombre) {
+          return -1;
+        }
+        // a must be equal to b
+        return 0;
+    });
+    console.log(objeto[ciudad]);
+});
+
+
+
+
+//15 Implemente la función mostrarUsuarios().
+// Inserte en la barra de navegación de la página principal de su proyecto, una
+// opción que se llame "Usuarios", de tal manera, que cuando el usuario haga click
+// sobre ella, se muestre un modal con todos los usuarios ordenados por el valor de
+// la propiedad "nombre".
+// Diseñe el modal para que aparezcan los siguientes datos de cada usuario:
+// Nombre, Usuario, Email y Empresa.
+
+mostrarInicioEjercicio(15, "Insertar modal consulta usuarios");
+
+
+function mostrarUsuarios() {
+    const usuariosOrdenados = usuarios.sort((a, b) => a._nombre.localeCompare(b._nombre));
+    let modalContent = "";
+    usuariosOrdenados.forEach(usuario => {
+        modalContent += `
+            <div class="usuario">
+                <p>Nombre: ${usuario._nombre}</p>
+                <p>Usuario: ${usuario._nombreUser}</p>
+                <p>Email: ${usuario._email}</p>
+                <p>Empresa: ${usuario._empresa}</p>
+            </div>
+        `;
+    });
+
+    // Mostrar el modal con el contenido generado
+    const modal = document.getElementById("modal-usuarios");
+    modal.innerHTML = modalContent;
+    modal.style.display = "block";
+}
+
+
+
+const btnUsuarios = document.getElementById("btn-usuarios");
+btnUsuarios.addEventListener("click", mostrarUsuarios);
+
+<div id="modal-usuarios" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Usuario</th>
+                        <th>Email</th>
+                        <th>Empresa</th>
+                    </tr>
+                </thead>
+                <tbody id="modal-content">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w
+
+
+
+    //16
+
+
+    Implemente la función filtrarCiudad().
+En el modal del ejercicio anterior, inserte un elemento Select que muestre como
+opciones los valores de las ciudades del json.
+Cuando el usuario seleccione una ciudad de la lista desplegable, se deberá
+actualizar la vista mostrando solamente aquellos que sean de la ciudad
+seleccionada.
 
 
 
