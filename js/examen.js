@@ -245,12 +245,25 @@ function configurarExamenFinalizado(preguntasContestadas, preguntas) {
      for (let i = 0; i < preguntas.length; i++) {
          let respuesta = (preguntasContestadas[i].length == 4) ? preguntasContestadas[i].charAt(3) : preguntasContestadas[i].charAt(4);
          if (respuesta == preguntas[i].correcta) {
-             console.log("quitando course y añadiendo acierto en ", preguntasContestadas[i]);
-             var hijo = document.querySelector("#p10r2 > .course"); // Seleccionar hijo con la clase "course"
-             hijo.classList.remove("course");
-             hijo.classList.add("acierto"); 
-          
+             console.log("quitando course y añadiendo acierto en -", preguntasContestadas[i] , "-");
+             var labelId = document.getElementById(preguntasContestadas[i]);
+             var division = labelId.parentNode.querySelector(".course");
+             division.innerHTML = `<i class="fa-solid fa-check"></i>`;
+             division.className = "acierto";
          }
+         else{ //pregunta fallada, primero, ponemos la eleccion como fallo:
+            console.log("quitando course y añadiendo fallo en -", preguntasContestadas[i] , "-");
+            var labelId = document.getElementById(preguntasContestadas[i]);
+            var division = labelId.parentNode.querySelector(".course");
+            division.className = "fallo";
+            //despues tenemos que sacar el id de la opcion correcta, para ponerla en verde
+            let preguntaEx=i+1;
+            let idOpcion = "p"+preguntaEx+"r"+preguntas[i].correcta;
+            console.log("En la pregunta", i, " la opcion correcta es: ", idOpcion);
+            var labelId = document.getElementById(idOpcion);
+            var division = labelId.parentNode.querySelector(".course");
+            division.className = "acierto";
+        }
      }
  }
 
