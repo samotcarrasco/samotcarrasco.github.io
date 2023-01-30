@@ -237,6 +237,7 @@ function contarAciertos(preguntasContestadas, preguntas) {
             console.log("ACIERTO EN PREGUNTA", i + 1);
         }
     }
+    console.log("NOTA: ", aciertos, " SOBRE ", preguntas.length)
     return aciertos;
 }
 

@@ -246,20 +246,66 @@ let direccion = { calle: "", ciudad: "", codigoPostal: "" };
 
 
 class Usuario {
+    #nombre = "";
+    #nombreUser = "";
+    #email = "";
+    #empresa = "";
+    #direccion = "";
+    #url = "";
+    
     constructor(nombre, nombreUser, email, empresa, direccion, url) {
-        this._nombre = nombre;
-        this._nombreUser = nombreUser;
-        this._email = email;
-        this._empresa = empresa;
-        this._direccion = direccion;
-        this._url = url;
+        this.#nombre = nombre;
+        this.#nombreUser = nombreUser;
+        this.#email = email;
+        this.#empresa = empresa;
+        this.#direccion = direccion;
+        this.#url = url;
     }
 
+    //getters
+    get nombre(){
+        return this.#nombre;
+    }
+    get nombreUser(){
+        return this.#nombreUser;
+    }
+    get email(){
+        return this.#email;
+    }
+    get empresa(){
+        return this.#empresa.nombre;
+    }
+    get direccion(){
+        return this.#direccion;
+    }
+    get url(){
+        return this.#url;
+    }
     static getId(url) {
         let partes = url.split("/");
         let tamanio = partes.length;
         return partes[tamanio - 2];
     }
+    
+    //setters
+    set nombre(nombre) {
+        this.#nombre = nombre;
+    }
+    set nombreUser(nombreUser) {
+        this.#nombreUser = nombreUser;
+    }
+    set email(email) {
+        this.#email = email;
+    }
+    set empresa(empresa) {
+        this.#empresa = empresa;
+    }
+    set direccion(direccion) {
+        this.#direccion = direccion;
+    }
+    set url(url) {
+        this.#url = url;
+    }    
 }
 
 
@@ -271,19 +317,28 @@ mostrarInicioEjercicio(9, "Mostrando datos del objeto userPrueba");
 
 
 //en la empresa, a parte del nombre, también hemos incluido el sector, para comprobar el funcionamiento de que solo se devuelve el nombre
-let direccion2 = { calle: "Gravina 7", ciudad: "Roma", codigoPostal: "41449" };
-let userPrueba = new Usuario("Prueba Practica Final", "PruebaPF7", "jpruebapf7@hotmail.com", "Leroy Merlin", direccion2, "https://prueba.dev/api/users/102/");
+let direccionUsuario = { calle: "Gravina 7", ciudad: "Roma", codigoPostal: "41449" };
+let userPrueba = new Usuario("Prueba Practica Final", "PruebaPF7", "jpruebapf7@hotmail.com", "Leroy Merlin", direccionUsuario,"https://prueba.dev/api/users/102/");
 
 
-console.log("\tnombre: " + userPrueba._nombre);
-console.log("\tnombreUser: " + userPrueba._nombreUser);
-console.log("\temail: " + userPrueba._email);
-console.log("\tempresa: " + userPrueba._empresa);
-console.log("\tcalle: " + userPrueba._direccion.calle);
-console.log("\tciudad: " + userPrueba._direccion.ciudad);
-console.log("\tCP: " + userPrueba._direccion.codigoPostal);
-console.log("\turl: " + userPrueba._url);
-console.log("\tidUser: " + Usuario.getId(userPrueba._url));
+// userPrueba.nombre = "Prueba Practica Final";
+// userPrueba.nombreUser = "PruebaPF7";
+// userPrueba.email = "jpruebapf7@hotmail.com";
+// userPrueba.empresa = "Leroy Merlin";
+// userPrueba.direccion = direccionUsuario;
+// userPrueba.url = "https://prueba.dev/api/users/102/";
+
+
+
+console.log("\tnombre: " + userPrueba.nombre);
+console.log("\tnombreUser: " + userPrueba.nombreUser);
+console.log("\temail: " + userPrueba.email);
+console.log("\tempresa: " + userPrueba.empresa);
+console.log("\tcalle: " + userPrueba.direccion.calle);
+console.log("\tciudad: " + userPrueba.direccion.ciudad);
+console.log("\tCP: " + userPrueba.direccion.codigoPostal);
+console.log("\turl: " + userPrueba.url);
+console.log("\tidUser: " + Usuario.getId(userPrueba.url));
 
 
 //Ejercicio 10. Implemente una función que pasándole como parámetro un objeto del
@@ -322,36 +377,13 @@ let usuarioJSON = JSON.parse(elementoJSON);
 
 let usuario = crearUsuario(usuarioJSON);
 console.log("Mostramos, por ejemplo, el email del usuario: ");
-console.log(usuario._email);
+console.log(usuario.email);
 
 
 //ejercicio 11 Implemente una función que recorra el JSON y devuelva un array de
 //objetos del tipo Usuario. (Apóyese en la función del ejercicio anterior).
 
 mostrarInicioEjercicio(11, "Creando función que devuelve array de usuarios");
-
-// function obtenerArray() {
-
-//     //variable local
-//     let arrayUsuarios = [];
-
-//     /* Leemos archivo con AJAX */
-//     const xhttp = new XMLHttpRequest();
-//     xhttp.open("GET", "assets/json/personas.json", true);
-//     xhttp.send();
-
-//     xhttp.onreadystatechange = function () {
-//         if (this.readyState == 4 && this.status == 200) {
-//             let persona = JSON.parse(this.responseText);
-//             persona.forEach(function (persona) {
-//                 let usuario = crearUsuario(persona);
-//                 arrayUsuarios.push(usuario);
-//             });
-//         }
-//         console.log(arrayUsuarios.length)
-//         return arrayUsuarios;
-//     }
-// }
 
 function obtenerArray() {
     //variable local
@@ -360,7 +392,7 @@ function obtenerArray() {
     usuarios.forEach(function (usuario) {
         let user = crearUsuario(usuario);
         arrayUsuarios.push(user);
-        //console.log("\tAñadiendo al array al user: " + user._nombre);
+        //console.log("\tAñadiendo al array al user: " + user.nombre);
     });
     return arrayUsuarios;
 }
@@ -377,7 +409,7 @@ console.log("\tLa longitud del array es: " + arrayUsuarios.length);
 
 //otra forma de recorrer el array
 for (let i = 0; i < arrayUsuarios.length; i++) {
-    console.log("\t" + arrayUsuarios[i]._nombre);
+    console.log("\t" + arrayUsuarios[i].nombre);
 }
 
 //ejercicio 13
@@ -394,12 +426,12 @@ let arrayCiudades = [];
 //en arrayCiudades guardaremos las ciudades diferentes
 for (let i = 0; i < arrayUsuarios.length; i++) {
     arrayCiudades.forEach(function (ciudad) {
-        if (ciudad == arrayUsuarios[i]._direccion.ciudad) {
+        if (ciudad == arrayUsuarios[i].direccion.ciudad) {
             existeCiudad = true;
         }
     });
     if (!existeCiudad) {
-        arrayCiudades.push(arrayUsuarios[i]._direccion.ciudad);
+        arrayCiudades.push(arrayUsuarios[i].direccion.ciudad);
     }
 }
 
@@ -416,9 +448,9 @@ let objeto = {};
 arrayCiudades.forEach(function (ciudad) {
     objeto[ciudad] = [];
     arrayUsuarios.forEach(function (usuario) {
-        if (usuario._direccion.ciudad == ciudad) {
+        if (usuario.direccion.ciudad == ciudad) {
             objeto[ciudad].push(usuario);
-            console.log("\tAñadido el usuario ", usuario._nombre, " a la ciudad ", ciudad)
+            console.log("\tAñadido el usuario ", usuario.nombre, " a la ciudad ", ciudad)
         }
     });
     //console.log("\tciudad", objeto);
@@ -435,10 +467,10 @@ mostrarInicioEjercicio(14, "Mostrando arrays ordenados por nombre");
 
 arrayCiudades.forEach(function (ciudad) {
     objeto[ciudad].sort(function (a, b) {
-        if (a._nombre > b._nombre) {
+        if (a.nombre > b.nombre) {
           return 1;
         }
-        if (a._nombre < b._nombre) {
+        if (a.nombre < b.nombre) {
           return -1;
         }
         // a must be equal to b
@@ -461,75 +493,75 @@ arrayCiudades.forEach(function (ciudad) {
 mostrarInicioEjercicio(15, "Insertar modal consulta usuarios");
 
 
-function mostrarUsuarios() {
-    const usuariosOrdenados = usuarios.sort((a, b) => a._nombre.localeCompare(b._nombre));
-    let modalContent = "";
-    usuariosOrdenados.forEach(usuario => {
-        modalContent = `
-            <div class="usuario">
-                <p>Nombre: ${usuario._nombre}</p>
-                <p>Usuario: ${usuario._nombreUser}</p>
-                <p>Email: ${usuario._email}</p>
-                <p>Empresa: ${usuario._empresa}</p>
-            </div>
-        `;
-    });
+// function mostrarUsuarios() {
+//     const usuariosOrdenados = usuarios.sort((a, b) => a._nombre.localeCompare(b._nombre));
+//     let modalContent = "";
+//     usuariosOrdenados.forEach(usuario => {
+//         modalContent = `
+//             <div class="usuario">
+//                 <p>Nombre: ${usuario._nombre}</p>
+//                 <p>Usuario: ${usuario._nombreUser}</p>
+//                 <p>Email: ${usuario._email}</p>
+//                 <p>Empresa: ${usuario._empresa}</p>
+//             </div>
+//         `;
+//     });
 
-    // Mostrar el modal con el contenido generado
-    const modal = document.getElementById("modal-usuarios");
-    modal.innerHTML = modalContent;
-    modal.style.display = "block";
-}
-
-
-
-const btnUsuarios = document.getElementById("btn-usuarios");
-btnUsuarios.addEventListener("click", mostrarUsuarios);
-
-<div id="modal-usuarios" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Usuario</th>
-                        <th>Email</th>
-                        <th>Empresa</th>
-                    </tr>
-                </thead>
-                <tbody id="modal-content">
-                </tbody>
-            </table>
-        </div>
-    </div>
+//     // Mostrar el modal con el contenido generado
+//     const modal = document.getElementById("modal-usuarios");
+//     modal.innerHTML = modalContent;
+//     modal.style.display = "block";
+// }
 
 
 
+// const btnUsuarios = document.getElementById("btn-usuarios");
+// btnUsuarios.addEventListener("click", mostrarUsuarios);
 
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0); /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4); /* Black w
+// <div id="modal-usuarios" class="modal">
+//         <div class="modal-content">
+//             <span class="close">&times;</span>
+//             <table>
+//                 <thead>
+//                     <tr>
+//                         <th>Nombre</th>
+//                         <th>Usuario</th>
+//                         <th>Email</th>
+//                         <th>Empresa</th>
+//                     </tr>
+//                 </thead>
+//                 <tbody id="modal-content">
+//                 </tbody>
+//             </table>
+//         </div>
+//     </div>
+
+
+
+
+// .modal {
+//     display: none; /* Hidden by default */
+//     position: fixed; /* Stay in place */
+//     z-index: 1; /* Sit on top */
+//     left: 0;
+//     top: 0;
+//     width: 100%; /* Full width */
+//     height: 100%; /* Full height */
+//     overflow: auto; /* Enable scroll if needed */
+//     background-color: rgb(0, 0, 0); /* Fallback color */
+//     background-color: rgba(0, 0, 0, 0.4); /* Black w
 
 
 
     //16
 
 
-    Implemente la función filtrarCiudad().
-En el modal del ejercicio anterior, inserte un elemento Select que muestre como
-opciones los valores de las ciudades del json.
-Cuando el usuario seleccione una ciudad de la lista desplegable, se deberá
-actualizar la vista mostrando solamente aquellos que sean de la ciudad
-seleccionada.
+//     Implemente la función filtrarCiudad().
+// En el modal del ejercicio anterior, inserte un elemento Select que muestre como
+// opciones los valores de las ciudades del json.
+// Cuando el usuario seleccione una ciudad de la lista desplegable, se deberá
+// actualizar la vista mostrando solamente aquellos que sean de la ciudad
+// seleccionada.
 
 
 
