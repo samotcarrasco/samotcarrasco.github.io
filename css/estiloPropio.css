@@ -328,9 +328,24 @@ label.box .normal {
 }
 
 
+/*font-awoseme, check de pregunta acertada*/
+.fa-check {
+    margin: 0.5vw;
+    color:var(--verde-oscuro);
+}
+
+
+/*font-awoseme, check de pregunta fallada*/
+.fa-xmark {
+    margin: 0.5vw;
+    color:var(--rojo-oscuro);
+    
+}
+
+
 /*circle2 se utiliza despues de finalizar el examen, no se puede interactura sobre el (no tiene checked*/
 label.box .circle2 {
-    height: 1vw;
+    height: 1vw;ierto:chec
     width: 1vw;
     border-radius: 50%;
     margin: 0.8vw;
@@ -339,6 +354,20 @@ label.box .circle2 {
     display: inline-block
 }
 
+
+
+/* color al posicionar el raton encima de cada respuesta */
+label.box:hover {
+    background: var(--verde-muy-claro)
+}
+
+
+.acierto:checked {
+    background: none;
+}
+.fallo:checked {
+    background: --rojo-;
+}
 
 
 /* alineacion del texto dentro de cada respuesta */

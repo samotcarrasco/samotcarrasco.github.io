@@ -245,23 +245,37 @@ function configurarExamenFinalizado(preguntasContestadas, preguntas) {
      for (let i = 0; i < preguntas.length; i++) {
          let respuesta = (preguntasContestadas[i].length == 4) ? preguntasContestadas[i].charAt(3) : preguntasContestadas[i].charAt(4);
          if (respuesta == preguntas[i].correcta) {
+            //pregunta acertada
              console.log("quitando course y añadiendo acierto en -", preguntasContestadas[i] , "-");
-             var labelId = document.getElementById(preguntasContestadas[i]);
-             var division = labelId.parentNode.querySelector(".course");
-             division.innerHTML = `<i class="fa-solid fa-check"></i>`;
+             var inputId = document.getElementById(preguntasContestadas[i]);
+             inputId.setAttribute('name','box2');             
+             var division = inputId.parentNode.querySelector(".course");
+             
+             //document.querySelector(preguntasContestadas[i]).parentNode.querySelector('.course span:first-child').remove();
+             var textoOpcion = division.innerHTML;
+             division.innerHTML = `<i class="fa-solid fa-check"></i>` + textoOpcion;
              division.className = "acierto";
+             
+             //eliminados el primer span, que contiene el circle, uy no nos interesa mostrarlo en las preguntas acertadas o falladas
+            //  var circulo = inputId.parentNode.querySelector(".circle");
+            //  circulo.remove;
+
+             var circulo = querySelector('.acierto span:first-child');
+             circulo.remove;
+             https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_element_queryselector_class
+             
          }
          else{ //pregunta fallada, primero, ponemos la eleccion como fallo:
             console.log("quitando course y añadiendo fallo en -", preguntasContestadas[i] , "-");
-            var labelId = document.getElementById(preguntasContestadas[i]);
-            var division = labelId.parentNode.querySelector(".course");
+            var inputId = document.getElementById(preguntasContestadas[i]);
+            var division = inputId.parentNode.querySelector(".course");
             division.className = "fallo";
             //despues tenemos que sacar el id de la opcion correcta, para ponerla en verde
             let preguntaEx=i+1;
             let idOpcion = "p"+preguntaEx+"r"+preguntas[i].correcta;
             console.log("En la pregunta", i, " la opcion correcta es: ", idOpcion);
-            var labelId = document.getElementById(idOpcion);
-            var division = labelId.parentNode.querySelector(".course");
+            var inputId = document.getElementById(idOpcion);
+            var division = inputId.parentNode.querySelector(".course");
             division.className = "acierto";
         }
      }
