@@ -303,7 +303,7 @@ label.box .fallo {
 /*formato de la preguna acertada, tras finalizar el examen*/
 label.box .acierto {
     display: flex;
-    align-items: center;
+    align-items: centerf;
     width: 100%;
     padding: 0vw;
     border-radius: 1vw;
@@ -345,7 +345,7 @@ label.box .normal {
 
 /*circle2 se utiliza despues de finalizar el examen, no se puede interactura sobre el (no tiene checked*/
 label.box .circle2 {
-    height: 1vw;ierto:chec
+    height: 1vw;
     width: 1vw;
     border-radius: 50%;
     margin: 0.8vw;

@@ -225,7 +225,7 @@ function comprobarResultado() {
 
 function contarAciertos(preguntasContestadas, preguntas) {
     console.log(preguntasContestadas.length);
-    let aciertos = 0;    
+    let aciertos = 0;
     for (let i = 0; i < preguntas.length; i++) {
         // console.log("pregunta generada: ", i, "id", preguntas[i].id, "correcta: ", preguntas[i].correcta);
         // console.log("pregunta contestada: ", i, "id", i+1, "contestada: ", preguntasContestadas[i]);
@@ -236,50 +236,69 @@ function contarAciertos(preguntasContestadas, preguntas) {
             aciertos++;
             console.log("ACIERTO EN PREGUNTA", i + 1);
         }
-    }  
+    }
     return aciertos;
 }
 
 function configurarExamenFinalizado(preguntasContestadas, preguntas) {
-    
-     for (let i = 0; i < preguntas.length; i++) {
-         let respuesta = (preguntasContestadas[i].length == 4) ? preguntasContestadas[i].charAt(3) : preguntasContestadas[i].charAt(4);
-         if (respuesta == preguntas[i].correcta) {
-            //pregunta acertada
-             console.log("quitando course y añadiendo acierto en -", preguntasContestadas[i] , "-");
-             var inputId = document.getElementById(preguntasContestadas[i]);
-             inputId.setAttribute('name','box2');             
-             var division = inputId.parentNode.querySelector(".course");
-             
-             //document.querySelector(preguntasContestadas[i]).parentNode.querySelector('.course span:first-child').remove();
-             var textoOpcion = division.innerHTML;
-             division.innerHTML = `<i class="fa-solid fa-check"></i>` + textoOpcion;
-             division.className = "acierto";
-             
-             //eliminados el primer span, que contiene el circle, uy no nos interesa mostrarlo en las preguntas acertadas o falladas
-            //  var circulo = inputId.parentNode.querySelector(".circle");
-            //  circulo.remove;
 
-             var circulo = querySelector('.acierto span:first-child');
-             circulo.remove;
-             https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_element_queryselector_class
-             
-         }
-         else{ //pregunta fallada, primero, ponemos la eleccion como fallo:
-            console.log("quitando course y añadiendo fallo en -", preguntasContestadas[i] , "-");
+    for (let i = 0; i < preguntas.length; i++) {
+        let respuesta = (preguntasContestadas[i].length == 4) ? preguntasContestadas[i].charAt(3) : preguntasContestadas[i].charAt(4);
+        if (respuesta == preguntas[i].correcta) {
+            //pregunta acertada
+            //console.log("quitando course y añadiendo acierto en -", preguntasContestadas[i], "-");
+            var inputId = document.getElementById(preguntasContestadas[i]);
+            var division = inputId.parentNode.querySelector(".course");
+            division.className = "acierto";
+        }
+        else { //pregunta fallada, primero, ponemos la eleccion como fallo:
+            //console.log("quitando course y añadiendo fallo en -", preguntasContestadas[i], "-");
             var inputId = document.getElementById(preguntasContestadas[i]);
             var division = inputId.parentNode.querySelector(".course");
             division.className = "fallo";
             //despues tenemos que sacar el id de la opcion correcta, para ponerla en verde
-            let preguntaEx=i+1;
-            let idOpcion = "p"+preguntaEx+"r"+preguntas[i].correcta;
-            console.log("En la pregunta", i, " la opcion correcta es: ", idOpcion);
+            let preguntaEx = i + 1;
+            let idOpcion = "p" + preguntaEx + "r" + preguntas[i].correcta;
+            //console.log("En la pregunta", i, " la opcion correcta es: ", idOpcion);
             var inputId = document.getElementById(idOpcion);
             var division = inputId.parentNode.querySelector(".course");
             division.className = "acierto";
         }
-     }
- }
+    }
+
+
+    //ahora, a en todas las preguntas "falladas", les añadimos el icono correspondiente de font awesome y quitamos el circulo:
+    const fallos = document.querySelectorAll('.fallo');
+    fallos.forEach(function (fallo) {
+        const child = document.createElement('i');
+        child.classList.add('fa-solid', 'fa-xmark');
+        fallo.insertBefore(child, fallo.firstChild);
+        const circulo = fallo.querySelector('.circle');
+        fallo.removeChild(circulo);
+    });
+
+
+    //igual con los aciertos
+    const aciertos = document.querySelectorAll('.acierto');
+    aciertos.forEach(function (acierto) {
+        const child = document.createElement('i');
+        child.classList.add('fa-solid', 'fa-check');
+        acierto.insertBefore(child, acierto.firstChild);
+        const circulo = acierto.querySelector('.circle');
+        acierto.removeChild(circulo);
+    });
+
+    //Para todas las opciones que no son ni acierto ni fallo, es decir que tienen class=course, ponemos class=normal, para inhabilitar la selección
+
+    const niAciertoNiFallo = document.querySelectorAll('.course');
+    niAciertoNiFallo.forEach(function (normal) {
+       normal.className = "normal";
+       const circulo = normal.querySelector('.circle');
+       circulo.className = "circle2";
+    });
+
+}
+
 
 
 
