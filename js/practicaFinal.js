@@ -273,7 +273,7 @@ class Usuario {
         return this.#email;
     }
     get empresa() {
-        return this.#empresa.nombre;
+        return this.#empresa;
     }
     get direccion() {
         return this.#direccion;
@@ -517,7 +517,7 @@ function mostrarUsuarios() {
                  modal += `
                  <tr>
           <td>${usuario.nombre}</td>
-          <td>${usuario.username}</td>
+          <td>${usuario.nombreUser}</td>
           <td>${usuario.email}</td>
           <td>${usuario.empresa}</td>
           </tr>`;
