@@ -182,7 +182,6 @@ function anadirPreguntaHTML(preguntaObj, contador) {
 
 
 
-
 let finalizar = document.getElementById('finalizarB');
 finalizar.addEventListener("click", comprobarResultado);
 
@@ -210,12 +209,17 @@ function comprobarResultado() {
     //    console.log("preguntas contestadas: ", preguntasContestadas.length);
 
     if (preguntasContestadas.length < preguntas.length) {
-        alert("Para finalizar el examen es obligatorio contestar todas las preguntas");
+        //alert("Para finalizar el examen es obligatorio contestar todas las preguntas");
+        // document.body.insertAdjacentHTML("beforeend", modalExSinFinalizar);
+        // var myModal = new bootstrap.Modal(document.getElementById("modalExSinFinalizar"), {});
+        // myModal.show();
+        mostrarModal("sinFinalizar");
     }
     else {
         let aciertos = contarAciertos(preguntasContestadas, preguntas);
         configurarExamenFinalizado(preguntasContestadas, preguntas);
-        alert("Examen finalizado, nota: " + aciertos + "/" + preguntas.length);
+        //alert("Examen finalizado, nota: " + aciertos + "/" + preguntas.length);
+        mostrarModal("finalizado",aciertos,preguntas.length);
         //deshabilitamos el botón finalizar
         let btn = document.getElementById("finalizarB");
         btn.disabled = true;
@@ -293,11 +297,58 @@ function configurarExamenFinalizado(preguntasContestadas, preguntas) {
 
     const niAciertoNiFallo = document.querySelectorAll('.course');
     niAciertoNiFallo.forEach(function (normal) {
-       normal.className = "normal";
-       const circulo = normal.querySelector('.circle');
-       circulo.className = "circle2";
+        normal.className = "normal";
+        const circulo = normal.querySelector('.circle');
+        circulo.className = "circle2";
     });
+}
 
+function mostrarModal(estadoExamen,nota,numPreguntas) {
+    switch (estadoExamen) {
+        case 'finalizado':
+            const modalExFinalizado = `<div class="modal" tabindex="-1" id="modalExFinalizado">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title"><b>Examen finalizado correctamente</b></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <p>Su calificación es: ${nota} sobre ${numPreguntas}</p>
+                <p>Se mostrará la solución sobre el examen, marcando en rojo las preguntas fallas</p>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+            </div>
+            </div>`;
+            document.body.insertAdjacentHTML("beforeend", modalExFinalizado);
+            var myModal = new bootstrap.Modal(document.getElementById("modalExFinalizado"), {});
+            myModal.show();
+            break;
+        case 'sinFinalizar':
+            const modalExSinFinalizar = `<div class="modal" tabindex="-1" id="modalExSinFinalizar">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title"><b>Examen no finalizado</b></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <p>Para finalizar el examen es obligatorio contestar todas las preguntas</p>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+            </div>
+            </div>`;
+            document.body.insertAdjacentHTML("beforeend", modalExSinFinalizar);
+            var myModal = new bootstrap.Modal(document.getElementById("modalExSinFinalizar"), {});
+            myModal.show();
+            break;
+    }
 }
 
 

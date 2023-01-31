@@ -399,11 +399,9 @@ input[type="radio"] {
 
 
 
-
-
-
-
-
+th, td {
+    padding-left: 2vw;
+  }
 
 /*
                     ########## altaPregunta.html  ##########

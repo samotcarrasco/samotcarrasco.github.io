@@ -252,7 +252,7 @@ class Usuario {
     #empresa = "";
     #direccion = "";
     #url = "";
-    
+
     constructor(nombre, nombreUser, email, empresa, direccion, url) {
         this.#nombre = nombre;
         this.#nombreUser = nombreUser;
@@ -263,22 +263,22 @@ class Usuario {
     }
 
     //getters
-    get nombre(){
+    get nombre() {
         return this.#nombre;
     }
-    get nombreUser(){
+    get nombreUser() {
         return this.#nombreUser;
     }
-    get email(){
+    get email() {
         return this.#email;
     }
-    get empresa(){
+    get empresa() {
         return this.#empresa.nombre;
     }
-    get direccion(){
+    get direccion() {
         return this.#direccion;
     }
-    get url(){
+    get url() {
         return this.#url;
     }
     static getId(url) {
@@ -286,7 +286,7 @@ class Usuario {
         let tamanio = partes.length;
         return partes[tamanio - 2];
     }
-    
+
     //setters
     set nombre(nombre) {
         this.#nombre = nombre;
@@ -305,7 +305,7 @@ class Usuario {
     }
     set url(url) {
         this.#url = url;
-    }    
+    }
 }
 
 
@@ -318,7 +318,7 @@ mostrarInicioEjercicio(9, "Mostrando datos del objeto userPrueba");
 
 //en la empresa, a parte del nombre, también hemos incluido el sector, para comprobar el funcionamiento de que solo se devuelve el nombre
 let direccionUsuario = { calle: "Gravina 7", ciudad: "Roma", codigoPostal: "41449" };
-let userPrueba = new Usuario("Prueba Practica Final", "PruebaPF7", "jpruebapf7@hotmail.com", "Leroy Merlin", direccionUsuario,"https://prueba.dev/api/users/102/");
+let userPrueba = new Usuario("Prueba Practica Final", "PruebaPF7", "jpruebapf7@hotmail.com", "Leroy Merlin", direccionUsuario, "https://prueba.dev/api/users/102/");
 
 
 // userPrueba.nombre = "Prueba Practica Final";
@@ -468,10 +468,10 @@ mostrarInicioEjercicio(14, "Mostrando arrays ordenados por nombre");
 arrayCiudades.forEach(function (ciudad) {
     objeto[ciudad].sort(function (a, b) {
         if (a.nombre > b.nombre) {
-          return 1;
+            return 1;
         }
         if (a.nombre < b.nombre) {
-          return -1;
+            return -1;
         }
         // a must be equal to b
         return 0;
@@ -490,67 +490,53 @@ arrayCiudades.forEach(function (ciudad) {
 // Diseñe el modal para que aparezcan los siguientes datos de cada usuario:
 // Nombre, Usuario, Email y Empresa.
 
-mostrarInicioEjercicio(15, "Insertar modal consulta usuarios");
+mostrarInicioEjercicio(15, "Insertar modal consulta usuarios. Menú Gestion Uuarios -> consulta ");
+
+//declaramos la variable global porque vamos a utilizarla después de la función
+let modal = "";
 
 
-// function mostrarUsuarios() {
-//     const usuariosOrdenados = usuarios.sort((a, b) => a._nombre.localeCompare(b._nombre));
-//     let modalContent = "";
-//     usuariosOrdenados.forEach(usuario => {
-//         modalContent = `
-//             <div class="usuario">
-//                 <p>Nombre: ${usuario._nombre}</p>
-//                 <p>Usuario: ${usuario._nombreUser}</p>
-//                 <p>Email: ${usuario._email}</p>
-//                 <p>Empresa: ${usuario._empresa}</p>
-//             </div>
-//         `;
-//     });
+function mostrarUsuarios() {
+    modal = `<div class="modal" tabindex="-1" id="modalUsuarios">
+            <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title">
+                <b>Consulta de usuarios</b></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <table>
+                <th>Nombre</th>
+                <th>Usuario</th>
+                <th>Email</th>
+                <th>Empresa</th>
+                `;
+     const usuariosOrdenados = arrayUsuarios.sort((a, b) => a.nombre.localeCompare(b.nombre));
+     usuariosOrdenados.forEach(usuario => {
+                 modal += `
+                 <tr>
+          <td>${usuario.nombre}</td>
+          <td>${usuario.username}</td>
+          <td>${usuario.email}</td>
+          <td>${usuario.empresa}</td>
+          </tr>`;
+          
+     });
+    modal += `
+                </table>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+            </div>
+           </div>`;
 
-//     // Mostrar el modal con el contenido generado
-//     const modal = document.getElementById("modal-usuarios");
-//     modal.innerHTML = modalContent;
-//     modal.style.display = "block";
-// }
+    document.body.insertAdjacentHTML("beforeend", modal);
+}
 
-
-
-// const btnUsuarios = document.getElementById("btn-usuarios");
-// btnUsuarios.addEventListener("click", mostrarUsuarios);
-
-// <div id="modal-usuarios" class="modal">
-//         <div class="modal-content">
-//             <span class="close">&times;</span>
-//             <table>
-//                 <thead>
-//                     <tr>
-//                         <th>Nombre</th>
-//                         <th>Usuario</th>
-//                         <th>Email</th>
-//                         <th>Empresa</th>
-//                     </tr>
-//                 </thead>
-//                 <tbody id="modal-content">
-//                 </tbody>
-//             </table>
-//         </div>
-//     </div>
-
-
-
-
-// .modal {
-//     display: none; /* Hidden by default */
-//     position: fixed; /* Stay in place */
-//     z-index: 1; /* Sit on top */
-//     left: 0;
-//     top: 0;
-//     width: 100%; /* Full width */
-//     height: 100%; /* Full height */
-//     overflow: auto; /* Enable scroll if needed */
-//     background-color: rgb(0, 0, 0); /* Fallback color */
-//     background-color: rgba(0, 0, 0, 0.4); /* Black w
-
+mostrarUsuarios();
 
 
     //16
@@ -564,4 +550,17 @@ mostrarInicioEjercicio(15, "Insertar modal consulta usuarios");
 // seleccionada.
 
 
+// let elementoModal = document.getElementById("modalUsuarios");
+
+// div class="col-md-4 mb-3">
+//             <label for="pais">País</label>
+//             <select class="form-control custom-select d-block w-100" id="pais">
+//               <option value="">Opcional</option>
+//               <option>España</option>
+//               <option>Portugal</option>
+//               <option>Francia</option>
+//               <option>Tunez</option>
+//             </select>
+
+//           </div>
 
