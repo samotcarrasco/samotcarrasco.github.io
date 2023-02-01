@@ -110,6 +110,12 @@ pero el maximo y minmo lo dejamos en px, ya que queda mejor(probado responsive)
     min-width: 30px;
 }
 
+#modalBusqueda{
+    margin-left:2vw;
+    margin-right:2vw;
+    margin-top:1vw;
+}
+
 
 
 
@@ -403,6 +409,13 @@ th, td {
     padding-left: 2vw;
   }
 
+ tr.Gwenborough td{
+    color:blue;
+ }
+ 
+ tr.Wisokyburgh td{
+    color:green;
+ }
 /*
                     ########## altaPregunta.html  ##########
 */

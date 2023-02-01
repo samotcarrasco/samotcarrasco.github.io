@@ -444,20 +444,20 @@ arrayCiudades.forEach(function (ciudad) {
 //el siguiente paso es crear tantos arrays como ciudades hay. 
 //cada uno de estos array contendrá las personas que viven en ella
 
-let objeto = {};
+let objetosCiudad = {};
 arrayCiudades.forEach(function (ciudad) {
-    objeto[ciudad] = [];
+    objetosCiudad[ciudad] = [];
     arrayUsuarios.forEach(function (usuario) {
         if (usuario.direccion.ciudad == ciudad) {
-            objeto[ciudad].push(usuario);
+            objetosCiudad[ciudad].push(usuario);
             console.log("\tAñadido el usuario ", usuario.nombre, " a la ciudad ", ciudad)
         }
     });
-    //console.log("\tciudad", objeto);
+    //console.log("\tciudad", objetosCiudad);
 });
 
 
-//console.log(objeto);
+//console.log(objetosCiudad);
 
 // Ejercicio 14
 // Ordene de forma creciente los arrays anteriores por el valor de la
@@ -466,7 +466,7 @@ arrayCiudades.forEach(function (ciudad) {
 mostrarInicioEjercicio(14, "Mostrando arrays ordenados por nombre");
 
 arrayCiudades.forEach(function (ciudad) {
-    objeto[ciudad].sort(function (a, b) {
+    objetosCiudad[ciudad].sort(function (a, b) {
         if (a.nombre > b.nombre) {
             return 1;
         }
@@ -476,7 +476,7 @@ arrayCiudades.forEach(function (ciudad) {
         // a must be equal to b
         return 0;
     });
-    console.log(objeto[ciudad]);
+    console.log(objetosCiudad[ciudad]);
 });
 
 
@@ -502,31 +502,36 @@ function mostrarUsuarios() {
             <div class="modal-content">
                 <div class="modal-header">
                 <h5 class="modal-title">
-                <b>Consulta de usuarios</b></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <b>Consulta de usuarios</b>
+                </h5>
+                </div>
+                <div id="modalBusqueda">
                 </div>
                 <div class="modal-body">
-                <table>
+                <table id="tablaModal">
                 <th>Nombre</th>
                 <th>Usuario</th>
                 <th>Email</th>
                 <th>Empresa</th>
                 `;
-     const usuariosOrdenados = arrayUsuarios.sort((a, b) => a.nombre.localeCompare(b.nombre));
-     usuariosOrdenados.forEach(usuario => {
-                 modal += `
-                 <tr>
-          <td>${usuario.nombre}</td>
-          <td>${usuario.nombreUser}</td>
-          <td>${usuario.email}</td>
-          <td>${usuario.empresa}</td>
-          </tr>`;
-          
-     });
+
+    //en este caso, utilizamos una lambda para ordenar
+    //añadimos el atributo id=nommbreUser para posteriormente poderlos filtrar, por ejemplo
+    //añadimos class=ciudad para controlar el color con css
+    const usuariosOrdenados = arrayUsuarios.sort((a, b) => a.nombre.localeCompare(b.nombre));
+    usuariosOrdenados.forEach(usuario => {
+        modal += `
+                <tr class="usuarioTabla ${usuario.direccion.ciudad}" id=${usuario.nombreUser}>
+                <td>${usuario.nombre}</td>
+                <td>${usuario.nombreUser}</td>
+                <td>${usuario.email}</td>
+                <td>${usuario.empresa}</td>
+                </tr>`;
+    });
     modal += `
                 </table>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer" id="modalFooter">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
@@ -534,33 +539,91 @@ function mostrarUsuarios() {
            </div>`;
 
     document.body.insertAdjacentHTML("beforeend", modal);
+
+
 }
 
 mostrarUsuarios();
 
 
-    //16
 
 
-//     Implemente la función filtrarCiudad().
+//  16   Implemente la función filtrarCiudad().
 // En el modal del ejercicio anterior, inserte un elemento Select que muestre como
 // opciones los valores de las ciudades del json.
 // Cuando el usuario seleccione una ciudad de la lista desplegable, se deberá
 // actualizar la vista mostrando solamente aquellos que sean de la ciudad
 // seleccionada.
 
+mostrarInicioEjercicio(16, "Funcion filtrarCiudad() ");
 
-// let elementoModal = document.getElementById("modalUsuarios");
 
-// div class="col-md-4 mb-3">
-//             <label for="pais">País</label>
-//             <select class="form-control custom-select d-block w-100" id="pais">
-//               <option value="">Opcional</option>
-//               <option>España</option>
-//               <option>Portugal</option>
-//               <option>Francia</option>
-//               <option>Tunez</option>
-//             </select>
+let padreFooter = document.getElementById("modalBusqueda");
 
-//           </div>
+let hijo = document.createElement('select');
+hijo.setAttribute("id", "selectorCiudad");
+hijo.classList.add("form-control", "custom-select", "d-block", "w-100");
+//utilziamos forEach para recorrer las ciudades
+hijo.innerHTML += `<option value="todas">Seleccione una ciudad</option>`;
+arrayCiudades.forEach(function (ciudad) {
+    hijo.innerHTML += `<option value="${ciudad}">${ciudad}</option>`;
+});
 
+padreFooter.appendChild(hijo);
+
+
+
+
+const filtroCiudades = document.getElementById("selectorCiudad");
+onchange = function () { filtarPorciudad(filtroCiudades.value) };
+
+
+function filtarPorciudad(ciudad) {
+    console.log("filtrando usuarios de la ciudad", ciudad);
+    //eliminanos todos los registros de la tabla y mostramso solamente los que cumplen el filtro
+    const usuariosMostrados = document.getElementsByClassName("usuarioTabla");
+
+    while (usuariosMostrados.length > 0) {
+        usuariosMostrados[0].parentNode.removeChild(usuariosMostrados[0]);
+        // usuariosMostrados[0].removeChild(usuariosMostrados[0]);
+        // usuariosMostrados[0].remove;
+    }
+    let tablaModal = document.getElementById("tablaModal");
+    if (ciudad != "todas") {
+        //utlizamos los arrays de ciudades del ejercicio 13 y 14
+        for (var i = 0; i < objetosCiudad[ciudad].length; i++) {
+            var usuario = objetosCiudad[ciudad][i];
+            var elementoTabla = `<tr class="usuarioTabla ${ciudad}" id=${usuario.nombreUser}>
+            <td>${usuario.nombre}</td>
+            <td>${usuario.nombreUser}</td>
+            <td>${usuario.email}</td>
+            <td>"${usuario.empresa}</td>
+            </tr>`;
+            tablaModal.insertAdjacentHTML("beforeend", elementoTabla);
+            //tablaModal.insertAdjacentElement(elementoTabla);
+        }
+    }
+    else {
+        arrayUsuarios.forEach(function (usuario) {
+            var elementoTabla = `
+              <tr class="usuarioTabla ${usuario.direccion.ciudad}" id=${usuario.nombreUser}>
+              <td>${usuario.nombre}</td>
+              <td>${usuario.nombreUser}</td>
+              <td>${usuario.email}</td>
+              <td>${usuario.empresa}</td>
+              </tr>`;
+            tablaModal.insertAdjacentHTML("beforeend", elementoTabla);
+               });
+    }
+}
+
+
+
+// 17. Modifique la función del ejercicio 15, para que cambie el color del texto
+// de los usuarios mostrados en función de la ciudad del usuario:
+// Gwenborough, color = azul
+// Wisokyburgh, color = verde
+
+mostrarInicioEjercicio(17, "Function color texto dependiendo de la ciudad");
+
+//hemos añadido class con el nombre de cada ciudad y controlamos el color con css
