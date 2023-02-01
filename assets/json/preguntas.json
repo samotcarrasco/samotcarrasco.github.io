@@ -2,7 +2,7 @@
     "preguntas": [
         {
             "id": "1",
-            "enunciado": "1A los conductores novatos se les aplica una tasa de alcoholemia menor, ¿sabes qué tasa y por cuánto tiempo?",
+            "enunciado": "A los conductores novatos se les aplica una tasa de alcoholemia menor, ¿sabes qué tasa y por cuánto tiempo?",
             "opciones": {
                 "opc1": "0,25 miligramos de alcohol por litro de aire espirado durante dos años.",
                 "opc2": "0,30 gramos de alcohol por litro de sangre durante dos años.",
@@ -15,7 +15,7 @@
         },
         {
             "id": "2",
-            "enunciado": "¿2Qué código de etiqueta ambiental es incorrecto?",
+            "enunciado": "¿Qué código de etiqueta ambiental es incorrecto?",
             "opciones": {
                 "opc1": "ECO",
                 "opc2": "B",
@@ -28,7 +28,7 @@
         },
         {
             "id": "3",
-            "enunciado": "¿3Cuál es la velocidad máxima permitida para circular en Autovías?",
+            "enunciado": "¿Cuál es la velocidad máxima permitida para circular en Autovías?",
             "opciones": {
                 "opc1": "120 km/h en general",
                 "opc2": "90 km/h",
@@ -41,7 +41,7 @@
         },
         {
             "id": "4",
-            "enunciado": "¿4Cuál decision tomaría si tiene que adelantar a un cliclista?",
+            "enunciado": "¿Cuál decision tomaría si tiene que adelantar a un cliclista?",
             "opciones": {
                 "opc1": "Respetar en todo caso, la distancia minima de 1.5 metros",
                 "opc2": "Esperar a que pare para poder adelantarle",
@@ -54,7 +54,7 @@
         },
         {
             "id": "5",
-            "enunciado": "¿5Cuál es la velocidad máxima permitida para circular en caminos?",
+            "enunciado": "¿Cuál es la velocidad máxima permitida para circular en caminos?",
             "opciones": {
                 "opc1": "50 km/h en general",
                 "opc2": "40 km/h",
@@ -67,7 +67,7 @@
         },
         {
             "id": "6",
-            "enunciado": "¿6A Cuantos retrovisores como mínimo debe tener un coche?",
+            "enunciado": "¿Cuantos retrovisores como mínimo debe tener un coche?",
             "opciones": {
                 "opc1": "Uno, el interior. Con este es suficiente",
                 "opc2": "Dos exteriores, uno a cada lado del vehículo, y uno interior",
@@ -80,7 +80,7 @@
         },
         {
             "id": "7",
-            "enunciado": "7. Las señales triangulares con borde rojo como las de la imágen indican ...",
+            "enunciado": "Las señales triangulares con borde rojo como las de la imágen indican ...",
             "opciones": {
                 "opc1": "Peligro",
                 "opc2": "Obligación",
@@ -93,7 +93,7 @@
         },
         {
             "id": "8",
-            "enunciado": "8 ¿Qué significa esta señal?",
+            "enunciado": "¿Qué significa esta señal?",
             "opciones": {
                 "opc1": "Parar",
                 "opc2": "Ceda el paso",
@@ -106,7 +106,7 @@
         },
         {
             "id": "9",
-            "enunciado": "9 Al salir marcha atrás de un estacionamiento con su vehículo, el cual dispone del sistema de alerta de tráfico cruzado, debe saber que este sistema…",
+            "enunciado": "Al salir marcha atrás de un estacionamiento con su vehículo, el cual dispone del sistema de alerta de tráfico cruzado, debe saber que este sistema…",
             "opciones": {
                 "opc1": "Ayudará al conductor esquivando el obstáculo en el mismo momento en que lo detecte",
                 "opc2": "Tomará el control del vehículo deteniéndolo inmediatamente cuando detecte un vehículo aproximándose",
@@ -119,7 +119,11 @@
         },
         {
             "id": "10",
+<<<<<<< HEAD
             "enunciado": "10 ¿Cuál es la velocidad máxima permitida para un turismo en una vía urbana con plataforma única de calzada y acera?",
+=======
+            "enunciado": "¿Cuál es la velocidad máxima permitida para un turismo en una vía urbana con plataforma única de calzada y acera?",
+>>>>>>> f685c20 (mas preguntas)
             "opciones": {
                 "opc1": "45 km/h",
                 "opc2": "50 km/h",
@@ -132,7 +136,7 @@
         },
         {
             "id": "11",
-            "enunciado": "11 ¿Cuál es la velocidad máxima permitida en vias rápidas",
+            "enunciado": "¿Cuál es la velocidad máxima permitida en vias rápidas",
             "opciones": {
                 "opc1": "100 km/h",
                 "opc2": "80 km/h",
@@ -140,6 +144,123 @@
                 "opc4": "90 km/h"
             },
             "tipo": "corta",
+            "imagen": "",
+            "correcta": "4"
+        },
+        {
+            "id": "12",
+            "enunciado": "¿Qué sifnifica esta señal?",
+            "opciones": {
+                "opc1": "Calle cortada",
+                "opc2": "Parada obligatoria",
+                "opc3": "Prohibido pasar sin detenerse",
+                "opc4": "Prohibido detenerse"
+            },
+            "tipo": "imagen",
+            "imagen": "assets/img_examen/prohibido_sin_detenerse.png",
+            "correcta": "3"
+        },
+        {
+            "id": "13",
+            "enunciado": "¿Qué sifnifica esta señal",
+            "opciones": {
+                "opc1": "Ceda el paso",
+                "opc2": "Tramo de curvas peligrosas",
+                "opc3": "Pavimento deslizante",
+                "opc4": "Ninguna de las anteriores"
+            },
+            "tipo": "imagen",
+            "imagen": "assets/img_examen/pavimento_deslizante.png",
+            "correcta": "3"
+        },
+        {
+            "id": "14",
+            "enunciado": "Indique el orden de preferencia correcto",
+            "opciones": {
+                "opc1": "Señales verticales, señales señales pintadas en el suelo, agentes de tráfico",
+                "opc2": "Agentes de tráfico, señales verticales, señales pintadas en el suelo",
+                "opc3": "Agentes de tráfico, señales señales pintadas en el suelo, señales verticales",
+                "opc4": "Ninguna de las anteriores"
+            },
+            "tipo": "larga",
+            "imagen": "",
+            "correcta": "2"
+        },
+        {
+            "id": "15",
+            "enunciado": "¿Cuál es la eda máxima para poder conducir un vehículo",
+            "opciones": {
+                "opc1": "80 años",
+                "opc2": "90 años",
+                "opc3": "100 años",
+                "opc4": "Ninguna de las anteriores"
+            },
+            "tipo": "corta",
+            "imagen": "",
+            "correcta": "4"
+        },
+        {
+            "id": "16",
+            "enunciado": "¿Cuál es la edad mínima para poder obtener el carnet B?",
+            "opciones": {
+                "opc1": "16 años",
+                "opc2": "17 años",
+                "opc3": "18 años",
+                "opc4": "19 años"
+            },
+            "tipo": "corta",
+            "imagen": "",
+            "correcta": "3"
+        },
+        {
+            "id": "17",
+            "enunciado": "¿Está permitido fumar mientras se conduce?",
+            "opciones": {
+                "opc1": "Si",
+                "opc2": "No, pero puede ser causa de distracción y por tanto de accidente.",
+                "opc3": "Si, siempre y cuando a parte del conductor, haya otra persona en el vehículo",
+                "opc4": "Ninguna de las anteriores"
+            },
+            "tipo": "corta",
+            "imagen": "",
+            "correcta": "2"
+        },
+        {
+            "id": "18",
+            "enunciado": "La ITV....",
+            "opciones": {
+                "opc1": "Se debe pasar por primera vez a los 3 años",
+                "opc2": "Se debe pasar por primera vez a los 4 años, despues cada 2 años, hasta que el coche tenga 10 años, y despues anualmente",
+                "opc3": "Se debe pasar una vez al año en todo caso",
+                "opc4": "Ninguna de las anteriores"
+            },
+            "tipo": "larga",
+            "imagen": "",
+            "correcta": "2"
+        },
+        {
+            "id": "19",
+            "enunciado": "¿Está permitido usar el móvil mientras se conduce?",
+            "opciones": {
+                "opc1": "No",
+                "opc2": "Si, solo servicios de emergencia",
+                "opc3": "Si, solamente el GPS",
+                "opc4": "Si, solamente para colgar y descolgar llamadas"
+            },
+            "tipo": "corta",
+            "imagen": "",
+            "correcta": "2"
+        },
+        {
+            "id": "20",
+            "enunciado": "Unos amortiguadores en mal estado, ¿qué consecuencias pueden tener para la seguridad?",
+            "opciones": {
+                "opc1": "Que disminuya la distancia de frenado en aproximadamente un 50%",
+                "opc2": "Que las luces oscilen durante la marcha y puedan deslumbrar a otros conductores",
+                "opc3": "Que el vehículo vea aumentada su estabilidad",
+                "opc4": "Todas las anteriores son correctas"
+            },
+            "tipo": "larga",
             "imagen": "",
             "correcta": "4"
         }

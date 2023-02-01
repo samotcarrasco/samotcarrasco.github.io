@@ -157,7 +157,7 @@ Reduciendo la ventana se reduce la letra
 .titulo1 {
     /* letra Sofia (google fonts), importada en el head de los html*/
     font-family: "Sofia", sans-serif;
-    font-size: 3vw;
+    font-size: 2vw;
     text-shadow: 0.5vw 0.5vw 0.5vw var(--gris-claro);
 }
 

@@ -120,8 +120,8 @@ imagen.addEventListener("click", function () {
     if (controlImagen) {
         //es importante tambien cambiar la propiedad "alt"
         //para que personas con discpacidad visual lo puedan leer
-        imagen.src = "assets/perro.png";
-        imagen.alt = "perro conduciendo un coche";
+        imagen.src = "assets/senal_izquierda.png";
+        imagen.alt = "Señal dirección obligatoria a la izquierda";
     } else {
         imagen.src = urlImagenOriginal;
         imagen.alt = altImagenOriginal
