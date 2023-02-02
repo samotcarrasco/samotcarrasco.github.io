@@ -217,7 +217,7 @@
                 "opc3": "Si, siempre y cuando a parte del conductor, haya otra persona en el vehículo",
                 "opc4": "Ninguna de las anteriores"
             },
-            "tipo": "corta",
+            "tipo": "larga",
             "imagen": "",
             "correcta": "2"
         },

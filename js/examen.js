@@ -91,26 +91,24 @@ function anadirPreguntaHTML(preguntaObj, contador) {
     let codigoHtml = "";
     switch (preguntaObj.tipo) {
         case "larga":
-
-            codigoHtml = `<form class="row g-2" id="f${preguntaObj.id}"> 
-             <article class="col-12"> 
-            <p class="larga fw-bold mt-3" id="p${contador}">  ${contador}.- ${preguntaObj.enunciado}</p>
-             <div class="row"> 
-            <input type="radio" name="box" id="p${contador}r1"> 
-            <input type="radio" name="box" id="p${contador}r2"> 
-            <input type="radio" name="box" id="p${contador}r3"> 
-            <input type="radio" name="box" id="p${contador}r4"> 
-            <label for="p${contador}r1" class="box p${contador}r1"> 
-               <div class="course"> <span class="circle"></span> <span id="p${contador}opc1">${preguntaObj.opciones[0]}</span> </div> </label>
-            <label for="p${contador}r2" class="box p${contador}r2"> 
-               <div class="course"> <span class="circle"></span> <span id="p${contador}opc2">${preguntaObj.opciones[1]}</span> </div> </label>
-            <label for="p${contador}r3" class="box p${contador}r3"> 
-               <div class="course"> <span class="circle"></span> <span id="p${contador}opc3">${preguntaObj.opciones[2]}</span> </div> </label>
-            <label for="p${contador}r4" class="box p${contador}r4"> 
-               <div class="course"> <span class="circle"></span> <span id="p${contador}opc4">${preguntaObj.opciones[3]}</span> </div> </label>
-            </div>
-            </article>
+            codigoHtml = `<form class="row g-2" id="f${preguntaObj.id}"> <article class="col-12"> 
+            <p class="larga fw-bold mt-3" id="p${contador}">${contador}.-${preguntaObj.enunciado}</p> 
+            <div class="row"> 
+            <div class="col-md-12"> <input type="radio" name="box" id="p${contador}r1">  
+            <label for="p${contador}r1" class="box p${contador}r1 w-100">  
+            <div class="course"> <span class="circle"></span> <span  id="p${contador}opc1">${preguntaObj.opciones[0]}</span> </div> </label> </div> 
+            <div class="col-md-12"> <input type="radio" name="box" id="p${contador}r2">  
+            <label for="p${contador}r2" class="box p${contador}r2 w-100">  
+            <div class="course"> <span class="circle"></span> <span  id="p${contador}opc2">${preguntaObj.opciones[1]}</span> </div> </label> </div> 
+            <div class="col-md-12"> <input type="radio" name="box" id="p${contador}r3">  
+            <label for="p${contador}r3" class="box p${contador}r3 w-100">  
+            <div class="course"> <span class="circle"></span> <span  id="p${contador}opc3">${preguntaObj.opciones[2]}</span> </div> </label> </div> 
+            <div class="col-md-12"> <input type="radio" name="box" id="p${contador}r4">  
+            <label for="p${contador}r4" class="box p${contador}r4 w-100">  
+            <div class="course"> <span class="circle"></span> <span  id="p${contador}opc4">${preguntaObj.opciones[3]}</span> </div> </label> </div> 
+            </article> 
             </form>`;
+
             break;
         case "corta":
 
@@ -119,16 +117,16 @@ function anadirPreguntaHTML(preguntaObj, contador) {
                 <div class="row"> 
                 <div class="col-md-6"> <input type="radio" name="box" id="p${contador}r1">  
                 <label for="p${contador}r1" class="box p${contador}r1 w-100">  
-                <div class="course"> <span class="circle"></span> <span class="subject" id="p${contador}opc1">${preguntaObj.opciones[0]}</span> </div> </label> </div> 
+                <div class="course"> <span class="circle"></span> <span  id="p${contador}opc1">${preguntaObj.opciones[0]}</span> </div> </label> </div> 
                 <div class="col-md-6"> <input type="radio" name="box" id="p${contador}r2">  
                 <label for="p${contador}r2" class="box p${contador}r2 w-100">  
-                <div class="course"> <span class="circle"></span> <span class="subject" id="p${contador}opc2">${preguntaObj.opciones[1]}</span> </div> </label> </div> 
+                <div class="course"> <span class="circle"></span> <span  id="p${contador}opc2">${preguntaObj.opciones[1]}</span> </div> </label> </div> 
                 <div class="col-md-6"> <input type="radio" name="box" id="p${contador}r3">  
                 <label for="p${contador}r3" class="box p${contador}r3 w-100">  
-                <div class="course"> <span class="circle"></span> <span class="subject" id="p${contador}opc3">${preguntaObj.opciones[2]}</span> </div> </label> </div> 
+                <div class="course"> <span class="circle"></span> <span  id="p${contador}opc3">${preguntaObj.opciones[2]}</span> </div> </label> </div> 
                 <div class="col-md-6"> <input type="radio" name="box" id="p${contador}r4">  
                 <label for="p${contador}r4" class="box p${contador}r4 w-100">  
-                <div class="course"> <span class="circle"></span> <span class="subject" id="p${contador}opc4">${preguntaObj.opciones[3]}</span> </div> </label> </div> 
+                <div class="course"> <span class="circle"></span> <span  id="p${contador}opc4">${preguntaObj.opciones[3]}</span> </div> </label> </div> 
                 </article> 
                 </form>`;
             break;
@@ -206,13 +204,9 @@ function comprobarResultado() {
         return elemento !== undefined;
     });
 
-    //    console.log("preguntas contestadas: ", preguntasContestadas.length);
+    // console.log("preguntas contestadas: ", preguntasContestadas.length);
 
     if (preguntasContestadas.length < preguntas.length) {
-        //alert("Para finalizar el examen es obligatorio contestar todas las preguntas");
-        // document.body.insertAdjacentHTML("beforeend", modalExSinFinalizar);
-        // var myModal = new bootstrap.Modal(document.getElementById("modalExSinFinalizar"), {});
-        // myModal.show();
         mostrarModal("sinFinalizar");
     }
     else {

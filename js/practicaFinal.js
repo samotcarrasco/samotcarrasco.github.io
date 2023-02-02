@@ -28,6 +28,10 @@ function mostrarInicioEjercicio(ejercicio, cadena) {
 localStorage.setItem("practica", "Práctica Final ECMAScript");
 let tituloPractica = localStorage.getItem("practica");
 
+window.addEventListener("load", function () {
+    localStorage.removeItem("practica");
+    });
+    
 mostrarInicioEjercicio(2, tituloPractica);
 
 
