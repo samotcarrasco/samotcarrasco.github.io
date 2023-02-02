@@ -450,7 +450,7 @@ let modal = "";
 
 
 function mostrarUsuarios() {
-    modal = `<div class="modal" tabindex="-1" id="modalUsuarios">
+    modal = `<div class="modal fade" tabindex="-1" id="modalUsuarios">
             <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -462,10 +462,15 @@ function mostrarUsuarios() {
                 </div>
                 <div class="modal-body">
                 <table id="tablaModal">
+                <thead>
+                <tr>
                 <th>Nombre</th>
                 <th>Usuario</th>
                 <th>Email</th>
                 <th>Empresa</th>
+                </tr>
+                </thead>
+                <tbody>
                 `;
 
     //en este caso, utilizamos una lambda para ordenar
@@ -482,6 +487,7 @@ function mostrarUsuarios() {
                 </tr>`;
     });
     modal += `
+                </tbody>
                 </table>
                 </div>
                 <div class="modal-footer" id="modalFooter">
@@ -538,11 +544,17 @@ function filtarPorciudad(ciudad) {
     //eliminanos todos los registros de la tabla y mostramso solamente los que cumplen el filtro
     const usuariosMostrados = document.getElementsByClassName("usuarioTabla");
 
-    while (usuariosMostrados.length > 0) {
-        usuariosMostrados[0].parentNode.removeChild(usuariosMostrados[0]);
-        // usuariosMostrados[0].removeChild(usuariosMostrados[0]);
-        // usuariosMostrados[0].remove;
-    }
+     while (usuariosMostrados.length > 0) {
+         usuariosMostrados[0].parentNode.remove;
+        //  usuariosMostrados[0].parentNode.removeChild(usuariosMostrados[0]);
+        //  usuariosMostrados[0].removeChild(usuariosMostrados[0]);
+        //  usuariosMostrados[0].remove;
+     }
+    // const tbody = document.querySelector('tbody');
+    // tbody.remove();
+
+
+
     let tablaModal = document.getElementById("tablaModal");
     if (ciudad != "todas") {
         //utlizamos los arrays de ciudades del ejercicio 13 y 14
@@ -559,6 +571,7 @@ function filtarPorciudad(ciudad) {
         }
     }
     else {
+        //en este caso usamos forEach
         arrayUsuarios.forEach(function (usuario) {
             var elementoTabla = `
               <tr class="usuarioTabla ${usuario.direccion.ciudad}" id=${usuario.nombreUser}>
