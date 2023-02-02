@@ -41,7 +41,7 @@
         },
         {
             "id": "4",
-            "enunciado": "¿Cuál decision tomaría si tiene que adelantar a un cliclista?",
+            "enunciado": "¿Qué decision tomaría si tiene que adelantar a un cliclista?",
             "opciones": {
                 "opc1": "Respetar en todo caso, la distancia minima de 1.5 metros",
                 "opc2": "Esperar a que pare para poder adelantarle",
@@ -145,7 +145,7 @@
         },
         {
             "id": "12",
-            "enunciado": "¿Qué sifnifica esta señal?",
+            "enunciado": "¿Qué significa esta señal?",
             "opciones": {
                 "opc1": "Calle cortada",
                 "opc2": "Parada obligatoria",
@@ -158,7 +158,7 @@
         },
         {
             "id": "13",
-            "enunciado": "¿Qué sifnifica esta señal",
+            "enunciado": "¿Qué significa esta señal",
             "opciones": {
                 "opc1": "Ceda el paso",
                 "opc2": "Tramo de curvas peligrosas",
@@ -210,7 +210,7 @@
         },
         {
             "id": "17",
-            "enunciado": "¿Está permitido fumar mientras se conduce?",
+            "enunciado": "¿Está prohibido fumar mientras se conduce?",
             "opciones": {
                 "opc1": "Si",
                 "opc2": "No, pero puede ser causa de distracción y por tanto de accidente.",
@@ -245,7 +245,7 @@
             },
             "tipo": "corta",
             "imagen": "",
-            "correcta": "2"
+            "correcta": "1"
         },
         {
             "id": "20",

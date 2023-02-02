@@ -32,8 +32,8 @@ localStorage.setItem("practica", "Práctica Final ECMAScript");
 
 window.addEventListener("load", function () {
     localStorage.removeItem("practica");
-    });
-    
+});
+
 
 
 
@@ -200,14 +200,16 @@ class Usuario {
     #nombre = "";
     #nombreUser = "";
     #email = "";
+    #edad = "";
     #empresa = "";
     #direccion = "";
     #url = "";
 
-    constructor(nombre, nombreUser, email, empresa, direccion, url) {
+    constructor(nombre, nombreUser, email, edad, empresa, direccion, url) {
         this.#nombre = nombre;
         this.#nombreUser = nombreUser;
         this.#email = email;
+        this.#edad = edad;
         this.#empresa = empresa;
         this.#direccion = direccion;
         this.#url = url;
@@ -222,6 +224,9 @@ class Usuario {
     }
     get email() {
         return this.#email;
+    }
+    get edad() {
+        return this.#edad;
     }
     get empresa() {
         return this.#empresa;
@@ -248,6 +253,9 @@ class Usuario {
     set email(email) {
         this.#email = email;
     }
+    set edad(edad) {
+        this.#edad = edad;
+    }
     set empresa(empresa) {
         this.#empresa = empresa;
     }
@@ -269,21 +277,13 @@ mostrarInicioEjercicio(9, "Mostrando datos del objeto userPrueba");
 
 //en la empresa, a parte del nombre, también hemos incluido el sector, para comprobar el funcionamiento de que solo se devuelve el nombre
 let direccionUsuario = { calle: "Gravina 7", ciudad: "Roma", codigoPostal: "41449" };
-let userPrueba = new Usuario("Prueba Practica Final", "PruebaPF7", "jpruebapf7@hotmail.com", "Leroy Merlin", direccionUsuario, "https://prueba.dev/api/users/102/");
-
-
-// userPrueba.nombre = "Prueba Practica Final";
-// userPrueba.nombreUser = "PruebaPF7";
-// userPrueba.email = "jpruebapf7@hotmail.com";
-// userPrueba.empresa = "Leroy Merlin";
-// userPrueba.direccion = direccionUsuario;
-// userPrueba.url = "https://prueba.dev/api/users/102/";
-
+let userPrueba = new Usuario("Prueba Practica Final", "PruebaPF7", "jpruebapf7@hotmail.com", "50", "Leroy Merlin", direccionUsuario, "https://prueba.dev/api/users/102/");
 
 
 console.log("\tnombre: " + userPrueba.nombre);
 console.log("\tnombreUser: " + userPrueba.nombreUser);
 console.log("\temail: " + userPrueba.email);
+console.log("\tedad: " + userPrueba.edad);
 console.log("\tempresa: " + userPrueba.empresa);
 console.log("\tcalle: " + userPrueba.direccion.calle);
 console.log("\tciudad: " + userPrueba.direccion.ciudad);
@@ -302,10 +302,11 @@ crearUsuario = function (objetoJSON) {
     let nombre = objetoJSON.name;
     let nombreUser = objetoJSON.username;
     let email = objetoJSON.email;
+    let edad = objetoJSON.age;
     let empresa = objetoJSON.company.name;
     let direccion = { calle: objetoJSON.address.street, ciudad: objetoJSON.address.city, codigoPostal: objetoJSON.address.zipcode };
     let url = objetoJSON.url;
-    let usuario = new Usuario(nombre, nombreUser, email, empresa, direccion, url);
+    let usuario = new Usuario(nombre, nombreUser, email, edad, empresa, direccion, url);
     return usuario;
 }
 
@@ -328,7 +329,7 @@ let usuarioJSON = JSON.parse(elementoJSON);
 
 let usuario = crearUsuario(usuarioJSON);
 console.log("\tMostramos, por ejemplo, el email del usuario: ");
-console.log("\t"+usuario.email);
+console.log("\t" + usuario.email);
 
 
 //ejercicio 11 Implemente una función que recorra el JSON y devuelva un array de
@@ -362,7 +363,7 @@ console.log("\tLa longitud del array es: " + arrayUsuarios.length);
 
 //otra forma de recorrer el array
 for (let i = 0; i < arrayUsuarios.length; i++) {
-    console.log("\t" + arrayUsuarios[i].nombre);
+    console.log("\t" + arrayUsuarios[i].nombre + ", " + arrayUsuarios[i].edad + " años");
 }
 
 //ejercicio 13
@@ -410,8 +411,6 @@ arrayCiudades.forEach(function (ciudad) {
 });
 
 
-//console.log(objetosCiudad);
-
 // Ejercicio 14
 // Ordene de forma creciente los arrays anteriores por el valor de la
 // propiedad "nombre". Muestre el resultado por consola.
@@ -450,7 +449,7 @@ let modal = "";
 
 
 function mostrarUsuarios() {
-    modal = `<div class="modal fade" tabindex="-1" id="modalUsuarios">
+    modal = `<div class="modal" id="modalUsuarios">
             <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -460,14 +459,14 @@ function mostrarUsuarios() {
                 </div>
                 <div id="modalBusqueda">
                 </div>
-                <div class="modal-body">
-                <table id="tablaModal">
+                <div class="table-responsive-lg">
+                <table class="table" id="tablaModal">
                 <thead>
                 <tr>
-                <th>Nombre</th>
-                <th>Usuario</th>
-                <th>Email</th>
-                <th>Empresa</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Email</th>
+                <th scope="col">Empresa</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -489,6 +488,10 @@ function mostrarUsuarios() {
     modal += `
                 </tbody>
                 </table>
+                </div>`;
+    let menor = calcularDatos(arrayUsuarios);
+    modal += `<p class="usuarioMenor">Persona de menor edad: <b>${menor.nombre} (${menor.edad} años)</b> </p> 
+                <div id="modalBusquedaDireccion">
                 </div>
                 <div class="modal-footer" id="modalFooter">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -496,8 +499,8 @@ function mostrarUsuarios() {
             </div>
             </div>
            </div>`;
-
     document.body.insertAdjacentHTML("beforeend", modal);
+    filtrarDireccion(arrayUsuarios);
 
 
 }
@@ -505,8 +508,6 @@ function mostrarUsuarios() {
 mostrarUsuarios();
 
 console.log("\tModal creado. Accesible desde el menú \"Usuarios\"");
-
-
 
 
 //  16   Implemente la función filtrarCiudad().
@@ -543,17 +544,21 @@ function filtarPorciudad(ciudad) {
     console.log("filtrando usuarios de la ciudad", ciudad);
     //eliminanos todos los registros de la tabla y mostramso solamente los que cumplen el filtro
     const usuariosMostrados = document.getElementsByClassName("usuarioTabla");
+    while (usuariosMostrados.length > 0) {
+        usuariosMostrados[0].parentNode.removeChild(usuariosMostrados[0]);
+    }
 
-     while (usuariosMostrados.length > 0) {
-        //  usuariosMostrados[0].parentNode.remove;
-        //  usuariosMostrados[0].remove;
-          usuariosMostrados[0].parentNode.removeChild(usuariosMostrados[0]);
-          usuariosMostrados[0].removeChild(usuariosMostrados[0]);
-          usuariosMostrados[0].remove;
-     }
-    // const tbody = document.querySelector('tbody');
-    // tbody.remove();
+    const tbodyVacios = document.querySelectorAll("tbody:empty");
+    for (let i = 0; i < tbodyVacios.length; i++) {
+        console.log("eliminando tbody");
+        tbodyVacios[i].remove();
+    }
 
+    const usuariosMenores = document.querySelectorAll("p.usuarioMenor");
+    for (let i = 0; i < usuariosMenores.length; i++) {
+        //     console.log("eliminando tbody");
+        usuariosMenores[i].remove();
+    }
 
 
     let tablaModal = document.getElementById("tablaModal");
@@ -570,6 +575,12 @@ function filtarPorciudad(ciudad) {
             tablaModal.insertAdjacentHTML("beforeend", elementoTabla);
             //tablaModal.insertAdjacentElement(elementoTabla);
         }
+        let menor = calcularDatos(objetosCiudad[ciudad]);
+
+        var elementoMenor = `<p class="usuarioMenor"> Persona de menor edad: <b>${menor.nombre} ${menor.edad} años </b> </p>`;
+        tablaModal.insertAdjacentHTML("afterend", elementoMenor);
+        filtrarDireccion(objetosCiudad[ciudad]);
+
     }
     else {
         //en este caso usamos forEach
@@ -582,7 +593,12 @@ function filtarPorciudad(ciudad) {
               <td>${usuario.empresa}</td>
               </tr>`;
             tablaModal.insertAdjacentHTML("beforeend", elementoTabla);
-               });
+        });
+
+        let menor = calcularDatos(arrayUsuarios);
+        var elementoMenor = `<p class="usuarioMenor"> Persona de menor edad: <b> ${menor.nombre} ${menor.edad} años </b> </p>`;
+        tablaModal.insertAdjacentHTML("afterend", elementoMenor);
+        filtrarDireccion(arrayUsuarios);
     }
 }
 
@@ -596,7 +612,7 @@ console.log("\tFunción creada");
 
 mostrarInicioEjercicio(17, "Function color texto dependiendo de la ciudad");
 //hemos añadido class con el nombre de cada ciudad y controlamos el color con css para no hardcodear
-console.log("\tIncluido en el modal. El control se controla para no hardcodear");
+console.log("\tIncluido en el modal. El color se controla con css para no hardcodear");
 
 
 
@@ -617,23 +633,79 @@ console.log("\tIncluido en el modal. El control se controla para no hardcodear")
 
 mostrarInicioEjercicio(18, "Function función calcularDatos");
 
+function calcularDatos(arrayPersonas) {
+    const usuariosOrdenadosEdad = arrayPersonas.sort((a, b) => a.edad.localeCompare(b.edad));
+    let menor = usuariosOrdenadosEdad[0];
+    //console.log("el menor es: ",menor.edad);
+    return menor;
+}
+
+//console.log(calcularDatos(arrayUsuarios).edad);
+
 console.log("\tFunción creada");
 
 
 
 
 
-
-
-
-
-// 19. (0.5 puntos) Implemente un evento, de tal manera que cuando se pulse la tecla "p"
+// 19. Implemente un evento, de tal manera que cuando se pulse la tecla "p"
 // (minúscula) ó "P" (mayúscula) aparezca una ventana con el texto de la variable
 // global practica (Ejercicio 1), esta ventana se debe cerrar automáticamente pasado 3
 // segundos.
+
+mostrarInicioEjercicio(19, "Se mostrará un modal al pular P|p");
+
+const practica = "Ejercicio 1";
+
+const modalP = `<div class ="modal" id="modalEj19"">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-contentP">
+        ${practica}
+            </div>
+            </div>
+        </div>
+    `;
+
+
+document.addEventListener("keydown", event => {
+    document.body.insertAdjacentHTML("beforeend", modalP);
+    let modal = document.getElementById("modalEj19");
+
+    if (event.key == "p" || event.key == "P") {
+        modal.style.display = "block";
+        setTimeout(() => {
+            modal.style.display = "none";
+        }, 3000);
+    }
+});
+
+
+
 // 20. (0.75 puntos) Implemente la función filtrarDireccion(), de tal manera que cuando el
 // usuario seleccione un usuario en la lista desplegable, aparezca su dirección con el
 // siguiente formato: C/ nombre de la calle, Ciudad (código postal).
 // Para ello, deberá insertar, al final del modal, un elemento Select que muestre como
 // opciones los nombres de todos los usuarios, y otro elemento html, de su elección,
 // que muestre su dirección con el formato exigido.
+
+mostrarInicioEjercicio(18, "Function filtrarDireccion");
+
+
+function filtrarDireccion(arrayPersonas) {
+    let padre2 = document.getElementById("modalBusquedaDireccion");
+
+    let hijo2 = document.createElement('select');
+    hijo2.setAttribute("id", "selectorDireccion");
+    hijo2.classList.add("form-control", "custom-select", "d-block", "w-100");
+    //utilziamos forEach para recorrer los usuarios
+    hijo2.innerHTML += `<option value="todos">Seleccione un usuario</option>`;
+    arrayPersonas.forEach(function (usuario) {
+        hijo2.innerHTML += `<option value="${usuario.nombre}">${usuario.nombre}</option>`;
+    });
+    padre2.appendChild(hijo2);
+
+}
+
+
+// const filtroCiudades = document.getElementById("selectorCiudad");
+// onchange = function () { filtarPorciudad(filtroCiudades.value) };

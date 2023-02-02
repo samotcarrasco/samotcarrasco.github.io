@@ -92,7 +92,7 @@ function anadirPreguntaHTML(preguntaObj, contador) {
     switch (preguntaObj.tipo) {
         case "larga":
             codigoHtml = `<form class="row g-2" id="f${preguntaObj.id}"> <article class="col-12"> 
-            <p class="larga fw-bold mt-3" id="p${contador}">${contador}.-${preguntaObj.enunciado}</p> 
+            <p class="larga fw-bold mt-3" id="p${contador}">${contador}.- ${preguntaObj.enunciado}</p> 
             <div class="row"> 
             <div class="col-md-12"> <input type="radio" name="box" id="p${contador}r1">  
             <label for="p${contador}r1" class="box p${contador}r1 w-100">  
@@ -113,7 +113,7 @@ function anadirPreguntaHTML(preguntaObj, contador) {
         case "corta":
 
             codigoHtml = `<form class="row g-2" id="f${preguntaObj.id}"> <article class="col-12"> 
-                <p class="corta fw-bold mt-3" id="p${contador}">${contador}.-${preguntaObj.enunciado}</p> 
+                <p class="corta fw-bold mt-3" id="p${contador}">${contador}.- ${preguntaObj.enunciado}</p> 
                 <div class="row"> 
                 <div class="col-md-6"> <input type="radio" name="box" id="p${contador}r1">  
                 <label for="p${contador}r1" class="box p${contador}r1 w-100">  
@@ -132,7 +132,7 @@ function anadirPreguntaHTML(preguntaObj, contador) {
             break;
         case "imagen":
             codigoHtml = `<form class="row g-2" id="f${preguntaObj.id}"> <article class="col-sm-6">  
-                <p class="imagen fw-bold mt-3" id="p${contador}">${contador}.-${preguntaObj.enunciado}</p> 
+                <p class="imagen fw-bold mt-3" id="p${contador}">${contador}.- ${preguntaObj.enunciado}</p> 
                 <section> 
                 <input type="radio" name="box" id="p${contador}r1">  
                 <label for="p${contador}r1" class="box p${contador}r1 w-100">  
@@ -300,7 +300,7 @@ function configurarExamenFinalizado(preguntasContestadas, preguntas) {
 function mostrarModal(estadoExamen,nota,numPreguntas) {
     switch (estadoExamen) {
         case 'finalizado':
-            const modalExFinalizado = `<div class="modal" tabindex="-1" id="modalExFinalizado">
+            let modalExFinalizado = `<div class="modal" tabindex="-1" id="modalExFinalizado">
             <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -308,9 +308,13 @@ function mostrarModal(estadoExamen,nota,numPreguntas) {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                <p>Su calificación es: ${nota} sobre ${numPreguntas}</p>
-                <p>Se mostrará la solución sobre el examen, marcando en rojo las preguntas fallas</p>
-                </div>
+                <p>Su calificación es: ${nota} sobre ${numPreguntas}</p>`;
+                if (nota < 10) {
+                    modalExFinalizado += `<p>Se mostrará la solución sobre el examen, marcando en rojo las preguntas fallas</p>`;
+                } else {
+                    modalExFinalizado += `<p>¡Enhorabuena, ha conseguido la máxima nota!</p>`;
+                }
+                modalExFinalizado += `</div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
