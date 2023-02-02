@@ -545,10 +545,11 @@ function filtarPorciudad(ciudad) {
     const usuariosMostrados = document.getElementsByClassName("usuarioTabla");
 
      while (usuariosMostrados.length > 0) {
-         usuariosMostrados[0].parentNode.remove;
-        //  usuariosMostrados[0].parentNode.removeChild(usuariosMostrados[0]);
-        //  usuariosMostrados[0].removeChild(usuariosMostrados[0]);
+        //  usuariosMostrados[0].parentNode.remove;
         //  usuariosMostrados[0].remove;
+          usuariosMostrados[0].parentNode.removeChild(usuariosMostrados[0]);
+          usuariosMostrados[0].removeChild(usuariosMostrados[0]);
+          usuariosMostrados[0].remove;
      }
     // const tbody = document.querySelector('tbody');
     // tbody.remove();
