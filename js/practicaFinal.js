@@ -25,20 +25,24 @@ function mostrarInicioEjercicio(ejercicio, cadena) {
 // se llame "practica" y que tenga por valor "Práctica Final ECMACScript". Esta variable
 // debe borrarse del almacenamiento local cuando se cierre el navegador.
 
+mostrarInicioEjercicio(2, "Guardando propiedad en el navegador");
+
 localStorage.setItem("practica", "Práctica Final ECMAScript");
-let tituloPractica = localStorage.getItem("practica");
+//let tituloPractica = localStorage.getItem("practica");
 
 window.addEventListener("load", function () {
     localStorage.removeItem("practica");
     });
     
-mostrarInicioEjercicio(2, tituloPractica);
+
 
 
 
 //ejercicio 3
 // Implemente una expresión de función anónima que devuelva la hora
 // del sistema en formato HH:MM:SS
+
+mostrarInicioEjercicio(3, "Mostrando hora actual");
 
 
 let horaFormateada = function () {
@@ -54,7 +58,8 @@ let horaFormateada = function () {
     return `${hh}:${mm}:${ss}`;
 }
 
-mostrarInicioEjercicio(3, "Hora actual. Son las: " + horaFormateada());
+console.log("\tSon las: " + horaFormateada());
+
 
 
 //ejercicio 4
@@ -102,15 +107,6 @@ header.addEventListener("mouseout", function () {
 // cambiar a "imagen2", la siguiente vez que haga click, a la anterior "imagen1" y así
 // sucesivamente...
 
-// let controlImagen = true;
-// let cambiarImagen = function() {
-//   if (controlImagen) {
-//     imagenOriginal.src = "assets/perro.png";
-//   } else {
-//     imagenOriginal.src = urlImagenOriginal;
-//   }
-//   controlImagen = !controlImagen;
-// }
 
 mostrarInicioEjercicio(6, "Modificando imagen al pulsar sobre ella");
 
@@ -133,55 +129,6 @@ imagen.addEventListener("click", function () {
     controlImagen = !controlImagen;
 });
 
-
-// seleccionar las imágenes
-// let imagenes = document.querySelectorAll('.imagen1');
-
-// // agregar evento click a cada imagen
-// for (let i = 0; i < imagenes.length; i++) {
-//     imagenes[i].addEventListener('click', function () {
-//         // obtener la ruta de la imagen actual
-//         let rutaActual = this.getAttribute('src');
-//         // si la ruta es la original
-//         if (rutaActual === 'assets/autoescuela_pequenia.jpg') {
-//             // cambiar la ruta a la nueva imagen
-//             this.setAttribute('src', 'ruta/de/la/nueva/imagen.jpg');
-//         } else {
-//             // si no, cambiar la ruta a la imagen original
-//             this.setAttribute('src', 'assets/autoescuela_pequenia.jpg');
-//         }
-//     });
-// }
-
-
-// // seleccionar las imágenes
-// let imagenes = document.getElementsByClassName('imagenSource');
-
-// // agregar evento click a cada imagen
-// for (let i = 0; i < imagenes.length; i++) {
-//     console.log("ññññññññññññ");
-//     console.log(imagenes[i].srcset);
-//     imagenes[i].addEventListener('click', function () {
-//         alert("asf");
-//         console.log("ññññññññññññyyyyyyyyyyyyy");
-
-//         // obtener la ruta de la imagen actual
-//         let rutaActual = this.getAttribute('srcset');
-//         console.log("ññññññññññññ" + rutaActual);
-//         // si la ruta es la original
-//         if (rutaActual === 'assets/autoescuela_grande.jpg') {
-//             // cambiar la ruta a la nueva imagen
-//             this.setAttribute('srcset', 'assets/perro.png');
-//         } else if (rutaActual === 'assets/autoescuela_mediana.jpg') {
-//             // cambiar la ruta a la nueva imagen
-//             this.setAttribute('srcset', 'assets/perro.png');
-//         } else {
-//             // si no, cambiar la ruta a la imagen original
-//             this.setAttribute('srcset', 'assets/autoescuela_grande.jpg');
-//             this.setAttribute('srcset', 'assets/autoescuela_mediana.jpg');
-//         }
-//     });
-// }
 
 
 //ejercicio 7
@@ -217,7 +164,7 @@ xhttp.onreadystatechange = function () {
 }
 */
 
-// otra forma de hacerlo
+/* otra forma de hacerlo */
 // fetch('assets/json/personas.json')
 //     .then(response => response.json())
 //     .then(data => {
@@ -380,8 +327,8 @@ let elementoJSON = '{ ' +
 let usuarioJSON = JSON.parse(elementoJSON);
 
 let usuario = crearUsuario(usuarioJSON);
-console.log("Mostramos, por ejemplo, el email del usuario: ");
-console.log(usuario.email);
+console.log("\tMostramos, por ejemplo, el email del usuario: ");
+console.log("\t"+usuario.email);
 
 
 //ejercicio 11 Implemente una función que recorra el JSON y devuelva un array de
@@ -400,6 +347,8 @@ function obtenerArray() {
     });
     return arrayUsuarios;
 }
+console.log("\tFunción creada");
+
 
 
 //ejercicio 12 Cree una variable global que contenga el resultado de la función del
@@ -549,6 +498,8 @@ function mostrarUsuarios() {
 
 mostrarUsuarios();
 
+console.log("\tModal creado. Accesible desde el menú \"Usuarios\"");
+
 
 
 
@@ -621,6 +572,7 @@ function filtarPorciudad(ciudad) {
     }
 }
 
+console.log("\tFunción creada");
 
 
 // 17. Modifique la función del ejercicio 15, para que cambie el color del texto
@@ -629,5 +581,45 @@ function filtarPorciudad(ciudad) {
 // Wisokyburgh, color = verde
 
 mostrarInicioEjercicio(17, "Function color texto dependiendo de la ciudad");
+//hemos añadido class con el nombre de cada ciudad y controlamos el color con css para no hardcodear
+console.log("\tIncluido en el modal. El control se controla para no hardcodear");
 
-//hemos añadido class con el nombre de cada ciudad y controlamos el color con css
+
+
+
+// 18- Implemente una función calcularDatos(), que obtenga los siguientes
+// datos de todos los usuarios:
+// - Menor edad
+// - Nombre del usuario de menor edad
+// - Mayor edad
+// - Nombre del usuario de mayor edad
+// Esta función se debe invocar cuando se muestren los datos de los usuarios
+// mostrarUsuarios().
+// Por lo tanto, deberá insertar en el modal, a continuación del listado de
+// usuarios, los elementos que estime oportuno para mostrar estos datos
+// obtenidos a través de la función calcularDatos().
+// Cuando se seleccione una ciudad a través del elemento Select, también se
+// deberán actualizar estos datos, calculados según la ciudad seleccionada.
+
+mostrarInicioEjercicio(18, "Function función calcularDatos");
+
+console.log("\tFunción creada");
+
+
+
+
+
+
+
+
+
+// 19. (0.5 puntos) Implemente un evento, de tal manera que cuando se pulse la tecla "p"
+// (minúscula) ó "P" (mayúscula) aparezca una ventana con el texto de la variable
+// global practica (Ejercicio 1), esta ventana se debe cerrar automáticamente pasado 3
+// segundos.
+// 20. (0.75 puntos) Implemente la función filtrarDireccion(), de tal manera que cuando el
+// usuario seleccione un usuario en la lista desplegable, aparezca su dirección con el
+// siguiente formato: C/ nombre de la calle, Ciudad (código postal).
+// Para ello, deberá insertar, al final del modal, un elemento Select que muestre como
+// opciones los nombres de todos los usuarios, y otro elemento html, de su elección,
+// que muestre su dirección con el formato exigido.
