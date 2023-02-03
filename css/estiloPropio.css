@@ -443,12 +443,22 @@ th, td {
     color:green;
  }
 
+
+ /*Ponemos el mismo estio a usuarioMenor y dirección*/
 .usuarioMenor {
     margin-left: 2vw;
     margin-right: 2vw;
     padding-left: 2vw;
     background-color: var(--verde-claro);
 }
+
+.direccion {
+    margin-left: 2vw;
+    margin-right: 2vw;
+    padding-left: 2vw;
+    background-color: var(--verde-claro);
+}
+
 
 #modalEj19 {
     position: fixed;

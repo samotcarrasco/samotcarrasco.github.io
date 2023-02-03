@@ -537,7 +537,7 @@ padreFooter.appendChild(hijo);
 
 
 const filtroCiudades = document.getElementById("selectorCiudad");
-onchange = function () { filtarPorciudad(filtroCiudades.value) };
+filtroCiudades.onchange = function () { filtarPorciudad(filtroCiudades.value) };
 
 
 function filtarPorciudad(ciudad) {
@@ -550,13 +550,11 @@ function filtarPorciudad(ciudad) {
 
     const tbodyVacios = document.querySelectorAll("tbody:empty");
     for (let i = 0; i < tbodyVacios.length; i++) {
-        console.log("eliminando tbody");
         tbodyVacios[i].remove();
     }
 
     const usuariosMenores = document.querySelectorAll("p.usuarioMenor");
     for (let i = 0; i < usuariosMenores.length; i++) {
-        //     console.log("eliminando tbody");
         usuariosMenores[i].remove();
     }
 
@@ -579,8 +577,20 @@ function filtarPorciudad(ciudad) {
 
         var elementoMenor = `<p class="usuarioMenor"> Persona de menor edad: <b>${menor.nombre} ${menor.edad} años </b> </p>`;
         tablaModal.insertAdjacentHTML("afterend", elementoMenor);
-        filtrarDireccion(objetosCiudad[ciudad]);
 
+        //eliminamos mostrar la dirección anterior (si había)
+        // let direccionAnterior = document.getElementsByClassName("direccion");
+        // while (direccionAnterior.length > 0) {
+        //     console.log("eliminandooooooo");
+        //     direccionAnterior[0].parentNode.removeChild(direccionAnterior[0]);
+
+        // }
+
+        filtrarDireccion(objetosCiudad[ciudad]);
+        console.log("añadido filtro para la ciudad", ciudad);
+        const filtroUsuarios = document.getElementById("selectorDireccion");
+        seleccionarDireccion(filtroUsuarios.value); 
+    
     }
     else {
         //en este caso usamos forEach
@@ -599,6 +609,9 @@ function filtarPorciudad(ciudad) {
         var elementoMenor = `<p class="usuarioMenor"> Persona de menor edad: <b> ${menor.nombre} ${menor.edad} años </b> </p>`;
         tablaModal.insertAdjacentHTML("afterend", elementoMenor);
         filtrarDireccion(arrayUsuarios);
+        // console.log("añadido filtro para todos");
+        // const filtroUsuarios = document.getElementById("selectorDireccion");
+        // seleccionarDireccion(filtroUsuarios.value); 
     }
 }
 
@@ -691,21 +704,71 @@ document.addEventListener("keydown", event => {
 mostrarInicioEjercicio(18, "Function filtrarDireccion");
 
 
-function filtrarDireccion(arrayPersonas) {
-    let padre2 = document.getElementById("modalBusquedaDireccion");
 
+function filtrarDireccion(arrayPersonas) {
+
+    //     borramos el elemento anterior id="selectorDireccion" y , si existe
+    let filtro = document.getElementById("selectorDireccion");
+    if (filtro) {
+        filtro.parentNode.removeChild(filtro);
+    }
+
+    // let direccionAnterior = document.getElementsByClassName("direccion");
+    // while (direccionAnterior.length > 0) {
+    //     direccionAnterior[0].parentNode.removeChild(direccionAnterior[0]);
+    //     console.log("eliminando elemento mistrar direccion")
+    // }
+
+    let padre2 = document.getElementById("modalBusquedaDireccion");
     let hijo2 = document.createElement('select');
     hijo2.setAttribute("id", "selectorDireccion");
     hijo2.classList.add("form-control", "custom-select", "d-block", "w-100");
     //utilziamos forEach para recorrer los usuarios
     hijo2.innerHTML += `<option value="todos">Seleccione un usuario</option>`;
     arrayPersonas.forEach(function (usuario) {
-        hijo2.innerHTML += `<option value="${usuario.nombre}">${usuario.nombre}</option>`;
+        hijo2.innerHTML += `<option value="${usuario.nombreUser}">${usuario.nombre}</option>`;
     });
     padre2.appendChild(hijo2);
 
+    filtroUsuarios = document.getElementById("selectorDireccion");
+    filtroUsuarios.onchange = function () { 
+        console.log("Filtrando usuario: ", filtroUsuarios.value);
+        seleccionarDireccion(filtroUsuarios.value); 
+    };
+
+    //     // console.log("añadido filtro");
+
+}
+
+//filtroUsuarios.onchange = function () { console.log("kkkkkkkkkk"); seleccionarDireccion(filtroUsuarios.value); };
+
+
+
+//let filtroUsuarios = document.getElementById("selectorDireccion");
+// filtroUsuarios.onchange = function () { 
+//     console.log("Filtrando usuario: ", filtroUsuarios.value);
+//     seleccionarDireccion(filtroUsuarios.value); 
+// };
+
+//seleccionarDireccion("Moriah.Stanton");
+
+function seleccionarDireccion(nombreUser) {
+    console.log("Seleccionado usuario: " + nombreUser);
+    let direccionAnterior = document.getElementsByClassName("direccion");
+    while (direccionAnterior.length > 0) {
+        direccionAnterior[0].parentNode.removeChild(direccionAnterior[0]);
+        //  console.log("eliminando elemento mostrar direccion")
+    }
+
+    arrayUsuarios.forEach(function (persona) {
+        if (persona.nombreUser == nombreUser) {
+            let elemento = persona;
+            console.log("Mostrando dirección para: ", nombreUser, "-", elemento.direccion.calle);
+            var direccion = `<p class="direccion"> C/ ${elemento.direccion.calle} ${elemento.direccion.ciudad} (${elemento.direccion.codigoPostal})</p>`;
+            filtroUsuarios.insertAdjacentHTML("afterend", direccion);
+        }
+    });
 }
 
 
-// const filtroCiudades = document.getElementById("selectorCiudad");
-// onchange = function () { filtarPorciudad(filtroCiudades.value) };
+
