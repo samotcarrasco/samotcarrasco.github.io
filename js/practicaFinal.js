@@ -541,7 +541,7 @@ filtroCiudades.onchange = function () { filtarPorciudad(filtroCiudades.value) };
 
 
 function filtarPorciudad(ciudad) {
-    console.log("filtrando usuarios de la ciudad", ciudad);
+    //console.log("filtrando usuarios de la ciudad", ciudad);
     //eliminanos todos los registros de la tabla y mostramso solamente los que cumplen el filtro
     const usuariosMostrados = document.getElementsByClassName("usuarioTabla");
     while (usuariosMostrados.length > 0) {
@@ -587,7 +587,7 @@ function filtarPorciudad(ciudad) {
         // }
 
         filtrarDireccion(objetosCiudad[ciudad]);
-        console.log("añadido filtro para la ciudad", ciudad);
+        //console.log("añadido filtro para la ciudad", ciudad);
         const filtroUsuarios = document.getElementById("selectorDireccion");
         seleccionarDireccion(filtroUsuarios.value); 
     
@@ -670,15 +670,14 @@ mostrarInicioEjercicio(19, "Se mostrará un modal al pular P|p");
 
 const practica = "Ejercicio 1";
 
-const modalP = `<div class ="modal" id="modalEj19"">
-        <div class="modal-dialog modal-lg">
-        <div class="modal-contentP">
-        ${practica}
+  const modalP = `<div class ="modal" id="modalEj19"">
+          <div class="modal-dialog modal-lg">
+          <div class="modal-contentP">
+          ${practica}
+           </div>            
             </div>
-            </div>
-        </div>
-    `;
-
+          </div>
+      `;
 
 document.addEventListener("keydown", event => {
     document.body.insertAdjacentHTML("beforeend", modalP);
@@ -713,12 +712,6 @@ function filtrarDireccion(arrayPersonas) {
         filtro.parentNode.removeChild(filtro);
     }
 
-    // let direccionAnterior = document.getElementsByClassName("direccion");
-    // while (direccionAnterior.length > 0) {
-    //     direccionAnterior[0].parentNode.removeChild(direccionAnterior[0]);
-    //     console.log("eliminando elemento mistrar direccion")
-    // }
-
     let padre2 = document.getElementById("modalBusquedaDireccion");
     let hijo2 = document.createElement('select');
     hijo2.setAttribute("id", "selectorDireccion");
@@ -732,28 +725,15 @@ function filtrarDireccion(arrayPersonas) {
 
     filtroUsuarios = document.getElementById("selectorDireccion");
     filtroUsuarios.onchange = function () { 
-        console.log("Filtrando usuario: ", filtroUsuarios.value);
+        //console.log("Filtrando usuario: ", filtroUsuarios.value);
         seleccionarDireccion(filtroUsuarios.value); 
     };
 
-    //     // console.log("añadido filtro");
 
 }
 
-//filtroUsuarios.onchange = function () { console.log("kkkkkkkkkk"); seleccionarDireccion(filtroUsuarios.value); };
-
-
-
-//let filtroUsuarios = document.getElementById("selectorDireccion");
-// filtroUsuarios.onchange = function () { 
-//     console.log("Filtrando usuario: ", filtroUsuarios.value);
-//     seleccionarDireccion(filtroUsuarios.value); 
-// };
-
-//seleccionarDireccion("Moriah.Stanton");
-
 function seleccionarDireccion(nombreUser) {
-    console.log("Seleccionado usuario: " + nombreUser);
+    //console.log("Seleccionado usuario: " + nombreUser);
     let direccionAnterior = document.getElementsByClassName("direccion");
     while (direccionAnterior.length > 0) {
         direccionAnterior[0].parentNode.removeChild(direccionAnterior[0]);
@@ -763,12 +743,14 @@ function seleccionarDireccion(nombreUser) {
     arrayUsuarios.forEach(function (persona) {
         if (persona.nombreUser == nombreUser) {
             let elemento = persona;
-            console.log("Mostrando dirección para: ", nombreUser, "-", elemento.direccion.calle);
-            var direccion = `<p class="direccion"> C/ ${elemento.direccion.calle} ${elemento.direccion.ciudad} (${elemento.direccion.codigoPostal})</p>`;
+            //console.log("Mostrando dirección para: ", nombreUser, "-", elemento.direccion.calle);
+            var direccion = `<p class="direccion"> C/ ${elemento.direccion.calle}, ${elemento.direccion.ciudad} (${elemento.direccion.codigoPostal})</p>`;
             filtroUsuarios.insertAdjacentHTML("afterend", direccion);
         }
     });
 }
 
+
+console.log("\tFunción implementada");
 
 
