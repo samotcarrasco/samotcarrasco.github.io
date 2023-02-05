@@ -363,7 +363,7 @@ console.log("\tLa longitud del array es: " + arrayUsuarios.length);
 
 //otra forma de recorrer el array
 for (let i = 0; i < arrayUsuarios.length; i++) {
-    console.log("\t" + arrayUsuarios[i].nombre + ", " + arrayUsuarios[i].edad + " años");
+    console.log("\t" + arrayUsuarios[i].nombre + ", " + arrayUsuarios[i].edad + " años." + " Ciudad: " + arrayUsuarios[i].direccion.ciudad);
 }
 
 //ejercicio 13
@@ -404,7 +404,7 @@ arrayCiudades.forEach(function (ciudad) {
     arrayUsuarios.forEach(function (usuario) {
         if (usuario.direccion.ciudad == ciudad) {
             objetosCiudad[ciudad].push(usuario);
-            console.log("\tAñadido el usuario ", usuario.nombre, " a la ciudad ", ciudad)
+            console.log("\tAñadido el usuario " + usuario.nombre + " a la ciudad " + ciudad)
         }
     });
     //console.log("\tciudad", objetosCiudad);
@@ -428,9 +428,9 @@ arrayCiudades.forEach(function (ciudad) {
         // a must be equal to b
         return 0;
     });
+    console.log("Ciudad: " + ciudad);
     console.log(objetosCiudad[ciudad]);
 });
-
 
 
 
@@ -691,6 +691,7 @@ document.addEventListener("keydown", event => {
     }
 });
 
+console.log("\tModal y eventListener creados");
 
 
 // 20. (0.75 puntos) Implemente la función filtrarDireccion(), de tal manera que cuando el
@@ -700,7 +701,7 @@ document.addEventListener("keydown", event => {
 // opciones los nombres de todos los usuarios, y otro elemento html, de su elección,
 // que muestre su dirección con el formato exigido.
 
-mostrarInicioEjercicio(18, "Function filtrarDireccion");
+mostrarInicioEjercicio(20, "Function filtrarDireccion");
 
 
 
@@ -744,7 +745,7 @@ function seleccionarDireccion(nombreUser) {
         if (persona.nombreUser == nombreUser) {
             let elemento = persona;
             //console.log("Mostrando dirección para: ", nombreUser, "-", elemento.direccion.calle);
-            var direccion = `<p class="direccion"> C/ ${elemento.direccion.calle}, ${elemento.direccion.ciudad} (${elemento.direccion.codigoPostal})</p>`;
+            var direccion = `<p class="direccion"> Dirección: <b> C/ ${elemento.direccion.calle}, ${elemento.direccion.ciudad} (${elemento.direccion.codigoPostal}) </b></p>`;
             filtroUsuarios.insertAdjacentHTML("afterend", direccion);
         }
     });
