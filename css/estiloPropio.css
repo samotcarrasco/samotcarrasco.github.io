@@ -293,45 +293,16 @@ label.box {
 
 
 /* fomato de la pretuna una vez seleccionada */
-#p1r1:checked~label.p1r1 .course,
-#p1r2:checked~label.p1r2 .course,
-#p1r3:checked~label.p1r3 .course,
-#p1r4:checked~label.p1r4 .course,
-#p2r1:checked~label.p2r1 .course,
-#p2r2:checked~label.p2r2 .course,
-#p2r3:checked~label.p2r3 .course,
-#p2r4:checked~label.p2r4 .course,
-#p3r1:checked~label.p3r1 .course,
-#p3r2:checked~label.p3r2 .course,
-#p3r3:checked~label.p3r3 .course,
-#p3r4:checked~label.p3r4 .course,
-#p4r1:checked~label.p4r1 .course,
-#p4r2:checked~label.p4r2 .course,
-#p4r3:checked~label.p4r3 .course,
-#p4r4:checked~label.p4r4 .course,
-#p5r1:checked~label.p5r1 .course,
-#p5r2:checked~label.p5r2 .course,
-#p5r3:checked~label.p5r3 .course,
-#p5r4:checked~label.p5r4 .course,
-#p6r1:checked~label.p6r1 .course,
-#p6r2:checked~label.p6r2 .course,
-#p6r3:checked~label.p6r3 .course,
-#p6r4:checked~label.p6r4 .course,
-#p7r1:checked~label.p7r1 .course,
-#p7r2:checked~label.p7r2 .course,
-#p7r3:checked~label.p7r3 .course,
-#p7r4:checked~label.p7r4 .course #p8r1:checked~label.p8r1 .course,
-#p8r2:checked~label.p8r2 .course,
-#p8r3:checked~label.p8r3 .course,
-#p8r4:checked~label.p8r4 .course,
-#p9r1:checked~label.p9r1 .course,
-#p9r2:checked~label.p9r2 .course,
-#p9r3:checked~label.p9r3 .course,
-#p9r4:checked~label.p9r4 .course,
-#p10r1:checked~label.p10r1 .course,
-#p10r2:checked~label.p10r2 .course,
-#p10r3:checked~label.p10r3 .course,
-#p10r4:checked~label.p10r4 .course {
+#p1r1:checked~label.p1r1 .course, #p1r2:checked~label.p1r2 .course, #p1r3:checked~label.p1r3 .course, #p1r4:checked~label.p1r4 .course,
+#p2r1:checked~label.p2r1 .course, #p2r2:checked~label.p2r2 .course, #p2r3:checked~label.p2r3 .course, #p2r4:checked~label.p2r4 .course,
+#p3r1:checked~label.p3r1 .course, #p3r2:checked~label.p3r2 .course, #p3r3:checked~label.p3r3 .course, #p3r4:checked~label.p3r4 .course,
+#p4r1:checked~label.p4r1 .course, #p4r2:checked~label.p4r2 .course, #p4r3:checked~label.p4r3 .course, #p4r4:checked~label.p4r4 .course,
+#p5r1:checked~label.p5r1 .course, #p5r2:checked~label.p5r2 .course, #p5r3:checked~label.p5r3 .course, #p5r4:checked~label.p5r4 .course,
+#p6r1:checked~label.p6r1 .course, #p6r2:checked~label.p6r2 .course, #p6r3:checked~label.p6r3 .course, #p6r4:checked~label.p6r4 .course,
+#p7r1:checked~label.p7r1 .course, #p7r2:checked~label.p7r2 .course, #p7r3:checked~label.p7r3 .course, #p7r4:checked~label.p7r4 .course,
+#p8r1:checked~label.p8r1 .course, #p8r2:checked~label.p8r2 .course, #p8r3:checked~label.p8r3 .course, #p8r4:checked~label.p8r4 .course,
+#p9r1:checked~label.p9r1 .course, #p9r2:checked~label.p9r2 .course, #p9r3:checked~label.p9r3 .course, #p9r4:checked~label.p9r4 .course,
+#p10r1:checked~label.p10r1 .course, #p10r2:checked~label.p10r2 .course, #p10r3:checked~label.p10r3 .course, #p10r4:checked~label.p10r4 .course {
     display: flex;
     padding: 0vw;
     border-radius: 1vw;
@@ -359,11 +330,10 @@ label.box .fallo {
 /*formato de la preguna acertada, tras finalizar el examen*/
 label.box .acierto {
     display: flex;
-    align-items: centerf;
+    align-items: center;
     width: 100%;
     padding: 0vw;
     border-radius: 1vw;
-    cursor: pointer;
     background-color: var(--verde-muy-claro);
     /*ponemos unidad absoluta, ya que es el borde de la pretunga, indiferente del tamaño de la pantalla*/
     border: 1px solid var(--verde-oscuro)
@@ -377,7 +347,6 @@ label.box .normal {
     width: 100%;
     padding: 0vw;
     border-radius: 1vw;
-    cursor: pointer;
     background-color: white;
     /*ponemos unidad absoluta, ya que es el borde de la pretunga, indiferente del tamaño de la pantalla*/
     border: 1px solid var(--verde-normal)
