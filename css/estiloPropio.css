@@ -317,6 +317,7 @@ label.box {
 /*formato de la preguna fallada, tras finalizar el examen*/
 label.box .fallo {
     display: flex;
+    cursor: auto;
     align-items: center;
     width: 100%;
     padding: 0vw;
@@ -331,6 +332,7 @@ label.box .fallo {
 /*formato de la preguna acertada, tras finalizar el examen*/
 label.box .acierto {
     display: flex;
+    cursor: auto;
     align-items: center;
     width: 100%;
     padding: 0vw;
@@ -344,6 +346,7 @@ label.box .acierto {
 
 label.box .normal {
     display: flex;
+    cursor: auto;
     align-items: center;
     width: 100%;
     padding: 0vw;
