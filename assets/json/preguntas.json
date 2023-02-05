@@ -259,6 +259,71 @@
             "tipo": "larga",
             "imagen": "",
             "correcta": "4"
+        },
+        {
+            "id": "21",
+            "enunciado": "Al adelantar, ¿cuánto debo volver al carril derecho? Después de recorrer 200 metros delante del vehículo?",
+            "opciones": {
+                "opc1": "Después de recorrer 200 metros delante del vehículo",
+                "opc2": "Después de 15 segundos",
+                "opc3": "Después de ver en el espejo la parte delantera del vehículo adelantado",
+                "opc4": "Después de ver en el espejo totalmente el vehículo adelantado"
+            },
+            "tipo": "larga",
+            "imagen": "",
+            "correcta": "3"
+        },
+        {
+            "id": "22",
+            "enunciado": "Está permitido conducir con una rueda de uso temporal?",
+            "opciones": {
+                "opc1": "No, debe atender a las instrucciones del fabricante",
+                "opc2": "Sí, llevando el neumático con una presión superior a las demás ruedas",
+                "opc3": "Sí, pero sólo por vías urbanas",
+                "opc4": "Ninguna de las anteriores"
+            },
+            "tipo": "larga",
+            "imagen": "",
+            "correcta": "1"
+        },
+        {
+            "id": "23",
+            "enunciado": "Para medir la presión ¿cómo deben estar los neumáticos?",
+            "opciones": {
+                "opc1": "Calientes",
+                "opc2": "Templados",
+                "opc3": "Da igual",
+                "opc4": "Frios"
+            },
+            "tipo": "corta",
+            "imagen": "",
+            "correcta": "4"
+        },
+        {
+            "id": "24",
+            "enunciado": "En relación a estas señales:",
+            "opciones": {
+                "opc1": "Indican que está prohibido aparcar los días impares o pares",
+                "opc2": "Van a desaparecer en 2023",
+                "opc3": "Las dos opciones anteriores son correctas",
+                "opc4": "Indican que está prohibido aparacar los meses pares o impares"
+            },
+            "tipo": "imagen",
+            "imagen": "assets/img_examen/dias_pares_impares.png",
+            "correcta": "3"
+        },
+        {
+            "id": "25",
+            "enunciado": "La señal indica:",
+            "opciones": {
+                "opc1": "Prohibido girar a la izquierda",
+                "opc2": "Prohibido girar a la derecha",
+                "opc3": "Prohibido hacer cambio de sentido",
+                "opc4": "Ninguna de las anteriores"
+            },
+            "tipo": "imagen",
+            "imagen": "assets/img_examen/prohibido_izquierda.png",
+            "correcta": "1"
         }
     ]
 }
