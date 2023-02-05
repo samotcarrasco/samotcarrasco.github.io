@@ -227,6 +227,7 @@ Reduciendo la ventana se reduce la letra
 /*ajustamos la imagen para que quede bien con respecto a la pregunta (pretunta 4 en este caso)*/
 .imagen-pregunta {
     padding-left: 3vw;
+    display: flex;
 }
 
 
@@ -355,14 +356,14 @@ label.box .normal {
 
 /*font-awoseme, check de pregunta acertada*/
 .fa-check {
-    margin: 0.5vw;
+    margin: 0.7vw;
     color: var(--verde-oscuro);
 }
 
 
 /*font-awoseme, check de pregunta fallada*/
 .fa-xmark {
-    margin: 0.5vw;
+    margin: 0.7vw;
     color: var(--rojo-oscuro);
 
 }
@@ -373,7 +374,7 @@ label.box .circle2 {
     height: 1vw;
     width: 1vw;
     border-radius: 50%;
-    margin: 0.8vw;
+    margin: 0.7vw;
     /*Tras varias pruebas responsive, queda mejor con unidades absolutas (px)*/
     border: 2px solid var(--verde-claro);
     display: inline-block
@@ -387,14 +388,6 @@ label.box:hover {
 }
 
 
-.acierto:checked {
-    background: none;
-}
-
-.fallo:checked {
-    background: --rojo-;
-}
-
 
 /* alineacion del texto dentro de cada respuesta */
 label.box .course {
@@ -407,7 +400,7 @@ label.box .circle {
     height: 1vw;
     width: 1vw;
     border-radius: 50%;
-    margin: 0.8vw;
+    margin: 0.7vw;
     /*Tras varias pruebas responsive, queda mejor con unidades absolutas (px)*/
     border: 2px solid var(--verde-claro);
     display: inline-block
