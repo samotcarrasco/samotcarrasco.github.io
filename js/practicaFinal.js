@@ -34,6 +34,7 @@ window.addEventListener("load", function () {
     localStorage.removeItem("practica");
 });
 
+console.log("\tPopiedad guardada");
 
 
 
@@ -58,7 +59,7 @@ let horaFormateada = function () {
     return `${hh}:${mm}:${ss}`;
 }
 
-console.log("\tSon las: " + horaFormateada());
+console.log("\tExpresión creada. Son las: " + horaFormateada());
 
 
 
@@ -99,6 +100,8 @@ header.addEventListener("mouseout", function () {
     header.style.color = colorInicial;
 });
 
+console.log("\tImplementado en el texto de la página principal");
+
 
 //ejercicio 6
 // Modifique una imagen que aparezca en cualquier documento html de
@@ -129,6 +132,7 @@ imagen.addEventListener("click", function () {
     controlImagen = !controlImagen;
 });
 
+console.log("\tPulsar sobre dirección obligatoria/izquierda derecha");
 
 
 //ejercicio 7
@@ -266,6 +270,9 @@ class Usuario {
         this.#url = url;
     }
 }
+
+console.log("\tClase creada");
+
 
 
 //ejercicio 9
@@ -517,7 +524,7 @@ console.log("\tModal creado. Accesible desde el menú \"Usuarios\"");
 // actualizar la vista mostrando solamente aquellos que sean de la ciudad
 // seleccionada.
 
-mostrarInicioEjercicio(16, "Funcion filtrarCiudad() ");
+mostrarInicioEjercicio(16, "Función filtrarCiudad() ");
 
 
 let padreFooter = document.getElementById("modalBusqueda");
@@ -623,7 +630,7 @@ console.log("\tFunción creada");
 // Gwenborough, color = azul
 // Wisokyburgh, color = verde
 
-mostrarInicioEjercicio(17, "Function color texto dependiendo de la ciudad");
+mostrarInicioEjercicio(17, "Función color texto dependiendo de la ciudad");
 //hemos añadido class con el nombre de cada ciudad y controlamos el color con css para no hardcodear
 console.log("\tIncluido en el modal. El color se controla con css para no hardcodear");
 
@@ -644,7 +651,7 @@ console.log("\tIncluido en el modal. El color se controla con css para no hardco
 // Cuando se seleccione una ciudad a través del elemento Select, también se
 // deberán actualizar estos datos, calculados según la ciudad seleccionada.
 
-mostrarInicioEjercicio(18, "Function función calcularDatos");
+mostrarInicioEjercicio(18, "Función calcularDatos");
 
 function calcularDatos(arrayPersonas) {
     const usuariosOrdenadosEdad = arrayPersonas.sort((a, b) => a.edad.localeCompare(b.edad));
@@ -702,7 +709,7 @@ console.log("\tModal y eventListener creados");
 // opciones los nombres de todos los usuarios, y otro elemento html, de su elección,
 // que muestre su dirección con el formato exigido.
 
-mostrarInicioEjercicio(20, "Function filtrarDireccion");
+mostrarInicioEjercicio(20, "Función filtrarDireccion");
 
 
 
