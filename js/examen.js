@@ -301,7 +301,7 @@ function mostrarModal(estadoExamen,nota,numPreguntas) {
     switch (estadoExamen) {
         case 'finalizado':
             let modalExFinalizado = `<div class="modal" tabindex="-1" id="modalExFinalizado">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-examen">
             <div class="modal-content">
                 <div class="modal-header">
                 <h5 class="modal-title"><b>Examen finalizado correctamente</b></h5>
@@ -327,7 +327,7 @@ function mostrarModal(estadoExamen,nota,numPreguntas) {
             break;
         case 'sinFinalizar':
             const modalExSinFinalizar = `<div class="modal" tabindex="-1" id="modalExSinFinalizar">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-examen">
             <div class="modal-content">
                 <div class="modal-header">
                 <h5 class="modal-title"><b>Examen no finalizado</b></h5>

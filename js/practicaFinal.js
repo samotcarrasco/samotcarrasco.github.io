@@ -589,8 +589,8 @@ function filtarPorciudad(ciudad) {
         filtrarDireccion(objetosCiudad[ciudad]);
         //console.log("añadido filtro para la ciudad", ciudad);
         const filtroUsuarios = document.getElementById("selectorDireccion");
-        seleccionarDireccion(filtroUsuarios.value); 
-    
+        seleccionarDireccion(filtroUsuarios.value);
+
     }
     else {
         //en este caso usamos forEach
@@ -670,7 +670,7 @@ mostrarInicioEjercicio(19, "Se mostrará un modal al pular P|p");
 
 const practica = "Ejercicio 1";
 
-  const modalP = `<div class ="modal" id="modalEj19"">
+const modalP = `<div class ="modal" id="modalEj19">
           <div class="modal-dialog modal-lg">
           <div class="modal-contentP">
           ${practica}
@@ -678,6 +678,7 @@ const practica = "Ejercicio 1";
             </div>
           </div>
       `;
+
 
 document.addEventListener("keydown", event => {
     document.body.insertAdjacentHTML("beforeend", modalP);
@@ -725,9 +726,9 @@ function filtrarDireccion(arrayPersonas) {
     padre2.appendChild(hijo2);
 
     filtroUsuarios = document.getElementById("selectorDireccion");
-    filtroUsuarios.onchange = function () { 
+    filtroUsuarios.onchange = function () {
         //console.log("Filtrando usuario: ", filtroUsuarios.value);
-        seleccionarDireccion(filtroUsuarios.value); 
+        seleccionarDireccion(filtroUsuarios.value);
     };
 
 
