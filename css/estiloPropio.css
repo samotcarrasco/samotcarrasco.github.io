@@ -145,7 +145,7 @@ Reduciendo la ventana se reduce la letra
 (personalmente no me gusta, lo dejo por probar este tipo de responsive)
 */
 
-.titulo1, .texto1 {
+.titulo1, .texto1, #textoSuerte {
     /* letra Sofia (google fonts), importada en el head de los html*/
     font-family: "Sofia", sans-serif;
     font-size: 1.8vw;
@@ -154,9 +154,9 @@ Reduciendo la ventana se reduce la letra
 
 .titulo1{
     font-weight: bold;
-}
+} 
 
-.texto1{
+#textoSuerte{
     margin-bottom: 1vw;
 }
 
