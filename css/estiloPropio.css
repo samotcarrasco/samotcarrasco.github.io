@@ -132,11 +132,9 @@ main {
 
 #reloj {
     font-family: "Roboto", sans-serif;
-    font-size: 3vw;
+    font-size: 20px;
+    color:var(--verde-claro);
     border: var(--verde-oscuro);
-    border-style: dotted;
-    margin-bottom: 3vw;
-    margin-top: 3vw;
 }
 
 
@@ -147,22 +145,19 @@ Reduciendo la ventana se reduce la letra
 (personalmente no me gusta, lo dejo por probar este tipo de responsive)
 */
 
-.titulo1 {
+.titulo1, .texto1 {
     /* letra Sofia (google fonts), importada en el head de los html*/
     font-family: "Sofia", sans-serif;
-    font-size: 2vw;
+    font-size: 1.8vw;
     text-shadow: 0.5vw 0.5vw 0.5vw var(--gris-claro);
 }
 
-.texto1 {
-    font-family: "Sofia", sans-serif;
-    font-size: 2vw;
-    text-shadow: 0.2vw 0.2vw 0.2vw var(--gris-claro);
+.titulo1{
+    font-weight: bold;
 }
 
-
-.imagen1 {
-    max-width: 100%;
+.texto1{
+    margin-bottom: 1vw;
 }
 
 /*imagen del artículo de la pagina principal*/
@@ -235,7 +230,7 @@ Reduciendo la ventana se reduce la letra
 }
 
 
-/* preguntas examen*/
+/* opciones a las preguntas del examen examen*/
 label.box {
     display: flex;
     margin-top: 0.3vw;
@@ -246,49 +241,29 @@ label.box {
     border: 1px solid var(--verde-claro)
 }
 
+/*pregunta junto con las respuestas*/
+.pregunta {
+    border-style: dashed;
+    border-color: var(--verde-oscuro);
+    border-right: none;
+    border-left: none;
+    border-top: none;
+    border-width: 2px;
+    padding-bottom: 2vw;
+}
 
 
 /* forpat del círculo (check de las preguntas cuando se seleccionan*/
-#p1r1:checked~label.p1r1 .circle,
-#p1r2:checked~label.p1r2 .circle,
-#p1r3:checked~label.p1r3 .circle,
-#p1r4:checked~label.p1r4 .circle,
-#p2r1:checked~label.p2r1 .circle,
-#p2r2:checked~label.p2r2 .circle,
-#p2r3:checked~label.p2r3 .circle,
-#p2r4:checked~label.p2r4 .circle,
-#p3r1:checked~label.p3r1 .circle,
-#p3r2:checked~label.p3r2 .circle,
-#p3r3:checked~label.p3r3 .circle,
-#p3r4:checked~label.p3r4 .circle,
-#p4r1:checked~label.p4r1 .circle,
-#p4r2:checked~label.p4r2 .circle,
-#p4r3:checked~label.p4r3 .circle,
-#p4r4:checked~label.p4r4 .circle,
-#p5r1:checked~label.p5r1 .circle,
-#p5r2:checked~label.p5r2 .circle,
-#p5r3:checked~label.p5r3 .circle,
-#p5r4:checked~label.p5r4 .circle,
-#p6r1:checked~label.p6r1 .circle,
-#p6r2:checked~label.p6r2 .circle,
-#p6r3:checked~label.p6r3 .circle,
-#p6r4:checked~label.p6r4 .circle,
-#p7r1:checked~label.p7r1 .circle,
-#p7r2:checked~label.p7r2 .circle,
-#p7r3:checked~label.p7r3 .circle,
-#p7r4:checked~label.p7r4 .circle,
-#p8r1:checked~label.p8r1 .circle,
-#p8r2:checked~label.p8r2 .circle,
-#p8r3:checked~label.p8r3 .circle,
-#p8r4:checked~label.p8r4 .circle,
-#p9r1:checked~label.p9r1 .circle,
-#p9r2:checked~label.p9r2 .circle,
-#p9r3:checked~label.p9r3 .circle,
-#p9r4:checked~label.p9r4 .circle,
-#p10r1:checked~label.p10r1 .circle,
-#p10r2:checked~label.p10r2 .circle,
-#p10r3:checked~label.p10r3 .circle,
-#p10r4:checked~label.p10r4 .circle {
+#p1r1:checked~label.p1r1 .circle, #p1r2:checked~label.p1r2 .circle, #p1r3:checked~label.p1r3 .circle, #p1r4:checked~label.p1r4 .circle,
+#p2r1:checked~label.p2r1 .circle, #p2r2:checked~label.p2r2 .circle, #p2r3:checked~label.p2r3 .circle, #p2r4:checked~label.p2r4 .circle,
+#p3r1:checked~label.p3r1 .circle, #p3r2:checked~label.p3r2 .circle, #p3r3:checked~label.p3r3 .circle, #p3r4:checked~label.p3r4 .circle,
+#p4r1:checked~label.p4r1 .circle, #p4r2:checked~label.p4r2 .circle, #p4r3:checked~label.p4r3 .circle, #p4r4:checked~label.p4r4 .circle,
+#p5r1:checked~label.p5r1 .circle, #p5r2:checked~label.p5r2 .circle, #p5r3:checked~label.p5r3 .circle, #p5r4:checked~label.p5r4 .circle,
+#p6r1:checked~label.p6r1 .circle, #p6r2:checked~label.p6r2 .circle, #p6r3:checked~label.p6r3 .circle, #p6r4:checked~label.p6r4 .circle,
+#p7r1:checked~label.p7r1 .circle, #p7r2:checked~label.p7r2 .circle, #p7r3:checked~label.p7r3 .circle, #p7r4:checked~label.p7r4 .circle,
+#p8r1:checked~label.p8r1 .circle, #p8r2:checked~label.p8r2 .circle, #p8r3:checked~label.p8r3 .circle, #p8r4:checked~label.p8r4 .circle,
+#p9r1:checked~label.p9r1 .circle, #p9r2:checked~label.p9r2 .circle, #p9r3:checked~label.p9r3 .circle, #p9r4:checked~label.p9r4 .circle,
+#p10r1:checked~label.p10r1 .circle, #p10r2:checked~label.p10r2 .circle, #p10r3:checked~label.p10r3 .circle, #p10r4:checked~label.p10r4 .circle {
     /*ponemos unidades absolutas (px) ya que el borde 
     de la caja de texto es irrelevante en función de la pantalla
     resposive comprobado con esta configuración*/
@@ -626,7 +601,9 @@ footer i {
 
 /* Tamaño por defecto de los iconos del footer */
 footer a.btn-link {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -641,10 +618,11 @@ footer a.btn-link {
 
 .btn-linkC .fa-share-nodes:hover {
     color: #198754;
+
 }
 
 .btn-linkC .fa-share-nodes {
-    font-size: 3.2rem;
+    font-size: 2.8rem;
 }
 
 
@@ -659,13 +637,14 @@ footer .legal {
 }
 
 
-header .btn-link .fa-circle-user {
-    font-size: 3.2rem;
-}
-
 /*elemenos del footer centrados*/
 footer {
     color: white;
-    padding: 1vw;
     text-align: center;
+}
+
+/*icono de la cabecera*/
+header .btn-link .fa-circle-user {
+    font-size: 2.8rem;
+    color:var(--verde-claro);
 }

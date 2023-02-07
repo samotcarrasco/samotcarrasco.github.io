@@ -673,7 +673,7 @@ console.log("\tFunción creada");
 // global practica (Ejercicio 1), esta ventana se debe cerrar automáticamente pasado 3
 // segundos.
 
-mostrarInicioEjercicio(19, "Se mostrará un modal al pular P|p");
+mostrarInicioEjercicio(19, "Se mostrará una ventana al pular P|p");
 
 const practica = "Ejercicio 1";
 
@@ -761,5 +761,6 @@ function seleccionarDireccion(nombreUser) {
 
 
 console.log("\tFunción implementada");
+console.log("%cImportante >>> Para visualizar correctamente la lista de usuarios, el modal tiene scrol horizontal, y se adapta a todo tipo de pantallas", "color:red; font-weight: bold;");
 
 

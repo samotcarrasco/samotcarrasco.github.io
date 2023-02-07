@@ -64,7 +64,7 @@ xhttp.onreadystatechange = function () {
             let correcta = datos.preguntas[aleatorio2 - 1].correcta;
             const preguntaObj = new Pregunta(id, enunciado, opciones, tipo, imagen, correcta);
 
-            console.log(" Generada pregunta" + preguntaObj.id);
+            //console.log(" Generada pregunta" + preguntaObj.id);
 
             anadirPreguntaHTML(preguntaObj, contador);
             preguntas[contador - 1] = preguntaObj;
@@ -131,7 +131,7 @@ function anadirPreguntaHTML(preguntaObj, contador) {
                 </form>`;
             break;
         case "imagen":
-            codigoHtml = `<form class="row g-2" id="f${preguntaObj.id}"> <article class="col-sm-6">  
+            codigoHtml = `<form class="row g-3" id="f${preguntaObj.id}"> <article class="col-sm-6">  
                 <p class="imagen fw-bold mt-3" id="p${contador}">${contador}.- ${preguntaObj.enunciado}</p> 
                 <section> 
                 <input type="radio" name="box" id="p${contador}r1">  
@@ -169,7 +169,7 @@ function anadirPreguntaHTML(preguntaObj, contador) {
     // console.log(codigoHtml);
     var padre = document.getElementById("padrePreguntas");
     var nuevoHijo = document.createElement("form");
-    nuevoHijo.classList.add("row", "g-2");
+    nuevoHijo.classList.add("row", "g-2", "pregunta");
     nuevoHijo.innerHTML = codigoHtml;
 
     // Añade el nuevo nodo hijo al nodo padre

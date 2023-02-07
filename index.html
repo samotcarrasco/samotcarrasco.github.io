@@ -17,7 +17,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
     <!--     FontAwesome para los iconos del footer -->
     <script src="https://kit.fontawesome.com/f7ce9dd855.js" crossorigin="anonymous" defer></script>
-    <!--practicaFinal.js se utilizará en el index.html-->
+    <!--practicaFinal.js, se incluye solo en el index.html-->
     <script src="js/json.js" defer></script>
     <script src="js/practicaFinal.js" defer></script>
 </head>
@@ -30,6 +30,9 @@
                 <a class="navbar-brand" href="index.html">
                     <img class="logo" src="assets/icon.png" alt="Logo Autoescuela">
                 </a>
+                <section class="navbar-brand">
+                    <span id="reloj"></span>
+                </section>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapsibleNavbar">
                     <span class="navbar-toggler-icon"></span>
@@ -98,6 +101,7 @@
                         </li>
                     </ul>
                 </div>
+                
             </div>
         </nav>
 
@@ -111,7 +115,7 @@
             <p class="texto1">&clubs; &clubs; ¡¡ MUCHA SUERTE !! &clubs; &clubs;</p>
             -->
             <section class="row">
-                <section class="col-sm-12 col-md-6 col-lg-7 col-xl-7">
+                <section class="col-sm-12 col-md-6 col-lg-7 col-xl-10">
                     <h1 class="titulo1">Bienvenido a la mejor autoescuela online</h1>
                     <p class="texto1">Aquí podrá hacer exámenes de forma gratuita, que le ayudarán para obtener el
                         permiso de
@@ -119,17 +123,16 @@
                     <p class="texto1">&clubs; &clubs; ¡¡ MUCHA SUERTE !! &clubs; &clubs;</p>
                 </section>
                 <!--Ajustamos twitter al tamaño de cada pantalla (pequeña mediana grande) -->
-                <aside class="col-sm-12 col-md-6 col-lg-5 col-xl-4">
+                <aside class="col-sm-12 col-md-6 col-lg-5 col-xl-2">
                     <img class="imagen1 rounded" id="imagenRotar" src="assets/senal_derecha.png"
                         alt="señal de dirección obligatoria a la derecha">
                 </aside>
             </section>
-
         </article>
-        <h1 class="container text-center col-3" id="reloj"></h1>
+        
         <article class="container-fluid text-center container-index">
             <section class="row">
-                <section class="col-sm-12 col-md-6 col-lg-7 col-xl-7">
+                <section class="col-sm-12 col-md-6 col-lg-7 col-xl-6">
                     <!--Añadimos imagen con texto alternativo (para personas con deficiencia visual)
                     La class=rounded (bootstrap) es para redondear las esquinas de la imagen-->
                     <picture alt="Mujer condiciendo vehículo. De copiloto está un profesor">
@@ -143,12 +146,12 @@
                 </section>
                 <!--Ajustamos twitter al tamaño de cada pantalla (pequeña mediana grande) -->
                 <aside
-                    class="col-sm-12 col-md-6 col-lg-5 col-xl-4 twitter-timeline twitter-timeline-rendered min_twitter">
+                    class="col-sm-12 col-md-6 col-lg-5 col-xl-6 twitter-timeline twitter-timeline-rendered min_twitter">
                     <!--El iframe de twitter lo hemos obtenido de https://help.twitter.com/es/using-twitter/how-to-embed-a-tweet
                 -->
                     <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true"
-                        allowfullscreen="true" class="twitter-aside container-fluid text-center "
-                        src="https://syndication.twitter.com/srv/timeline-profile/screen-name/DGTes?dnt=false&amp;embedId=twitter-widget-0&amp;lang=es&amp;maxHeight=450px&amp;showHeader=true">
+                        allowfullscreen="true" class="twitter-aside container-fluid text-center"
+                        src="https://syndication.twitter.com/srv/timeline-profile/screen-name/DGTes?dnt=false&amp;embedId=twitter-widget-0&amp;lang=es&amp;maxHeight=420px&amp;showHeader=true">
                     </iframe>
                 </aside>
             </section>
@@ -176,7 +179,7 @@
                 <i class="far fa-envelope fa-2x" title="mail"></i>
             </a>
         </div>
-        <nav class="col justify-content-center my-2">
+        <nav class="col justify-content-center">
             <a href="https://www.dgt.es/inicio/" title="Dirección General de Tráfico" target="_blank">DGT</a>
             |
             <a href="https://www.apamad.es/" title="Asociacón de Autoescuelas de Madrid" target="_blank">APAMAD</a>
