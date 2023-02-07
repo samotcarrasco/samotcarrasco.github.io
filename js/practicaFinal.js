@@ -117,7 +117,7 @@ mostrarInicioEjercicio(6, "Modificando imagen al pulsar sobre ella");
 let imagen = document.getElementById("imagenRotar");
 let controlImagen = true;
 let urlImagenOriginal = imagen.src;
-let altImagenOriginal = imagen.src;
+let altImagenOriginal = imagen.alt;
 
 imagen.addEventListener("click", function () {
     if (controlImagen) {
