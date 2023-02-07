@@ -89,7 +89,7 @@ setInterval(mostrarReloj, 1000);
 
 mostrarInicioEjercicio(5, "Texto amarillo en el header al pasar el ratón");
 
-let header = document.getElementById("encabezado");
+let header = document.getElementById("textoEncabezado");
 let colorInicial = header.style.color;
 
 header.addEventListener("mouseover", function () {
