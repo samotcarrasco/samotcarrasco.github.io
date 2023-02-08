@@ -27,12 +27,12 @@ function mostrarInicioEjercicio(ejercicio, cadena) {
 
 mostrarInicioEjercicio(2, "Guardando propiedad en el navegador");
 
-localStorage.setItem("practica", "Práctica Final ECMAScript");
+sessionStorage.setItem("practica", "Práctica Final ECMAScript");
 //let tituloPractica = localStorage.getItem("practica");
 
-window.addEventListener("load", function () {
-    localStorage.removeItem("practica");
-});
+// window.addEventListener("load", function () {
+//     sessionStorage.removeItem("practica");
+// });
 
 console.log("\tPopiedad guardada");
 
