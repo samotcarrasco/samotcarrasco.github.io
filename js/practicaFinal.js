@@ -38,13 +38,11 @@ console.log("\tPopiedad guardada");
 
 
 
-
 //ejercicio 3
 // Implemente una expresión de función anónima que devuelva la hora
 // del sistema en formato HH:MM:SS
 
 mostrarInicioEjercicio(3, "Mostrando hora actual");
-
 
 let horaFormateada = function () {
     let hoy = new Date();
@@ -69,7 +67,6 @@ console.log("\tExpresión creada. Son las: " + horaFormateada());
 // expresión de función anónima del ejercicio 3, para ello inserte en el
 // documento html el elemento que estime oportuno).
 
-
 mostrarInicioEjercicio(4, "Mostrando reloj digital en index.html");
 
 
@@ -78,6 +75,8 @@ let mostrarReloj = function () {
 }
 let reloj = document.getElementById("reloj");
 setInterval(mostrarReloj, 1000);
+
+
 
 //ejercicio 5
 // Modifique el texto del “enunciado principal / título” que aparezca en el
@@ -103,6 +102,7 @@ header.addEventListener("mouseout", function () {
 console.log("\tImplementado en el texto de la página principal");
 
 
+
 //ejercicio 6
 // Modifique una imagen que aparezca en cualquier documento html de
 // su proyecto, de tal manera que cada vez que haga click sobre ella, la sustituya por
@@ -110,9 +110,7 @@ console.log("\tImplementado en el texto de la página principal");
 // cambiar a "imagen2", la siguiente vez que haga click, a la anterior "imagen1" y así
 // sucesivamente...
 
-
 mostrarInicioEjercicio(6, "Modificando imagen al pulsar sobre ella");
-
 
 let imagen = document.getElementById("imagenRotar");
 let controlImagen = true;
@@ -135,23 +133,20 @@ imagen.addEventListener("click", function () {
 console.log("\tPulsar sobre dirección obligatoria/izquierda derecha");
 
 
+
 //ejercicio 7
 
 mostrarInicioEjercicio(7, "Mostrando nombre de las personas");
-
 
 let usuarios = JSON.parse(UsuariosJSON);
 usuarios.forEach(function (usuario) {
     console.log("\t" + usuario.name);
 });
 
-
-
-
 // Estan serían otras formas de leer el fichero, con AJAX (o con fetch)
 //de esta forma es asíncrono y no nos interesa, lo dejo comentado.
 
-/* Leemos archivo con AJAX */
+/* OPCION 1: Leemos archivo con AJAX */
 /*const xhttp = new XMLHttpRequest();
 xhttp.open("GET", "js/json.js", true);
 xhttp.send();
@@ -168,7 +163,7 @@ xhttp.onreadystatechange = function () {
 }
 */
 
-/* otra forma de hacerlo */
+/* OPCION 2: FETCH */
 // fetch('assets/json/personas.json')
 //     .then(response => response.json())
 //     .then(data => {
@@ -180,8 +175,6 @@ xhttp.onreadystatechange = function () {
 //     .catch(error => {
 //         console.error('(ejercicio 7) Error al leer el archivo:', error);
 //     });
-
-
 
 
 
@@ -198,7 +191,6 @@ mostrarInicioEjercicio(8, "Creando la clase Usuario");
 
 //esta linea se puede obviar, ya que en este ejercicio no se va a crear el objeto
 let direccion = { calle: "", ciudad: "", codigoPostal: "" };
-
 
 class Usuario {
     #nombre = "";
@@ -281,11 +273,9 @@ console.log("\tClase creada");
 
 mostrarInicioEjercicio(9, "Mostrando datos del objeto userPrueba");
 
-
 //en la empresa, a parte del nombre, también hemos incluido el sector, para comprobar el funcionamiento de que solo se devuelve el nombre
 let direccionUsuario = { calle: "Gravina 7", ciudad: "Roma", codigoPostal: "41449" };
 let userPrueba = new Usuario("Prueba Practica Final", "PruebaPF7", "jpruebapf7@hotmail.com", "50", "Leroy Merlin", direccionUsuario, "https://prueba.dev/api/users/102/");
-
 
 console.log("\tnombre: " + userPrueba.nombre);
 console.log("\tnombreUser: " + userPrueba.nombreUser);
@@ -299,11 +289,11 @@ console.log("\turl: " + userPrueba.url);
 console.log("\tidUser: " + Usuario.getId(userPrueba.url));
 
 
+
 //Ejercicio 10. Implemente una función que pasándole como parámetro un objeto del
 //json mapee y cree un objeto del tipo Usuario.
 
 mostrarInicioEjercicio(10, "Creando funcion que crea un objecto a partir de un elemento del json");
-
 
 crearUsuario = function (objetoJSON) {
     let nombre = objetoJSON.name;
@@ -317,9 +307,7 @@ crearUsuario = function (objetoJSON) {
     return usuario;
 }
 
-//Pra probar el funcionamiento, vamos a guardar en una variable uno de los objetos del JSON
-
-
+//Para probar el funcionamiento, vamos a guardar en una variable uno de los objetos del JSON
 let elementoJSON = '{ ' +
     '"name": "Nicholas Runolfsdottir V",' +
     '"username": "Maxime_Nienow",' +
@@ -337,6 +325,7 @@ let usuarioJSON = JSON.parse(elementoJSON);
 let usuario = crearUsuario(usuarioJSON);
 console.log("\tMostramos, por ejemplo, el email del usuario: ");
 console.log("\t" + usuario.email);
+
 
 
 //ejercicio 11 Implemente una función que recorra el JSON y devuelva un array de
@@ -372,6 +361,8 @@ console.log("\tLa longitud del array es: " + arrayUsuarios.length);
 for (let i = 0; i < arrayUsuarios.length; i++) {
     console.log("\t" + arrayUsuarios[i].nombre + ", " + arrayUsuarios[i].edad + " años." + " Ciudad: " + arrayUsuarios[i].direccion.ciudad);
 }
+
+
 
 //ejercicio 13
 // Cree las variables que considere necesarias, de tal manera que cada
@@ -418,6 +409,7 @@ arrayCiudades.forEach(function (ciudad) {
 });
 
 
+
 // Ejercicio 14
 // Ordene de forma creciente los arrays anteriores por el valor de la
 // propiedad "nombre". Muestre el resultado por consola.
@@ -454,8 +446,10 @@ mostrarInicioEjercicio(15, "Insertar modal consulta usuarios. Menú Gestion Uuar
 //declaramos la variable global porque vamos a utilizarla después de la función
 let modal = "";
 
-
 function mostrarUsuarios() {
+
+    //utilizamos un template literal, ya, que al usar bootstrap el elemento es bastante
+    //complejo para crearlo con createElement
     modal = `<div class="modal" id="modalUsuarios">
             <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -506,15 +500,17 @@ function mostrarUsuarios() {
             </div>
             </div>
            </div>`;
+    
+    //añadimos el modal antes de que termine el body, por ejemplo
+    //aunque solo será visible cuando se cumpla un evento, es necesario tener creada su estructura
     document.body.insertAdjacentHTML("beforeend", modal);
     filtrarDireccion(arrayUsuarios);
-
-
 }
 
 mostrarUsuarios();
 
 console.log("\tModal creado. Accesible desde el menú \"Usuarios\"");
+
 
 
 //  16   Implemente la función filtrarCiudad().
@@ -526,8 +522,7 @@ console.log("\tModal creado. Accesible desde el menú \"Usuarios\"");
 
 mostrarInicioEjercicio(16, "Función filtrarCiudad() ");
 
-
-let padreFooter = document.getElementById("modalBusqueda");
+let modalBusqueda = document.getElementById("modalBusqueda");
 
 let hijo = document.createElement('select');
 hijo.setAttribute("id", "selectorCiudad");
@@ -538,14 +533,13 @@ arrayCiudades.forEach(function (ciudad) {
     hijo.innerHTML += `<option value="${ciudad}">${ciudad}</option>`;
 });
 
-padreFooter.appendChild(hijo);
-
-
+modalBusqueda.appendChild(hijo);
 
 
 const filtroCiudades = document.getElementById("selectorCiudad");
-filtroCiudades.onchange = function () { filtarPorciudad(filtroCiudades.value) };
-
+filtroCiudades.onchange = function () { 
+    filtarPorciudad(filtroCiudades.value) 
+};
 
 function filtarPorciudad(ciudad) {
     //console.log("filtrando usuarios de la ciudad", ciudad);
@@ -571,6 +565,7 @@ function filtarPorciudad(ciudad) {
         //utlizamos los arrays de ciudades del ejercicio 13 y 14
         for (var i = 0; i < objetosCiudad[ciudad].length; i++) {
             var usuario = objetosCiudad[ciudad][i];
+            //creamos el elemento con un template literal por agilidad
             var elementoTabla = `<tr class="usuarioTabla ${ciudad}" id=${usuario.nombreUser}>
             <td>${usuario.nombre}</td>
             <td>${usuario.nombreUser}</td>
@@ -584,14 +579,6 @@ function filtarPorciudad(ciudad) {
 
         var elementoMenor = `<p class="usuarioMenor"> Persona de menor edad: <b>${menor.nombre} ${menor.edad} años </b> </p>`;
         tablaModal.insertAdjacentHTML("afterend", elementoMenor);
-
-        //eliminamos mostrar la dirección anterior (si había)
-        // let direccionAnterior = document.getElementsByClassName("direccion");
-        // while (direccionAnterior.length > 0) {
-        //     console.log("eliminandooooooo");
-        //     direccionAnterior[0].parentNode.removeChild(direccionAnterior[0]);
-
-        // }
 
         filtrarDireccion(objetosCiudad[ciudad]);
         //console.log("añadido filtro para la ciudad", ciudad);
@@ -617,8 +604,6 @@ function filtarPorciudad(ciudad) {
         tablaModal.insertAdjacentHTML("afterend", elementoMenor);
         filtrarDireccion(arrayUsuarios);
         // console.log("añadido filtro para todos");
-        // const filtroUsuarios = document.getElementById("selectorDireccion");
-        // seleccionarDireccion(filtroUsuarios.value); 
     }
 }
 
@@ -633,7 +618,6 @@ console.log("\tFunción creada");
 mostrarInicioEjercicio(17, "Función color texto dependiendo de la ciudad");
 //hemos añadido class con el nombre de cada ciudad y controlamos el color con css para no hardcodear
 console.log("\tIncluido en el modal. El color se controla con css para no hardcodear");
-
 
 
 
@@ -666,8 +650,6 @@ console.log("\tFunción creada");
 
 
 
-
-
 // 19. Implemente un evento, de tal manera que cuando se pulse la tecla "p"
 // (minúscula) ó "P" (mayúscula) aparezca una ventana con el texto de la variable
 // global practica (Ejercicio 1), esta ventana se debe cerrar automáticamente pasado 3
@@ -686,7 +668,6 @@ const modalP = `<div class ="modal" id="modalEj19">
           </div>
       `;
 
-
 document.addEventListener("keydown", event => {
     document.body.insertAdjacentHTML("beforeend", modalP);
     let modal = document.getElementById("modalEj19");
@@ -702,6 +683,7 @@ document.addEventListener("keydown", event => {
 console.log("\tModal y eventListener creados");
 
 
+
 // 20. (0.75 puntos) Implemente la función filtrarDireccion(), de tal manera que cuando el
 // usuario seleccione un usuario en la lista desplegable, aparezca su dirección con el
 // siguiente formato: C/ nombre de la calle, Ciudad (código postal).
@@ -710,8 +692,6 @@ console.log("\tModal y eventListener creados");
 // que muestre su dirección con el formato exigido.
 
 mostrarInicioEjercicio(20, "Función filtrarDireccion");
-
-
 
 function filtrarDireccion(arrayPersonas) {
 
@@ -737,8 +717,6 @@ function filtrarDireccion(arrayPersonas) {
         //console.log("Filtrando usuario: ", filtroUsuarios.value);
         seleccionarDireccion(filtroUsuarios.value);
     };
-
-
 }
 
 function seleccionarDireccion(nombreUser) {
@@ -748,7 +726,6 @@ function seleccionarDireccion(nombreUser) {
         direccionAnterior[0].parentNode.removeChild(direccionAnterior[0]);
         //  console.log("eliminando elemento mostrar direccion")
     }
-
     arrayUsuarios.forEach(function (persona) {
         if (persona.nombreUser == nombreUser) {
             let elemento = persona;
@@ -758,7 +735,6 @@ function seleccionarDireccion(nombreUser) {
         }
     });
 }
-
 
 console.log("\tFunción implementada");
 console.log("%cImportante >>> Para visualizar correctamente la lista de usuarios, el modal tiene scrol horizontal, y se adapta a todo tipo de pantallas", "color:red; font-weight: bold;");
