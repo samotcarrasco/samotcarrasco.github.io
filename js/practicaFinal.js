@@ -19,26 +19,41 @@ function mostrarInicioEjercicio(ejercicio, cadena) {
 }
 
 
+//////////////////////////////////
+// Ejercicio 2
+//////////////////////////////////
 
-//ejercicio 2
 // Guarde en el almacenamiento local del navegador una propiedad que
 // se llame "practica" y que tenga por valor "Práctica Final ECMACScript". Esta variable
 // debe borrarse del almacenamiento local cuando se cierre el navegador.
 
 mostrarInicioEjercicio(2, "Guardando propiedad en el navegador");
 
-sessionStorage.setItem("practica", "Práctica Final ECMAScript");
-//let tituloPractica = localStorage.getItem("practica");
 
-// window.addEventListener("load", function () {
-//     sessionStorage.removeItem("practica");
-// });
+//para solucionar este ejercicio, vamos a hacerlo con una variable permanente (localStorage)
+//y con una de sesión (sessionStorage), para ver la diferencia de ambas
+sessionStorage.setItem("practica", "Práctica Final ECMAScript, variable creada con sessionStorage");
+localStorage.setItem("practica2", "Práctica Final ECMAScript, variable creada con localStorage");
 
-console.log("\tPopiedad guardada");
+//despues de crearlas, en el apartado Application de herramientas para desarrolladores, vemos su contenidoss
+// en este punto, si cerramos el navegador y lo volvemos a abrir, la propiedad practica2 sigue presente
+// sin embargo, la propiedad practica desaparece (ya que es de session)
+
+
+//para eliminar la practica2 al cerrar el navegador, añadimos un eventListener:
+window.addEventListener("close", function () {
+     sessionStorage.removeItem(localStorage.getItem("practica2"));
+ });
+
+console.log("\tSe han creado dos propiedades para comprobar funcionamiento");
+console.log("\tpractica (session) se eliminará automáticamente al cerrar el navegador, mientras que practia2 (local)");
+console.log("\tse ha programado para ser eliminada al cerrar el navegador");
 
 
 
-//ejercicio 3
+//////////////////////////////////
+// Ejercicio 3
+//////////////////////////////////
 // Implemente una expresión de función anónima que devuelva la hora
 // del sistema en formato HH:MM:SS
 
@@ -60,8 +75,10 @@ let horaFormateada = function () {
 console.log("\tExpresión creada. Son las: " + horaFormateada());
 
 
+//////////////////////////////////
+// Ejercicio 4
+//////////////////////////////////
 
-//ejercicio 4
 // En el encabezado de la página principal (en el lugar que considere),
 // debe aparecer la hora del sistema, pero debe simular un reloj digital. (Apóyese en la
 // expresión de función anónima del ejercicio 3, para ello inserte en el
@@ -77,8 +94,10 @@ let reloj = document.getElementById("reloj");
 setInterval(mostrarReloj, 1000);
 
 
+//////////////////////////////////
+// Ejercicio 5
+//////////////////////////////////
 
-//ejercicio 5
 // Modifique el texto del “enunciado principal / título” que aparezca en el
 // encabezado de la página principal de su proyecto, de tal manera que cuando el
 // puntero del ratón se sitúe encima, dicho texto debe aparecer con un color amarillo
@@ -102,8 +121,10 @@ header.addEventListener("mouseout", function () {
 console.log("\tImplementado en el texto de la página principal");
 
 
+//////////////////////////////////
+// Ejercicio 6
+//////////////////////////////////
 
-//ejercicio 6
 // Modifique una imagen que aparezca en cualquier documento html de
 // su proyecto, de tal manera que cada vez que haga click sobre ella, la sustituya por
 // otra imagen de su elección, es decir, la primera vez, cuando haga click, debe
@@ -133,8 +154,9 @@ imagen.addEventListener("click", function () {
 console.log("\tPulsar sobre dirección obligatoria/izquierda derecha");
 
 
-
-//ejercicio 7
+//////////////////////////////////
+// Ejercicio 7
+//////////////////////////////////
 
 mostrarInicioEjercicio(7, "Mostrando nombre de las personas");
 
@@ -177,8 +199,10 @@ xhttp.onreadystatechange = function () {
 //     });
 
 
+//////////////////////////////////
+// ejercicio 8
+//////////////////////////////////
 
-//ejercicio 8
 // Cree una clase "Usuario" que contenga, lo siguiente:
 // - Propiedades privadas: "idUser", “nombre", "nombreUser", "email", "empresa","direccion" y “url”.
 // - la propiedad empresa, sólo devolverá el nombre de dicha empresa.
@@ -266,8 +290,10 @@ class Usuario {
 console.log("\tClase creada");
 
 
+//////////////////////////////////
+// Ejercicio 9
+//////////////////////////////////
 
-//ejercicio 9
 // Instancie un objeto de la clase Usuario con el identificador
 //"userPrueba". Este objeto debe tener los siguientes valores ...
 
@@ -289,8 +315,11 @@ console.log("\turl: " + userPrueba.url);
 console.log("\tidUser: " + Usuario.getId(userPrueba.url));
 
 
+//////////////////////////////////
+// Ejercicio 10 
+//////////////////////////////////
 
-//Ejercicio 10. Implemente una función que pasándole como parámetro un objeto del
+//Implemente una función que pasándole como parámetro un objeto del
 //json mapee y cree un objeto del tipo Usuario.
 
 mostrarInicioEjercicio(10, "Creando funcion que crea un objecto a partir de un elemento del json");
@@ -327,8 +356,11 @@ console.log("\tMostramos, por ejemplo, el email del usuario: ");
 console.log("\t" + usuario.email);
 
 
+//////////////////////////////////
+// ejercicio 11 
+//////////////////////////////////
 
-//ejercicio 11 Implemente una función que recorra el JSON y devuelva un array de
+//Implemente una función que recorra el JSON y devuelva un array de
 //objetos del tipo Usuario. (Apóyese en la función del ejercicio anterior).
 
 mostrarInicioEjercicio(11, "Creando función que devuelve array de usuarios");
@@ -347,8 +379,11 @@ function obtenerArray() {
 console.log("\tFunción creada");
 
 
+//////////////////////////////////
+// Ejercicio 12 
+//////////////////////////////////
 
-//ejercicio 12 Cree una variable global que contenga el resultado de la función del
+//Cree una variable global que contenga el resultado de la función del
 //punto anterior. Muestre por consola SÓLO el nombre del usuario.
 
 mostrarInicioEjercicio(12, "Mostrando array de usuarios desde la variable global");
@@ -363,8 +398,10 @@ for (let i = 0; i < arrayUsuarios.length; i++) {
 }
 
 
+//////////////////////////////////
+// Ejercicio 13
+//////////////////////////////////
 
-//ejercicio 13
 // Cree las variables que considere necesarias, de tal manera que cada
 // variable contenga los usuarios de la misma ciudad.
 // Hágalo a partir del array de objetos de usuarios del punto anterior. Muestre el
@@ -409,8 +446,10 @@ arrayCiudades.forEach(function (ciudad) {
 });
 
 
-
+//////////////////////////////////
 // Ejercicio 14
+//////////////////////////////////
+
 // Ordene de forma creciente los arrays anteriores por el valor de la
 // propiedad "nombre". Muestre el resultado por consola.
 
@@ -432,8 +471,11 @@ arrayCiudades.forEach(function (ciudad) {
 });
 
 
+//////////////////////////////////
+// Ejercicio 15
+//////////////////////////////////
 
-//15 Implemente la función mostrarUsuarios().
+//Implemente la función mostrarUsuarios().
 // Inserte en la barra de navegación de la página principal de su proyecto, una
 // opción que se llame "Usuarios", de tal manera, que cuando el usuario haga click
 // sobre ella, se muestre un modal con todos los usuarios ordenados por el valor de
@@ -512,8 +554,11 @@ mostrarUsuarios();
 console.log("\tModal creado. Accesible desde el menú \"Usuarios\"");
 
 
+//////////////////////////////////
+//  Ejercicio 16   
+//////////////////////////////////
 
-//  16   Implemente la función filtrarCiudad().
+//Implemente la función filtrarCiudad().
 // En el modal del ejercicio anterior, inserte un elemento Select que muestre como
 // opciones los valores de las ciudades del json.
 // Cuando el usuario seleccione una ciudad de la lista desplegable, se deberá
@@ -609,8 +654,11 @@ function filtarPorciudad(ciudad) {
 
 console.log("\tFunción creada");
 
+//////////////////////////////////
+// Ejercicio 17 
+//////////////////////////////////
 
-// 17. Modifique la función del ejercicio 15, para que cambie el color del texto
+// Modifique la función del ejercicio 15, para que cambie el color del texto
 // de los usuarios mostrados en función de la ciudad del usuario:
 // Gwenborough, color = azul
 // Wisokyburgh, color = verde
@@ -620,8 +668,11 @@ mostrarInicioEjercicio(17, "Función color texto dependiendo de la ciudad");
 console.log("\tIncluido en el modal. El color se controla con css para no hardcodear");
 
 
+//////////////////////////////////
+// Ejercicio 18
+//////////////////////////////////
 
-// 18- Implemente una función calcularDatos(), que obtenga los siguientes
+// Implemente una función calcularDatos(), que obtenga los siguientes
 // datos de todos los usuarios:
 // - Menor edad
 // - Nombre del usuario de menor edad
@@ -649,8 +700,10 @@ function calcularDatos(arrayPersonas) {
 console.log("\tFunción creada");
 
 
-
-// 19. Implemente un evento, de tal manera que cuando se pulse la tecla "p"
+//////////////////////////////////
+// Ejercicio 19
+//////////////////////////////////
+// Implemente un evento, de tal manera que cuando se pulse la tecla "p"
 // (minúscula) ó "P" (mayúscula) aparezca una ventana con el texto de la variable
 // global practica (Ejercicio 1), esta ventana se debe cerrar automáticamente pasado 3
 // segundos.
@@ -683,8 +736,11 @@ document.addEventListener("keydown", event => {
 console.log("\tModal y eventListener creados");
 
 
+//////////////////////////////////
+// Ejercicio 20
+//////////////////////////////////
 
-// 20. (0.75 puntos) Implemente la función filtrarDireccion(), de tal manera que cuando el
+// (0.75 puntos) Implemente la función filtrarDireccion(), de tal manera que cuando el
 // usuario seleccione un usuario en la lista desplegable, aparezca su dirección con el
 // siguiente formato: C/ nombre de la calle, Ciudad (código postal).
 // Para ello, deberá insertar, al final del modal, un elemento Select que muestre como
