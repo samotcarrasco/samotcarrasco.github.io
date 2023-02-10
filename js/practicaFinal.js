@@ -534,8 +534,8 @@ function mostrarUsuarios() {
                 </div>`;
     let menor = calcularDatos(arrayUsuarios)[0];
     let mayor = calcularDatos(arrayUsuarios)[1];
-    modal += `<p class="usuarioMenor">Persona de menor edad: <b>${menor.nombre} (${menor.edad} años)</b> </p> 
-                <p class="usuarioMayor">Persona de mayor edad: <b>${mayor.nombre} (${mayor.edad} años)</b> </p> 
+    modal += `<p class="usuarioMenor">  <i class="fa-solid fa-child"> </i> &nbsp; <b>${menor.nombre} (${menor.edad} años)</b> </p> 
+                <p class="usuarioMayor"> <i class="fa-solid fa-person-cane"></i> &nbsp; <b>${mayor.nombre} (${mayor.edad} años)</b> </p> 
                 <div id="modalBusquedaDireccion">
                 </div>
                 <div class="modal-footer" id="modalFooter">
@@ -625,8 +625,8 @@ function filtarPorciudad(ciudad) {
         let menor = calcularDatos(objetosCiudad[ciudad])[0];
         let mayor = calcularDatos(objetosCiudad[ciudad])[1];
 
-        var elementoMenor = `<p class="usuarioMenor"> Persona de menor edad: <b>${menor.nombre} ${menor.edad} años </b> </p>`;
-        var elementoMayor = `<p class="usuarioMayor"> Persona de mayor edad: <b>${mayor.nombre} ${mayor.edad} años </b> </p>`;
+        var elementoMenor = `<p class="usuarioMenor">  <i class="fa-solid fa-child"> </i> &nbsp;<b>${menor.nombre} ${menor.edad} años </b> </p>`;
+        var elementoMayor = `<p class="usuarioMayor">  <i class="fa-solid fa-person-cane"></i>  &nbsp; <b>${mayor.nombre} ${mayor.edad} años </b> </p>`;
         tablaModal.insertAdjacentHTML("afterend", elementoMenor);
         tablaModal.insertAdjacentHTML("afterend", elementoMayor);
 
@@ -651,9 +651,9 @@ function filtarPorciudad(ciudad) {
 
         let menor = calcularDatos(arrayUsuarios)[0];
         let mayor = calcularDatos(arrayUsuarios)[1];
-        var elementoMenor = `<p class="usuarioMenor"> Persona de menor edad: <b> ${menor.nombre} ${menor.edad} años </b> </p>`;
+        var elementoMenor = `<p class="usuarioMenor">  <i class="fa-solid fa-child"> </i> &nbsp; <b> ${menor.nombre} ${menor.edad} años </b> </p>`;
         tablaModal.insertAdjacentHTML("afterend", elementoMenor);
-        var elementoMayor = `<p class="usuarioMenor"> Persona de mayor edad: <b> ${mayor.nombre} ${mayor.edad} años </b> </p>`;
+        var elementoMayor = `<p class="usuarioMenor">  <i class="fa-solid fa-person-cane"> </i> &nbsp; <b> ${mayor.nombre} ${mayor.edad} años </b> </p>`;
         tablaModal.insertAdjacentHTML("afterend", elementoMayor);
         filtrarDireccion(arrayUsuarios);
         // console.log("añadido filtro para todos");
@@ -800,7 +800,7 @@ function seleccionarDireccion(nombreUser) {
         if (persona.nombreUser == nombreUser) {
             let elemento = persona;
             //console.log("Mostrando dirección para: ", nombreUser, "-", elemento.direccion.calle);
-            var direccion = `<p class="direccion"> Dirección: <b> C/ ${elemento.direccion.calle}, ${elemento.direccion.ciudad} (${elemento.direccion.codigoPostal}) </b></p>`;
+            var direccion = `<p class="direccion"> <i class="fa-sharp fa-solid fa-address-card"></i> &nbsp;<b> C/ ${elemento.direccion.calle}, ${elemento.direccion.ciudad} (${elemento.direccion.codigoPostal}) </b></p>`;
             filtroUsuarios.insertAdjacentHTML("afterend", direccion);
         }
     });
