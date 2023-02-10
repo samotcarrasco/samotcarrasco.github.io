@@ -460,6 +460,11 @@ tr.Wisokyburgh td {
 }
 
 
+.form-control {
+    margin-left: 1vw;
+    display: inline-block!important;
+  }
+
 .direccion {
     margin-top: 1vw;
     margin-left: 0vw;

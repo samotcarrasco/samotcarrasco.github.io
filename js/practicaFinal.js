@@ -571,15 +571,18 @@ mostrarInicioEjercicio(16, "Función filtrarCiudad() ");
 
 let modalBusqueda = document.getElementById("modalBusqueda");
 
+let ciudad = document.createElement('i');
+ciudad.className = "fa-solid fa-city";
 let hijo = document.createElement('select');
 hijo.setAttribute("id", "selectorCiudad");
-hijo.classList.add("form-control", "custom-select", "d-block", "w-100");
+hijo.classList.add("form-control", "custom-select", "w-50");
 //utilziamos forEach para recorrer las ciudades
-hijo.innerHTML += `<option value="todas">Seleccione una ciudad</option>`;
+hijo.innerHTML += `<option value="todas">Todas</option>`;
 arrayCiudades.forEach(function (ciudad) {
     hijo.innerHTML += `<option value="${ciudad}">${ciudad}</option>`;
 });
 
+modalBusqueda.appendChild(ciudad);
 modalBusqueda.appendChild(hijo);
 
 
