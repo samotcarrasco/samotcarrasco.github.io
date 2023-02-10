@@ -45,9 +45,9 @@ window.addEventListener("close", function () {
      sessionStorage.removeItem(localStorage.getItem("practica2"));
  });
 
-console.log("\tSe han creado dos propiedades para comprobar funcionamiento");
-console.log("\tpractica (session) se eliminará automáticamente al cerrar el navegador, mientras que practia2 (local)");
-console.log("\tse ha programado para ser eliminada al cerrar el navegador");
+console.log("\tSe han creado dos propiedades para comprobar funcionamiento:");
+console.log("\t\t- practica (session) se eliminará automáticamente al cerrar el navegador:");
+console.log("\t\t- practia2 (local)se ha programado para ser eliminada al cerrar el navegador");
 
 
 
