@@ -532,8 +532,10 @@ function mostrarUsuarios() {
                 </tbody>
                 </table>
                 </div>`;
-    let menor = calcularDatos(arrayUsuarios);
+    let menor = calcularDatos(arrayUsuarios)[0];
+    let mayor = calcularDatos(arrayUsuarios)[1];
     modal += `<p class="usuarioMenor">Persona de menor edad: <b>${menor.nombre} (${menor.edad} años)</b> </p> 
+                <p class="usuarioMayor">Persona de mayor edad: <b>${mayor.nombre} (${mayor.edad} años)</b> </p> 
                 <div id="modalBusquedaDireccion">
                 </div>
                 <div class="modal-footer" id="modalFooter">
@@ -599,7 +601,7 @@ function filtarPorciudad(ciudad) {
         tbodyVacios[i].remove();
     }
 
-    const usuariosMenores = document.querySelectorAll("p.usuarioMenor");
+    const usuariosMenores = document.querySelectorAll("p.usuarioMenor, p.usuarioMayor");
     for (let i = 0; i < usuariosMenores.length; i++) {
         usuariosMenores[i].remove();
     }
@@ -620,10 +622,13 @@ function filtarPorciudad(ciudad) {
             tablaModal.insertAdjacentHTML("beforeend", elementoTabla);
             //tablaModal.insertAdjacentElement(elementoTabla);
         }
-        let menor = calcularDatos(objetosCiudad[ciudad]);
+        let menor = calcularDatos(objetosCiudad[ciudad])[0];
+        let mayor = calcularDatos(objetosCiudad[ciudad])[1];
 
         var elementoMenor = `<p class="usuarioMenor"> Persona de menor edad: <b>${menor.nombre} ${menor.edad} años </b> </p>`;
+        var elementoMayor = `<p class="usuarioMayor"> Persona de mayor edad: <b>${mayor.nombre} ${mayor.edad} años </b> </p>`;
         tablaModal.insertAdjacentHTML("afterend", elementoMenor);
+        tablaModal.insertAdjacentHTML("afterend", elementoMayor);
 
         filtrarDireccion(objetosCiudad[ciudad]);
         //console.log("añadido filtro para la ciudad", ciudad);
@@ -644,9 +649,12 @@ function filtarPorciudad(ciudad) {
             tablaModal.insertAdjacentHTML("beforeend", elementoTabla);
         });
 
-        let menor = calcularDatos(arrayUsuarios);
+        let menor = calcularDatos(arrayUsuarios)[0];
+        let mayor = calcularDatos(arrayUsuarios)[1];
         var elementoMenor = `<p class="usuarioMenor"> Persona de menor edad: <b> ${menor.nombre} ${menor.edad} años </b> </p>`;
         tablaModal.insertAdjacentHTML("afterend", elementoMenor);
+        var elementoMayor = `<p class="usuarioMenor"> Persona de mayor edad: <b> ${mayor.nombre} ${mayor.edad} años </b> </p>`;
+        tablaModal.insertAdjacentHTML("afterend", elementoMayor);
         filtrarDireccion(arrayUsuarios);
         // console.log("añadido filtro para todos");
     }
@@ -688,11 +696,17 @@ console.log("\tIncluido en el modal. El color se controla con css para no hardco
 
 mostrarInicioEjercicio(18, "Función calcularDatos");
 
+
 function calcularDatos(arrayPersonas) {
+    let menorMayor = [];
     const usuariosOrdenadosEdad = arrayPersonas.sort((a, b) => a.edad.localeCompare(b.edad));
-    let menor = usuariosOrdenadosEdad[0];
-    //console.log("el menor es: ",menor.edad);
-    return menor;
+    //el primero del array será el menor, y el último el mayor
+    menorMayor[0] = usuariosOrdenadosEdad[0];
+    menorMayor[1] = usuariosOrdenadosEdad[arrayPersonas.length-1];
+    //console.log("\t el menor es: ",menorMayor[0].nombre,  menorMayor[0].edad);
+    //console.log("\t el mayor es: ",menorMayor[1].nombre, menorMayor[1].edad);
+    //devolvemos un array con 2 posiciones, la 0 es el menor y la 1 el mayor
+    return menorMayor;
 }
 
 //console.log(calcularDatos(arrayUsuarios).edad);

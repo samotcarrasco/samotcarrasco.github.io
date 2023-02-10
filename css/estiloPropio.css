@@ -446,14 +446,19 @@ tr.Wisokyburgh td {
 }
 
 
-/*Ponemos el mismo estio a usuarioMenor y dirección*/
-.usuarioMenor {
+/*Ponemos el mismo estilo a usuarioMenor y dirección*/
+.usuarioMenor, .usuarioMayor {
     margin-left: 2vw;
     margin-right: 2vw;
     margin-top: 1vw;
     padding-left: 2vw;
     background-color: var(--verde-claro);
 }
+
+.usuarioMenor {
+    margin-bottom: 0vw;
+}
+
 
 .direccion {
     margin-top: 2vw;
