@@ -748,7 +748,7 @@ document.addEventListener("keydown", event => {
         modal.style.display = "block";
         setTimeout(() => {
             modal.style.display = "none";
-        }, 30000);
+        }, 3000);
     }
 });
 
