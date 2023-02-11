@@ -729,9 +729,11 @@ mostrarInicioEjercicio(19, "Se mostrará una ventana al pular P|p");
 
 const practica = "Ejercicio 1";
 
+//incluimos caracter UNICODE de reloj de arena
 const modalP = `<div class ="modal" id="modalEj19">
           <div class="modal-dialog modal-lg">
           <div class="modal-contentP">
+          &#9203;
           ${practica}
            </div>            
             </div>
@@ -746,7 +748,7 @@ document.addEventListener("keydown", event => {
         modal.style.display = "block";
         setTimeout(() => {
             modal.style.display = "none";
-        }, 3000);
+        }, 30000);
     }
 });
 
