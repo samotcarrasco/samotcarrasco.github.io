@@ -46,8 +46,8 @@ window.addEventListener("close", function () {
  });
 
 console.log("\tSe han creado dos propiedades para comprobar funcionamiento:");
-console.log("\t\t- practica (session) se eliminará automáticamente al cerrar el navegador:");
-console.log("\t\t- practia2 (local)se ha programado para ser eliminada al cerrar el navegador");
+console.log("\t - practica (sessionStorage) se eliminará automáticamente al cerrar el navegador:");
+console.log("\t - practica2 (localStorage) se ha programado para ser eliminada al cerrar el navegador");
 
 
 
