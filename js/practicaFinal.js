@@ -737,7 +737,7 @@ const modalP = `<div class ="modal" id="modalEj19">
           ${practica}
            </div>            
             </div>
-          </div>
+          </div> 
       `;
 
 document.addEventListener("keydown", event => {
