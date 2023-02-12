@@ -86,12 +86,12 @@ console.log("\tExpresión creada. Son las: " + horaFormateada());
 
 mostrarInicioEjercicio(4, "Mostrando reloj digital en index.html");
 
-
-let mostrarReloj = function () {
-    reloj.innerHTML = horaFormateada();
-}
 let reloj = document.getElementById("reloj");
-setInterval(mostrarReloj, 1000);
+let mostrarReloj = function () {
+    reloj.textContent = horaFormateada();
+}
+//ponemos menos de 1000 milisengos para asegurarnos que estará siempre actualizado
+setInterval(mostrarReloj, 999);
 
 
 //////////////////////////////////
@@ -118,7 +118,7 @@ header.addEventListener("mouseout", function () {
     header.style.color = colorInicial;
 });
 
-console.log("\tImplementado en el texto de la página principal");
+console.log("\tImplementado en el texto \"MUCHA SUERTE\" de la página principal");
 
 
 //////////////////////////////////
@@ -140,8 +140,7 @@ let altImagenOriginal = imagen.alt;
 
 imagen.addEventListener("click", function () {
     if (controlImagen) {
-        //es importante tambien cambiar la propiedad "alt"
-        //para que personas con discpacidad visual lo puedan leer
+        //es importante tambien cambiar la propiedad "alt" para que personas con discpacidad visual lo puedan leer
         imagen.src = "assets/senal_izquierda.png";
         imagen.alt = "Señal dirección obligatoria a la izquierda";
     } else {
@@ -160,13 +159,13 @@ console.log("\tPulsar sobre dirección obligatoria/izquierda derecha");
 
 mostrarInicioEjercicio(7, "Mostrando nombre de las personas");
 
+//parseamos la constante declarada en json.js
 let usuarios = JSON.parse(UsuariosJSON);
 usuarios.forEach(function (usuario) {
     console.log("\t" + usuario.name);
 });
 
-// Estan serían otras formas de leer el fichero, con AJAX (o con fetch)
-//de esta forma es asíncrono y no nos interesa, lo dejo comentado.
+// Estan serían otras formas de leer el fichero, con AJAX (o con fetch). De estas forma es asíncrono y no nos interesa, lo dejo comentado.
 
 /* OPCION 1: Leemos archivo con AJAX */
 /*const xhttp = new XMLHttpRequest();
@@ -213,9 +212,6 @@ xhttp.onreadystatechange = function () {
 
 mostrarInicioEjercicio(8, "Creando la clase Usuario");
 
-//esta linea se puede obviar, ya que en este ejercicio no se va a crear el objeto
-let direccion = { calle: "", ciudad: "", codigoPostal: "" };
-
 class Usuario {
     #nombre = "";
     #nombreUser = "";
@@ -260,6 +256,7 @@ class Usuario {
     static getId(url) {
         let partes = url.split("/");
         let tamanio = partes.length;
+        //el id estará siempre en esta posición:
         return partes[tamanio - 2];
     }
 
@@ -299,7 +296,7 @@ console.log("\tClase creada");
 
 mostrarInicioEjercicio(9, "Mostrando datos del objeto userPrueba");
 
-//en la empresa, a parte del nombre, también hemos incluido el sector, para comprobar el funcionamiento de que solo se devuelve el nombre
+//la dirección se compone de calle, ciudad y CP
 let direccionUsuario = { calle: "Gravina 7", ciudad: "Roma", codigoPostal: "41449" };
 let userPrueba = new Usuario("Prueba Practica Final", "PruebaPF7", "jpruebapf7@hotmail.com", "50", "Leroy Merlin", direccionUsuario, "https://prueba.dev/api/users/102/");
 
@@ -337,17 +334,17 @@ crearUsuario = function (objetoJSON) {
 }
 
 //Para probar el funcionamiento, vamos a guardar en una variable uno de los objetos del JSON
-let elementoJSON = '{ ' +
-    '"name": "Nicholas Runolfsdottir V",' +
-    '"username": "Maxime_Nienow",' +
-    '"email": "Sherwood@rosamond.me",' +
-    '"age": "24",' +
-    '"address": {"street": "Ellsworth Summit","suite": "Suite 729", "city": "Wisokyburgh","zipcode": "45169","geo":{"lat": "-14.3990","lng": "-120.7677"}},' +
-    '"phone": "586.493.6943 x140",' +
-    '"website": "jacynthe.com",' +
-    ' "company": { "name": "Abernathy Group",  "catchPhrase": "Implemented secondary concept", "bs": "e-enable extensible e-tailers" },' +
-    '  "url": "https://prueba.dev/api/users/8/"' +
-    '}';
+let elementoJSON = `{ 
+    "name": "Nicholas Runolfsdottir V",
+    "username": "Maxime_Nienow",
+    "email": "Sherwood@rosamond.me",
+    "age": "24",
+    "address": {"street": "Ellsworth Summit","suite": "Suite 729", "city": "Wisokyburgh","zipcode": "45169","geo":{"lat": "-14.3990","lng": "-120.7677"}},
+    "phone": "586.493.6943 x140",
+    "website": "jacynthe.com",
+     "company": { "name": "Abernathy Group",  "catchPhrase": "Implemented secondary concept", "bs": "e-enable extensible e-tailers" },
+     "url": "https://prueba.dev/api/users/8/"
+    }`;
 
 let usuarioJSON = JSON.parse(elementoJSON);
 
@@ -390,11 +387,12 @@ mostrarInicioEjercicio(12, "Mostrando array de usuarios desde la variable global
 
 // variable global
 const arrayUsuarios = obtenerArray();
-console.log("\tLa longitud del array es: " + arrayUsuarios.length);
+console.log("\tLa longitud del array es: " + arrayUsuarios.length + " ↴↴↴");
 
 //otra forma de recorrer el array
 for (let i = 0; i < arrayUsuarios.length; i++) {
-    console.log("\t" + arrayUsuarios[i].nombre + ", " + arrayUsuarios[i].edad + " años." + " Ciudad: " + arrayUsuarios[i].direccion.ciudad);
+    console.log("\t· " + arrayUsuarios[i].nombreUser);
+    //console.log("\t· " + arrayUsuarios[i].nombre + ", " + arrayUsuarios[i].edad + " años." + " Ciudad: " + arrayUsuarios[i].direccion.ciudad);
 }
 
 
@@ -425,9 +423,9 @@ for (let i = 0; i < arrayUsuarios.length; i++) {
 }
 
 //Mostramos las ciudades diferentes que hay
-console.log("\tHay ", arrayCiudades.length, "ciudades:");
+console.log("\tHay ", arrayCiudades.length, "ciudades ↴↴↴");
 arrayCiudades.forEach(function (ciudad) {
-    console.log("\t- ", ciudad);
+    console.log("\t· ", ciudad);
 });
 
 //el siguiente paso es crear tantos arrays como ciudades hay. 
@@ -463,10 +461,9 @@ arrayCiudades.forEach(function (ciudad) {
         if (a.nombre < b.nombre) {
             return -1;
         }
-        // a must be equal to b
         return 0;
     });
-    console.log("Ciudad: " + ciudad);
+    console.log("\tCiudad: " + ciudad +" ↴↴↴");
     console.log(objetosCiudad[ciudad]);
 });
 
