@@ -213,6 +213,7 @@ xhttp.onreadystatechange = function () {
 mostrarInicioEjercicio(8, "Creando la clase Usuario");
 
 class Usuario {
+    #idUser = "";
     #nombre = "";
     #nombreUser = "";
     #email = "";
@@ -222,6 +223,8 @@ class Usuario {
     #url = "";
 
     constructor(nombre, nombreUser, email, edad, empresa, direccion, url) {
+        //el idUser lo formamos llamando al método estático, no lo incluimos en el constructor
+        this.#idUser = Usuario.getId(url);
         this.#nombre = nombre;
         this.#nombreUser = nombreUser;
         this.#email = email;
@@ -232,6 +235,10 @@ class Usuario {
     }
 
     //getters
+    get idUser() {
+        //siempre nos va a devolver el id obtenido de la url, porque así lo hace en el constructor
+        return this.#idUser;
+    }
     get nombre() {
         return this.#nombre;
     }
@@ -259,8 +266,10 @@ class Usuario {
         //el id estará siempre en esta posición:
         return partes[tamanio - 2];
     }
-
+    
+    
     //setters
+    //no tiene sentido hacer setter de idUser, porque lo obtenemos con el método estático
     set nombre(nombre) {
         this.#nombre = nombre;
     }
@@ -322,6 +331,7 @@ console.log("\tidUser: " + Usuario.getId(userPrueba.url));
 mostrarInicioEjercicio(10, "Creando funcion que crea un objecto a partir de un elemento del json");
 
 crearUsuario = function (objetoJSON) {
+    //el idUser no lo incluimos, ya que se genera en el construcor llamando al método
     let nombre = objetoJSON.name;
     let nombreUser = objetoJSON.username;
     let email = objetoJSON.email;
