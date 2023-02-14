@@ -301,15 +301,15 @@
         },
         {
             "id": "24",
-            "enunciado": "En relación a estas señales:",
+            "enunciado": "Indique cuál es el significado de la siguiente señal:",
             "opciones": {
-                "opc1": "Indican que está prohibido aparcar los días impares o pares",
+                "opc1": "Prohición de aparcar los días pares",
                 "opc2": "Van a desaparecer en 2023",
                 "opc3": "Las dos opciones anteriores son correctas",
-                "opc4": "Indican que está prohibido aparacar los meses pares o impares"
+                "opc4": "Prohibición de aparcar los días impares"
             },
             "tipo": "imagen",
-            "imagen": "assets/img_examen/dias_pares_impares.png",
+            "imagen": "assets/img_examen/dias_pares.png",
             "correcta": "3"
         },
         {
