@@ -301,10 +301,10 @@
         },
         {
             "id": "24",
-            "enunciado": "Indique cuál es el significado de la siguiente señal:",
+            "enunciado": "Indique cuál es la opción correcta con respecto a la siguiente señal:",
             "opciones": {
-                "opc1": "Prohición de aparcar los días pares",
-                "opc2": "Van a desaparecer en 2023",
+                "opc1": "Prohibición de aparcar los días pares",
+                "opc2": "Va a desaparecer en 2023",
                 "opc3": "Las dos opciones anteriores son correctas",
                 "opc4": "Prohibición de aparcar los días impares"
             },
