@@ -1,6 +1,19 @@
 
-/* Este fichero javascript.....
-*/
+/********************************************************************************
+PRÁCTICA ASIGNATURA JAVASCRIPT, CURSO DIM45
+   ALUMNO: Tomás Carrasco del Rey
+
+   Nota: Este fichero javascript se ha desarrollado como ampliación a la práctica. No
+   hera requerido en el enuncuado.
+   Está asociado desde el fichero examen.json y el objetivo es poder hacer un examen
+   "real". Este script lee aleatoriamente 10 preguntas del fichero preguntas.json para
+   formar el examen. Cada vez que se pulse en "Hacer examen" se genera un examen nuevo.
+
+   Al finalizar el examen se muestra un modal con el resultado. El objetivo futuro será
+   consolidar las preguntas, exámenes y notas de cada alumno en una base de datos.
+   
+ ********************************************************************************/
+
 
 
 
@@ -40,7 +53,6 @@ xhttp.onreadystatechange = function () {
         //en contador guardamos el numero de preguntas que se han generado
         let contador = 1;
 
-        let asignadas = [];
         do {
 
             let aleatorio = randoms[contador - 1];
