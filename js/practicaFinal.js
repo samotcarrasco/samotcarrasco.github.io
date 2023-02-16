@@ -272,10 +272,8 @@ class Usuario {
             // entiendo que en este caso, 0 y 1 no son "magic numbers", ya que siempre serán el comienzo y fin
             url2 = url.substr(0, url.length - 1);
         }
-        //el valor del ide será SIEMPRE el siguiente a la ultima barra, ya que la barra final está eliminada en la cadena, si la tuviera
+        //el valor del id será SIEMPRE el siguiente a la ultima barra, ya que la barra final está eliminada en la cadena, si la tuviera
         idObtenido = url2.substr(url2.lastIndexOf('/') + 1);
-
-        //console.log("----------------------------" + idObtenido);
 
         return idObtenido;
     }
@@ -505,49 +503,48 @@ arrayCiudades.forEach(function (ciudad) {
 
 mostrarInicioEjercicio(15, "Insertar modal consulta usuarios. Menú Gestion Uuarios -> consulta ");
 
-//declaramos la variable global porque vamos a utilizarla después de la función
-let modal = "";
-
-modal = `<div class="modal" id="modalUsuarios">
+//creamos el modal con el esqueleto inicial. posteriormente se agregará contenido
+let modal = `<div class="modal" id="modalUsuarios">
         <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title">
-        <b>Consulta de usuarios</b>
-        </h5>
-        </div>
-        <div id="modalBusqueda">
-        </div>
-        <div class="table-responsive-lg">
-        <table class="table" id="tablaModal">
-        <thead>
-        <tr>
-        <th scope="col">Nombre</th>
-        <th scope="col">Usuario</th>
-        <th scope="col">Email</th>
-        <th scope="col">Empresa</th>
-        </tr>
-        </thead>
-        <tbody>
-        </tbody>
-        </table>
-        </div>
-        <p class="usuarioMenor">  </p> 
-                    <p class="usuarioMayor">  </p> 
-                    <div id="modalBusquedaDireccion">
-                    </div>
-                    <div class="modal-footer" id="modalFooter">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <b>Consulta de usuarios</b>
+                    </h5>
+                </div>
+                <div id="modalBusqueda">
+                </div>
+                <div class="table-responsive-lg">
+                    <table class="table" id="tablaModal">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Usuario</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Empresa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="usuarioMenor"> </p>
+                <p class="usuarioMayor"> </p>
+                <div id="modalBusquedaDireccion">
+                </div>
+                <div class="modal-footer" id="modalFooter">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    </div>
+                </div>
             </div>
-            </div>
-           </div>`
-    ;
+        </div>
+        </div>`
+            ;
 
 function mostrarUsuarios(ciudadFiltro) {
     document.body.insertAdjacentHTML("beforeend", modal);
     //console.log("la ciudad es: " + ciudadFiltro);
 
+    //ordenamos en este caso con programación funcional
     const usuariosOrdenados = arrayUsuarios.sort((a, b) => a.nombre.localeCompare(b.nombre));
     let usuariosOrdenadosCiudad = "";
 
@@ -569,9 +566,8 @@ function mostrarUsuarios(ciudadFiltro) {
                 </tr>`;
     });
 
-    const tbodyElement = document.querySelector("table tbody"); // Obtiene la referencia al elemento tbody de la tabla
-    tbodyElement.innerHTML = registrosTabla;
-
+    const tablaBody = document.querySelector("table tbody"); 
+    tablaBody.innerHTML = registrosTabla;
 
     const personaMenor = document.querySelector(".usuarioMenor");
     let menor = calcularDatos(usuariosOrdenadosCiudad)[0];
@@ -583,10 +579,9 @@ function mostrarUsuarios(ciudadFiltro) {
     
     filtrarDireccion(usuariosOrdenadosCiudad);
 }
-// por defecto, en la vsta incial se puestran todos los usuarios ordenados.
 
+// por defecto, en la vista incial se puestran todos los usuarios ordenados.
 mostrarUsuarios("todas");
-
 console.log("\tModal creado. Accesible desde el menú \"Usuarios\"");
 
 
@@ -623,27 +618,17 @@ modalBusqueda.appendChild(hijo);
 
 const filtroCiudades = document.getElementById("selectorCiudad");
 filtroCiudades.onchange = function () {
-    //    filtarPorciudad(filtroCiudades.value);
-    mostrarUsuarios(filtroCiudades.value);
+     filtarPorciudad(filtroCiudades.value);
 
 };
 
 function filtarPorciudad(ciudad) {
-    //eliminamos el modal y volvemos a llamar a la funcion mostrarUsuarios
-    console.log("filtrando por ciudad: " + ciudad);
-    //let modalUsuarios = document.getElementById("modalUsuarios");
-    //modalUsuarios.remove();
-
-    //console.log("el modal ha sido borrado")
-    //mostrarUsuarios(objetosCiudad[ciudad]);
+    //console.log("filtrando por ciudad: " + ciudad);
     mostrarUsuarios(ciudad);
-
-    //mostrarUsuarios(usuariosOrdenados.filter((usuario) => usuario.direccion.ciudad == ciudad));
-
 }
 
-
 console.log("\tFunción creada");
+
 
 //////////////////////////////////
 // Ejercicio 17 
