@@ -42,8 +42,8 @@ localStorage.setItem("practica2", "Práctica Final ECMAScript, variable creada c
 
 //para eliminar la practica2 al cerrar el navegador, añadimos un eventListener:
 window.addEventListener("close", function () {
-     sessionStorage.removeItem(localStorage.getItem("practica2"));
- });
+    sessionStorage.removeItem(localStorage.getItem("practica2"));
+});
 
 console.log("\tSe han creado dos propiedades para comprobar funcionamiento:");
 console.log("\t - practica (sessionStorage) se eliminará automáticamente al cerrar el navegador:");
@@ -261,13 +261,26 @@ class Usuario {
         return this.#url;
     }
     static getId(url) {
-        let partes = url.split("/");
-        let tamanio = partes.length;
-        //el id estará siempre en esta posición:
-        return partes[tamanio - 2];
+
+        let idObtenido = "";
+        // creamos una vble auxiliar para in interferir en la propiedad del objeto
+        let url2 = url;
+
+        //para hacerlo más completo y evitar magic numbers, quitamos la ultima barra (en caso de que la tenga)
+        if (url2.endsWith('/')) {
+            // 0 es el inicio de la cadena "url" y length -1 es el final de la cadena "url"
+            // entiendo que en este caso, 0 y 1 no son "magic numbers", ya que siempre serán el comienzo y fin
+            url2 = url.substr(0, url.length - 1);
+        }
+        //el valor del ide será SIEMPRE el siguiente a la ultima barra, ya que la barra final está eliminada en la cadena, si la tuviera
+        idObtenido = url2.substr(url2.lastIndexOf('/') + 1);
+
+        //console.log("----------------------------" + idObtenido);
+
+        return idObtenido;
     }
-    
-    
+
+
     //setters
     //no tiene sentido hacer setter de idUser, porque lo obtenemos con el método estático
     set nombre(nombre) {
@@ -473,7 +486,7 @@ arrayCiudades.forEach(function (ciudad) {
         }
         return 0;
     });
-    console.log("\tCiudad: " + ciudad +" ↴↴↴");
+    console.log("\tCiudad: " + ciudad + " ↴↴↴");
     console.log(objetosCiudad[ciudad]);
 });
 
@@ -495,7 +508,14 @@ mostrarInicioEjercicio(15, "Insertar modal consulta usuarios. Menú Gestion Uuar
 //declaramos la variable global porque vamos a utilizarla después de la función
 let modal = "";
 
-function mostrarUsuarios() {
+function mostrarUsuarios(arrayPersonas) {
+
+    //borramos el modal en caso de que exista
+    // let modalUsuarios = document.getElementById("tablaModal");
+    // if (modalUsuarios) { 
+    //     modalUsuarios.remove(); 
+    //     console.log("tabla modal eliminada");
+    // }
 
     //utilizamos un template literal, ya, que al usar bootstrap el elemento es bastante
     //complejo para crearlo con createElement
@@ -522,11 +542,17 @@ function mostrarUsuarios() {
                 <tbody>
                 `;
 
-    //en este caso, utilizamos una lambda para ordenar
+                const registrosTabla = document.querySelectorAll("tr.usuarioTabla");
+                for (let reg in registrosTabla){
+                    reg.remove();
+                    console.log("eliminando elemento");
+                }
+                //registrosTabla.forEach((registrosTabla) => registrosTabla.remove());
     //añadimos el atributo id=nommbreUser para posteriormente poderlos filtrar, por ejemplo
     //añadimos class=ciudad para controlar el color con css
-    const usuariosOrdenados = arrayUsuarios.sort((a, b) => a.nombre.localeCompare(b.nombre));
-    usuariosOrdenados.forEach(usuario => {
+    //const usuariosOrdenados = arrayUsuarios.sort((a, b) => a.nombre.localeCompare(b.nombre));
+    arrayPersonas.forEach(usuario => {
+        console.log("añadiendo usuario a la tabla: " + usuario.edad);
         modal += `
                 <tr class="usuarioTabla ${usuario.direccion.ciudad}" id=${usuario.nombreUser}>
                 <td>${usuario.nombre}</td>
@@ -539,8 +565,10 @@ function mostrarUsuarios() {
                 </tbody>
                 </table>
                 </div>`;
-    let menor = calcularDatos(arrayUsuarios)[0];
-    let mayor = calcularDatos(arrayUsuarios)[1];
+    let menor = calcularDatos(arrayPersonas)[0];
+    console.log("el menor es:", menor.edad);
+    let mayor = calcularDatos(arrayPersonas)[1];
+    console.log("el mayor es:", mayor.edad);
     modal += `<p class="usuarioMenor">  <i class="fa-solid fa-child"> </i> &nbsp; <b>${menor.nombre} (${menor.edad} años)</b> </p> 
                 <p class="usuarioMayor"> <i class="fa-solid fa-person-cane"></i> &nbsp; <b>${mayor.nombre} (${mayor.edad} años)</b> </p> 
                 <div id="modalBusquedaDireccion">
@@ -551,15 +579,18 @@ function mostrarUsuarios() {
             </div>
             </div>
            </div>`;
-    
+
     //añadimos el modal antes de que termine el body, por ejemplo
     //aunque solo será visible cuando se cumpla un evento, es necesario tener creada su estructura
     document.body.insertAdjacentHTML("beforeend", modal);
-    filtrarDireccion(arrayUsuarios);
+    //filtrarDireccion(arrayUsuarios);
 }
 
-mostrarUsuarios();
+// por defecto, en la vsta incial se puestran todos los usuarios ordenados.
+//en este caso utilizamos una lambda para ordernar
+const usuariosOrdenados = arrayUsuarios.sort((a, b) => a.nombre.localeCompare(b.nombre));
 
+mostrarUsuarios(usuariosOrdenados);
 console.log("\tModal creado. Accesible desde el menú \"Usuarios\"");
 
 
@@ -573,6 +604,7 @@ console.log("\tModal creado. Accesible desde el menú \"Usuarios\"");
 // Cuando el usuario seleccione una ciudad de la lista desplegable, se deberá
 // actualizar la vista mostrando solamente aquellos que sean de la ciudad
 // seleccionada.
+
 
 mostrarInicioEjercicio(16, "Función filtrarCiudad() ");
 
@@ -594,10 +626,23 @@ modalBusqueda.appendChild(hijo);
 
 
 const filtroCiudades = document.getElementById("selectorCiudad");
-filtroCiudades.onchange = function () { 
-    filtarPorciudad(filtroCiudades.value) 
+filtroCiudades.onchange = function () {
+    filtarPorciudad(filtroCiudades.value);
 };
 
+function filtarPorciudad(ciudad) {
+    //eliminamos el modal y volvemos a llamar a la funcion mostrarUsuarios
+    console.log("filtrando por ciudad: " + ciudad);
+    //let modalUsuarios = document.getElementById("modalUsuarios");
+    //modalUsuarios.remove();
+
+    console.log("el modal ha sido borrado")
+    mostrarUsuarios(objetosCiudad[ciudad]);
+    //mostrarUsuarios(usuariosOrdenados.filter((usuario) => usuario.direccion.ciudad == ciudad));
+}
+
+
+/*
 function filtarPorciudad(ciudad) {
     //console.log("filtrando usuarios de la ciudad", ciudad);
     //eliminanos todos los registros de la tabla y mostramso solamente los que cumplen el filtro
@@ -685,7 +730,7 @@ mostrarInicioEjercicio(17, "Función color texto dependiendo de la ciudad");
 //hemos añadido class con el nombre de cada ciudad y controlamos el color con css para no hardcodear
 console.log("\tIncluido en el modal. El color se controla con css para no hardcodear");
 
-
+*/
 //////////////////////////////////
 // Ejercicio 18
 //////////////////////////////////
@@ -712,7 +757,7 @@ function calcularDatos(arrayPersonas) {
     const usuariosOrdenadosEdad = arrayPersonas.sort((a, b) => a.edad.localeCompare(b.edad));
     //el primero del array será el menor, y el último el mayor
     menorMayor[0] = usuariosOrdenadosEdad[0];
-    menorMayor[1] = usuariosOrdenadosEdad[arrayPersonas.length-1];
+    menorMayor[1] = usuariosOrdenadosEdad[arrayPersonas.length - 1];
     //console.log("\t el menor es: ",menorMayor[0].nombre,  menorMayor[0].edad);
     //console.log("\t el mayor es: ",menorMayor[1].nombre, menorMayor[1].edad);
     //devolvemos un array con 2 posiciones, la 0 es el menor y la 1 el mayor
@@ -723,7 +768,7 @@ function calcularDatos(arrayPersonas) {
 
 console.log("\tFunción creada");
 
-
+/*
 //////////////////////////////////
 // Ejercicio 19
 //////////////////////////////////
@@ -822,3 +867,6 @@ console.log("\tFunción implementada");
 console.log("%cImportante >>> Para visualizar correctamente la lista de usuarios, el modal tiene scrol horizontal, y se adapta a todo tipo de pantallas", "color:red; font-weight: bold;");
 
 
+
+
+*/
