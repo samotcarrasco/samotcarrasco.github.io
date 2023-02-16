@@ -508,52 +508,59 @@ mostrarInicioEjercicio(15, "Insertar modal consulta usuarios. Menú Gestion Uuar
 //declaramos la variable global porque vamos a utilizarla después de la función
 let modal = "";
 
-function mostrarUsuarios(arrayPersonas) {
+modal = `<div class="modal" id="modalUsuarios">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title">
+        <b>Consulta de usuarios</b>
+        </h5>
+        </div>
+        <div id="modalBusqueda">
+        </div>
+        <div class="table-responsive-lg">
+        <table class="table" id="tablaModal">
+        <thead>
+        <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Usuario</th>
+        <th scope="col">Email</th>
+        <th scope="col">Empresa</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        </table>
+        </div>
+        <p class="usuarioMenor">  </p> 
+                    <p class="usuarioMayor">  </p> 
+                    <div id="modalBusquedaDireccion">
+                    </div>
+                    <div class="modal-footer" id="modalFooter">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+            </div>
+            </div>
+           </div>`
+    ;
 
-    //borramos el modal en caso de que exista
-    // let modalUsuarios = document.getElementById("tablaModal");
-    // if (modalUsuarios) { 
-    //     modalUsuarios.remove(); 
-    //     console.log("tabla modal eliminada");
-    // }
+function mostrarUsuarios(ciudadFiltro) {
+    document.body.insertAdjacentHTML("beforeend", modal);
+    //console.log("la ciudad es: " + ciudadFiltro);
 
-    //utilizamos un template literal, ya, que al usar bootstrap el elemento es bastante
-    //complejo para crearlo con createElement
-    modal = `<div class="modal" id="modalUsuarios">
-            <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title">
-                <b>Consulta de usuarios</b>
-                </h5>
-                </div>
-                <div id="modalBusqueda">
-                </div>
-                <div class="table-responsive-lg">
-                <table class="table" id="tablaModal">
-                <thead>
-                <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">Usuario</th>
-                <th scope="col">Email</th>
-                <th scope="col">Empresa</th>
-                </tr>
-                </thead>
-                <tbody>
-                `;
+    const usuariosOrdenados = arrayUsuarios.sort((a, b) => a.nombre.localeCompare(b.nombre));
+    let usuariosOrdenadosCiudad = "";
 
-                const registrosTabla = document.querySelectorAll("tr.usuarioTabla");
-                for (let reg in registrosTabla){
-                    reg.remove();
-                    console.log("eliminando elemento");
-                }
-                //registrosTabla.forEach((registrosTabla) => registrosTabla.remove());
-    //añadimos el atributo id=nommbreUser para posteriormente poderlos filtrar, por ejemplo
-    //añadimos class=ciudad para controlar el color con css
-    //const usuariosOrdenados = arrayUsuarios.sort((a, b) => a.nombre.localeCompare(b.nombre));
-    arrayPersonas.forEach(usuario => {
-        console.log("añadiendo usuario a la tabla: " + usuario.edad);
-        modal += `
+    if (ciudadFiltro === "todas") {
+        usuariosOrdenadosCiudad = usuariosOrdenados;
+    } else {
+        usuariosOrdenadosCiudad = usuariosOrdenados.filter(user => user.direccion.ciudad == ciudadFiltro);
+    }
+
+    let registrosTabla = "";
+    usuariosOrdenadosCiudad.forEach(usuario => {
+        //console.log("añadiendo usuario a la tabla: " + usuario.edad);
+        registrosTabla += `
                 <tr class="usuarioTabla ${usuario.direccion.ciudad}" id=${usuario.nombreUser}>
                 <td>${usuario.nombre}</td>
                 <td>${usuario.nombreUser}</td>
@@ -561,36 +568,25 @@ function mostrarUsuarios(arrayPersonas) {
                 <td>${usuario.empresa}</td>
                 </tr>`;
     });
-    modal += `
-                </tbody>
-                </table>
-                </div>`;
-    let menor = calcularDatos(arrayPersonas)[0];
-    console.log("el menor es:", menor.edad);
-    let mayor = calcularDatos(arrayPersonas)[1];
-    console.log("el mayor es:", mayor.edad);
-    modal += `<p class="usuarioMenor">  <i class="fa-solid fa-child"> </i> &nbsp; <b>${menor.nombre} (${menor.edad} años)</b> </p> 
-                <p class="usuarioMayor"> <i class="fa-solid fa-person-cane"></i> &nbsp; <b>${mayor.nombre} (${mayor.edad} años)</b> </p> 
-                <div id="modalBusquedaDireccion">
-                </div>
-                <div class="modal-footer" id="modalFooter">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-            </div>
-           </div>`;
 
-    //añadimos el modal antes de que termine el body, por ejemplo
-    //aunque solo será visible cuando se cumpla un evento, es necesario tener creada su estructura
-    document.body.insertAdjacentHTML("beforeend", modal);
-    //filtrarDireccion(arrayUsuarios);
+    const tbodyElement = document.querySelector("table tbody"); // Obtiene la referencia al elemento tbody de la tabla
+    tbodyElement.innerHTML = registrosTabla;
+
+
+    const personaMenor = document.querySelector(".usuarioMenor");
+    let menor = calcularDatos(usuariosOrdenadosCiudad)[0];
+    personaMenor.innerHTML = `<b> <i class="fa-solid fa-child"> </i> &nbsp;` + menor.nombre + " (" + menor.edad + " años)" + `</b>`;
+    
+    const personaMayor = document.querySelector(".usuarioMayor");
+    let mayor = calcularDatos(usuariosOrdenadosCiudad)[1];
+    personaMayor.innerHTML = `<b> <i class="fa-solid fa-person-cane"> </i> &nbsp;` + mayor.nombre + " (" + mayor.edad + " años)" + `</b>`;
+    
+    filtrarDireccion(usuariosOrdenadosCiudad);
 }
-
 // por defecto, en la vsta incial se puestran todos los usuarios ordenados.
-//en este caso utilizamos una lambda para ordernar
-const usuariosOrdenados = arrayUsuarios.sort((a, b) => a.nombre.localeCompare(b.nombre));
 
-mostrarUsuarios(usuariosOrdenados);
+mostrarUsuarios("todas");
+
 console.log("\tModal creado. Accesible desde el menú \"Usuarios\"");
 
 
@@ -627,7 +623,9 @@ modalBusqueda.appendChild(hijo);
 
 const filtroCiudades = document.getElementById("selectorCiudad");
 filtroCiudades.onchange = function () {
-    filtarPorciudad(filtroCiudades.value);
+    //    filtarPorciudad(filtroCiudades.value);
+    mostrarUsuarios(filtroCiudades.value);
+
 };
 
 function filtarPorciudad(ciudad) {
@@ -636,84 +634,14 @@ function filtarPorciudad(ciudad) {
     //let modalUsuarios = document.getElementById("modalUsuarios");
     //modalUsuarios.remove();
 
-    console.log("el modal ha sido borrado")
-    mostrarUsuarios(objetosCiudad[ciudad]);
+    //console.log("el modal ha sido borrado")
+    //mostrarUsuarios(objetosCiudad[ciudad]);
+    mostrarUsuarios(ciudad);
+
     //mostrarUsuarios(usuariosOrdenados.filter((usuario) => usuario.direccion.ciudad == ciudad));
+
 }
 
-
-/*
-function filtarPorciudad(ciudad) {
-    //console.log("filtrando usuarios de la ciudad", ciudad);
-    //eliminanos todos los registros de la tabla y mostramso solamente los que cumplen el filtro
-    const usuariosMostrados = document.getElementsByClassName("usuarioTabla");
-    while (usuariosMostrados.length > 0) {
-        usuariosMostrados[0].parentNode.removeChild(usuariosMostrados[0]);
-    }
-
-    const tbodyVacios = document.querySelectorAll("tbody:empty");
-    for (let i = 0; i < tbodyVacios.length; i++) {
-        tbodyVacios[i].remove();
-    }
-
-    const usuariosMenores = document.querySelectorAll("p.usuarioMenor, p.usuarioMayor");
-    for (let i = 0; i < usuariosMenores.length; i++) {
-        usuariosMenores[i].remove();
-    }
-
-
-    let tablaModal = document.getElementById("tablaModal");
-    if (ciudad != "todas") {
-        //utlizamos los arrays de ciudades del ejercicio 13 y 14
-        for (var i = 0; i < objetosCiudad[ciudad].length; i++) {
-            var usuario = objetosCiudad[ciudad][i];
-            //creamos el elemento con un template literal por agilidad
-            var elementoTabla = `<tr class="usuarioTabla ${ciudad}" id=${usuario.nombreUser}>
-            <td>${usuario.nombre}</td>
-            <td>${usuario.nombreUser}</td>
-            <td>${usuario.email}</td>
-            <td>"${usuario.empresa}</td>
-            </tr>`;
-            tablaModal.insertAdjacentHTML("beforeend", elementoTabla);
-            //tablaModal.insertAdjacentElement(elementoTabla);
-        }
-        let menor = calcularDatos(objetosCiudad[ciudad])[0];
-        let mayor = calcularDatos(objetosCiudad[ciudad])[1];
-
-        var elementoMenor = `<p class="usuarioMenor">  <i class="fa-solid fa-child"> </i> &nbsp;<b>${menor.nombre} ${menor.edad} años </b> </p>`;
-        var elementoMayor = `<p class="usuarioMayor">  <i class="fa-solid fa-person-cane"></i>  &nbsp; <b>${mayor.nombre} ${mayor.edad} años </b> </p>`;
-        tablaModal.insertAdjacentHTML("afterend", elementoMenor);
-        tablaModal.insertAdjacentHTML("afterend", elementoMayor);
-
-        filtrarDireccion(objetosCiudad[ciudad]);
-        //console.log("añadido filtro para la ciudad", ciudad);
-        const filtroUsuarios = document.getElementById("selectorDireccion");
-        seleccionarDireccion(filtroUsuarios.value);
-
-    }
-    else {
-        //en este caso usamos forEach
-        arrayUsuarios.forEach(function (usuario) {
-            var elementoTabla = `
-              <tr class="usuarioTabla ${usuario.direccion.ciudad}" id=${usuario.nombreUser}>
-              <td>${usuario.nombre}</td>
-              <td>${usuario.nombreUser}</td>
-              <td>${usuario.email}</td>
-              <td>${usuario.empresa}</td>
-              </tr>`;
-            tablaModal.insertAdjacentHTML("beforeend", elementoTabla);
-        });
-
-        let menor = calcularDatos(arrayUsuarios)[0];
-        let mayor = calcularDatos(arrayUsuarios)[1];
-        var elementoMenor = `<p class="usuarioMenor">  <i class="fa-solid fa-child"> </i> &nbsp; <b> ${menor.nombre} ${menor.edad} años </b> </p>`;
-        tablaModal.insertAdjacentHTML("afterend", elementoMenor);
-        var elementoMayor = `<p class="usuarioMenor">  <i class="fa-solid fa-person-cane"> </i> &nbsp; <b> ${mayor.nombre} ${mayor.edad} años </b> </p>`;
-        tablaModal.insertAdjacentHTML("afterend", elementoMayor);
-        filtrarDireccion(arrayUsuarios);
-        // console.log("añadido filtro para todos");
-    }
-}
 
 console.log("\tFunción creada");
 
@@ -730,7 +658,7 @@ mostrarInicioEjercicio(17, "Función color texto dependiendo de la ciudad");
 //hemos añadido class con el nombre de cada ciudad y controlamos el color con css para no hardcodear
 console.log("\tIncluido en el modal. El color se controla con css para no hardcodear");
 
-*/
+
 //////////////////////////////////
 // Ejercicio 18
 //////////////////////////////////
@@ -758,9 +686,6 @@ function calcularDatos(arrayPersonas) {
     //el primero del array será el menor, y el último el mayor
     menorMayor[0] = usuariosOrdenadosEdad[0];
     menorMayor[1] = usuariosOrdenadosEdad[arrayPersonas.length - 1];
-    //console.log("\t el menor es: ",menorMayor[0].nombre,  menorMayor[0].edad);
-    //console.log("\t el mayor es: ",menorMayor[1].nombre, menorMayor[1].edad);
-    //devolvemos un array con 2 posiciones, la 0 es el menor y la 1 el mayor
     return menorMayor;
 }
 
@@ -768,7 +693,7 @@ function calcularDatos(arrayPersonas) {
 
 console.log("\tFunción creada");
 
-/*
+
 //////////////////////////////////
 // Ejercicio 19
 //////////////////////////////////
@@ -865,8 +790,3 @@ function seleccionarDireccion(nombreUser) {
 
 console.log("\tFunción implementada");
 console.log("%cImportante >>> Para visualizar correctamente la lista de usuarios, el modal tiene scrol horizontal, y se adapta a todo tipo de pantallas", "color:red; font-weight: bold;");
-
-
-
-
-*/

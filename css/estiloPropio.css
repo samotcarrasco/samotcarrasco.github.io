@@ -465,10 +465,16 @@ tr.Wisokyburgh td {
     display: inline-block!important;
   }
 
+
+#selectorDireccion {
+    padding-left: 1vw;
+}
+
+
 .direccion {
     margin-top: 1vw;
-    margin-left: 0vw;
-    padding-left: 2vw;
+    margin-left: 1vw;
+    padding-left: 0vw;
     background-color: var(--verde-claro);
 }
 
