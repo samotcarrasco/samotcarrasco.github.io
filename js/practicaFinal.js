@@ -533,12 +533,12 @@ let modal = `<div class="modal" id="modalUsuarios">
                 <div id="modalBusquedaDireccion">
                 </div>
                 <div class="modal-footer" id="modalFooter">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="botonCerrar">Cerrar</button>
                 </div>
             </div>
         </div>
         </div>`
-            ;
+    ;
 
 function mostrarUsuarios(ciudadFiltro) {
     document.body.insertAdjacentHTML("beforeend", modal);
@@ -566,23 +566,47 @@ function mostrarUsuarios(ciudadFiltro) {
                 </tr>`;
     });
 
-    const tablaBody = document.querySelector("table tbody"); 
+    const tablaBody = document.querySelector("table tbody");
     tablaBody.innerHTML = registrosTabla;
 
     const personaMenor = document.querySelector(".usuarioMenor");
     let menor = calcularDatos(usuariosOrdenadosCiudad)[0];
+    //if (ciudadFiltro) personaMenor.innerHTML = `<b> <i class="fa-solid fa-child"> </i> &nbsp;` + menor.nombre + " (" + menor.edad + " años)" + `</b>`;
     personaMenor.innerHTML = `<b> <i class="fa-solid fa-child"> </i> &nbsp;` + menor.nombre + " (" + menor.edad + " años)" + `</b>`;
-    
+
     const personaMayor = document.querySelector(".usuarioMayor");
     let mayor = calcularDatos(usuariosOrdenadosCiudad)[1];
+    //if (ciudadFiltro) personaMayor.innerHTML = `<b> <i class="fa-solid fa-person-cane"> </i> &nbsp;` + mayor.nombre + " (" + mayor.edad + " años)" + `</b>`;
     personaMayor.innerHTML = `<b> <i class="fa-solid fa-person-cane"> </i> &nbsp;` + mayor.nombre + " (" + mayor.edad + " años)" + `</b>`;
-    
+
     filtrarDireccion(usuariosOrdenadosCiudad);
+
+
 }
 
 // por defecto, en la vista incial se puestran todos los usuarios ordenados.
 mostrarUsuarios("todas");
 console.log("\tModal creado. Accesible desde el menú \"Usuarios\"");
+
+var boton = document.getElementById('botonCerrar');
+boton.addEventListener('click', reiniciarSelect);
+
+function reiniciarSelect() {
+
+    mostrarUsuarios("todas");   
+    let direccionAnterior = document.getElementsByClassName("direccion");
+    while (direccionAnterior.length > 0) {
+        direccionAnterior[0].parentNode.removeChild(direccionAnterior[0]);
+        //  console.log("eliminando elemento mostrar direccion")
+    }
+     var miSelect = document.getElementById("selectorCiudad");
+     var miSelect2 = document.getElementById("selectorDireccion");
+     if (miSelect   )    miSelect.selectedIndex = 0;
+    
+    
+     if (miSelect2 !== null) miSelect2.selectedIndex = 0;
+    
+ }
 
 
 //////////////////////////////////
@@ -618,7 +642,7 @@ modalBusqueda.appendChild(hijo);
 
 const filtroCiudades = document.getElementById("selectorCiudad");
 filtroCiudades.onchange = function () {
-     filtarPorciudad(filtroCiudades.value);
+    filtarPorciudad(filtroCiudades.value);
 
 };
 
